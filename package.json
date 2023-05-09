@@ -16,10 +16,16 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "@react-google-maps/api": "^2.18.1",
+    "axios": "^1.4.0",
+    "lodash": "^4.17.21",
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-cookie": "^4.1.1",
+    "react-dom": "latest",
+    "react-web-share": "^2.0.2",
+    "use-places-autocomplete": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "latest",
