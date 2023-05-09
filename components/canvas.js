@@ -192,11 +192,11 @@ export default function Canvas(props) {
     const forwardButtonDisabled = questionType === "map" ? false : questionFuture.length === 0
 
 
-
+const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
 
     return (
         <Dialog
-            open           = {questionType !== "map" || questionCurrentMap}
+            open           = {dialogOpen}
             elevation      = {10}
             hideBackdrop   = {true}
             sx={{backgroundColor: "transparent"}}

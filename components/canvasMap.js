@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useReducer, useState} from "react";
+import React, {useReducer, useState} from "react";
 import {GoogleMap, Marker, useLoadScript} from "@react-google-maps/api";
 import Box from "@mui/material/Box";
 import {Drawer} from "@mui/material";
@@ -24,23 +24,15 @@ export default function CanvasMap(props) {
         questionFuture,
         language,
         handleUpdateSurveyData,
-        setStudyData,
-        english,
-        handlePageTransitionForward,
-        handlePageTransitionBack,
         handleToggleLanguage,
         groupSexLocationSelect,
         homeLocationSelect,
-        mapSearchBarVisible,
         setErrorDialog,
-        setWaiting,
         setCurrentMarker,
         setMarkers,
         setQuestionCurrentMap,
         setQuestionHistoryMap,
-        currentMarker,
         markers,
-        questionCurrentMap,
         handleConfirmRemovePin,
         handleCancelRemovePin
     }
@@ -55,16 +47,6 @@ export default function CanvasMap(props) {
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
         libraries,
     });
-
-
-    const [instructionsHomeOpen, setInstructionsHomeOpen] = React.useState(homeLocationSelect);
-    const [instructionsSexOpen, setInstructionsSexOpen] = React.useState(groupSexLocationSelect);
-    const [dataSafetyInfoOpen, setDataSafetyInfoOpen] = React.useState(false);
-
-    //const [markers, setMarkers] = useState([studyData.places]);
-    const [selected, setSelected] = useState(null);
-    const [mapDialogOpen, setMapDialogOpen] = useState(false);
-    const [, forceRerender] = useReducer(x => x + 1, 0, x => x + 1);
 
 
 
@@ -99,12 +81,6 @@ export default function CanvasMap(props) {
             })
 
     }
-
-    const handleCloseInstructions = () => {
-        setInstructionsOpen(false);
-    }
-
-
 
 
 
@@ -178,7 +154,7 @@ export default function CanvasMap(props) {
 
 
     return (
-        <Drawer open={visible} anchor={"top"}>
+
             <div sx={{position: "fixed", bottom: 0, top: 0, left: 0, right: 0}}>
                 {visible && <Box>
                     <GoogleMap
@@ -220,7 +196,7 @@ export default function CanvasMap(props) {
             </div>
 
 
-        </Drawer>
+
 
 
     )
