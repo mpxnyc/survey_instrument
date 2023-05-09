@@ -61,7 +61,7 @@ export default function InputCheckbox(props) {
     );
 }
 
-const SelectionItemCheckbox = (props) => {
+export const SelectionItemCheckbox = (props) => {
 
     const {text, selected} = props;
 
@@ -76,13 +76,14 @@ const SelectionItemCheckbox = (props) => {
                     margin: 0,
 
                     border: selected ? 4: 0,
-                    borderColor: theme.palette.primary.main,
-                    width: 80,
+                    borderColor: theme.palette.secondary.main,
+                    backgroundColor: selected ? theme.palette.secondary.main : null,
+                    width: 100,
                     height: 100,
                     alignContent: "center",
                     alignItems: "center",
-                    // padding: selected ? 6 : 6,
-                    borderRadius: 2,
+                    padding: 1,
+                    borderRadius: 1000,
                     alignSelf: "center"
                 }
             }
@@ -91,47 +92,31 @@ const SelectionItemCheckbox = (props) => {
                 justifyContent={"center"}
                 alignItems={"center"}
                 alignSelf={"center"}
-                sx={
-                    {
-                        margin: 0,
-                        position: "relative",
-                        bottom: 0,
-                        display: "flex",
-                        direction:"column",
-                        height:"100%"
-                    }
-                }
+
             >
                 <Box
-                    sx={
-                        {
-                            position: "relative",
-                            left: 0,
-                            top: 0,
-                            right: 0,
-                            bottom: 0,
-                            opacity: 0.7
-                        }
-                    }>
-                    <RandomIcon selected={true} size={selected ? 10 : 50}/>
+                    height={"100%"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    alignSelf={"center"}
+                    sx={{display: "flex", position: "absolute", top: 0, left: 0, bottom: 0, right: 0, opacity: selected ? 0.2 : 0.2, textAlign: "center"}}
+                    >
+
                 </Box>
 
                 <Box
-                    sx={
-                        {
-                            position: "relative",
-                            left: 0,
-                            top: 0,
-                            right: 0,
-                            bottom: 0
-                        }
-                    }>
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    alignSelf={"center"}
+                    height={"100%"}
+                    sx={{display: "flex", position: "absolute",  left: 0, bottom: 0, right: 0, textAlign: "center"}}
+                    >
                     <Typography
-                        alignContent={"center"}
-                        fontSize={selected ? 16 : 12}
+                        align={"center"}
+                        fontSize={selected ? 25 : 16}
                         fontWeight={"bold"}
-                        color="primary"
-
+                        color= {selected ? "white" : theme.palette.secondary.main}
+variant={"caption"}
                     >
                         {text}
                     </Typography>

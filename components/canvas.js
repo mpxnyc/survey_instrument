@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import {RadioQuestion} from "./InputRadioEmoji";
 import theme from "../const/theme";
 import Image from "next/image";
+import Unicorn from "../const/graphics/MPX_unicorn.svg";
 
 
 export default function Canvas(props) {
@@ -212,7 +213,7 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
             open           = {dialogOpen}
             elevation      = {10}
             hideBackdrop   = {true}
-            sx={{backgroundColor: "transparent"}}
+
         >
 
             <Box
@@ -247,7 +248,7 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
                             <Typography
                                 variant="body1"
                                 textAlign={"center"}
-                                color={"primary"}
+                                color={theme.palette.secondary.main}
                             >
                                 {questionHeader}
                             </Typography>

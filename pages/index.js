@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
 import {useRouter} from "next/router";
+import Unicorn from '../public/Asset 2.svg'
 
 import {questionnaire} from "../const/questionnaire";
 import {config} from "../const/config";
@@ -13,6 +14,8 @@ import CanvasViralGame from "../components/canvasViralGame";
 
 import {createDataShell, getAvailableQuestions} from "../lib/utilityFunctions";
 import services from "../lib/services";
+import Image from "next/image";
+
 
 
 
@@ -334,7 +337,17 @@ export default function Index() {
 
   return (
 
-      <Box maxWidth maxHeight>
+      <Box maxWidth maxHeight sx={{backgroundColor: "pink", height: "100%", width: "100%", position: "absolute"}} >
+
+          <Box
+          sx={{margin: 10,
+          opacity: 0.5 }}>
+              <Image src={Unicorn} height={200} width={200}/>
+          </Box>
+
+
+
+
         <CanvasMap
             data={surveyData}
             handleUpdateSurveyData={handleUpdateSurveyData}
