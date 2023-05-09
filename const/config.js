@@ -1,0 +1,83 @@
+
+
+export const config = {
+    testing: true,
+    saveThrottleDuration: 1000*5,
+    cookieDuration : {
+        testing: 1,
+        production: 60*60*24*29*6
+    },
+    defaultLanguage: "english",
+    mapSettings: {
+        mapSearchBar: {
+            searchThrottleDuration: 1000,
+            searchRadius: 100 * 1000,
+            setZoom: 14
+        },
+        mapContainerStyle: {
+            height: "100vh",
+            width: "100vw",
+        },
+        options: {
+            disableDefaultUI: true,
+            zoomControl: true,
+        },
+        center: {
+            lat: 40.790420,
+            lng: -73.923278,
+        },
+        zoom: 12
+    },
+    referralSettings: {
+        referrerIdName: "p",
+        referralType: {
+            settingName: "q",
+            values: {
+                friend: "269d78R5",
+                hookup: "20463s2"
+            }
+        },
+        referrerLanguage: {
+            settingName: "r",
+            values: {
+                english: "abs9iw0",
+                spanish: "2bo9as80"
+            }
+        },
+        virusGameIdName: "t"
+    },
+    systemGeneratedVariables: {
+        variableNameForSurveyDataReferralType: "referralType",
+        variableNameForSurveyDataReferrerId: "referrerPublicId",
+        variableNameForSurveyDataReferrerLanguage: "referrerLanguage",
+        variableNameForSurveyDataOwnLanguage: "language",
+        variableNameForSurveyDataCookiesUserName: "cookiesUsername",
+        variableNameForSurveyDataUserName: "userName",
+        variableNameForSurveyDataPublicId: "publicId",
+        variableNameForSurveyDataCensusTract: "censusTract",
+        variableNameForLastQuestion: "lastQuestion",
+        variableNameForSurveyDataVirusReceivedId: "receivedVirus",
+        variableNameForSurveyDataVirusCreatedId: "createdVirus"
+    },
+    sensitiveSystemGeneratedVariables: [
+        "variableNameForSurveyDataReferralType",
+        "variableNameForSurveyDataReferrerId",
+        "variableNameForSurveyDataReferrerLanguage",
+        "variableNameForSurveyDataCookiesUserName",
+        "variableNameForSurveyDataUserName",
+        "variableNameForSurveyDataPublicId",
+        "variableNameForSurveyDataCensusTract",
+        "variableNameForSurveyDataVirusReceivedId",
+        "variableNameForSurveyDataVirusCreatedId"
+    ],
+    viralGameOptions: {
+        mutate: {
+            minMutationDistance: 3,
+            maxMutationDistance: 7
+        },
+        create: {
+            minLength: 14,
+            maxLength: 20
+        }
+    }
+}
