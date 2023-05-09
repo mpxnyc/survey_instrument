@@ -59,18 +59,21 @@ export default function Index() {
           setSurveyData(
               (current) => {
                   const newData = current;
-                  newData["publicId"] = id && id.public_id
-                  newData["userName"] = id && id.user_name
+                  newData["publicId"] = id.public_id
+                  newData["userName"] = id.user_name
 
 
-                  setCookie('userName', id && id.user_name, {maxAge: config.testing ? config.cookieDuration.testing : config.cookieDuration.production})
-                  console.log("set cookie")
+                  setCookie('userName', id.user_name, {maxAge: config.testing ? config.cookieDuration.testing : config.cookieDuration.production})
+
 
                   return newData;
               })
 
+          console.log("set cookie")
+
       } catch(e) {
         console.log("Assign ID Failed")
+          console.log(e)
       }
 
   };
@@ -221,11 +224,11 @@ export default function Index() {
         referrerPublicId: surveyData.referrerPublicId
       }
 
-      console.log("virus just before fetch", virus)
+
 
       const response = await services.fetchVirus(virus)
 
-      console.log("result from fetching virus", response)
+
 
       const responseObject = response.result.records[0]
       const virusText = responseObject._fields[responseObject._fieldLookup["virusText"]]
@@ -236,7 +239,7 @@ export default function Index() {
         virusPublicId: virus.virusPublicId,
         virusOriginTime: virusOriginTime
       }
-      console.log("fetched virus", result)
+
 
       setCurrentVirus(result);
 
@@ -316,9 +319,7 @@ export default function Index() {
   useEffect(
       () => {
 
-        console.log("surveyData.receivedVirus", surveyData.receivedVirus)
-        console.log("surveyData.referrerPulicId",surveyData.referrerPublicId)
-        console.log("surveyData.publicId", surveyData.publicId)
+
 
         !currentVirus.virusText && surveyData.receivedVirus && surveyData.publicId && surveyData.referrerPublicId && handleFetchVirus()
 

@@ -38,7 +38,7 @@ export default function CanvasViralGame(props) {
         />
 
 
-console.log("currentVirus", currentVirus)
+
 
 
     return (
