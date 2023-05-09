@@ -29,6 +29,7 @@ export default function CanvasQuestion(props) {
         currentQuestion,
         visible,
         language,
+        key
     } = props;
 
 
@@ -44,6 +45,7 @@ export default function CanvasQuestion(props) {
         <Box
             width={"100%"}
             height={"100%"}
+            key={key}
         >
             {visible && questionComponent}
         </Box>

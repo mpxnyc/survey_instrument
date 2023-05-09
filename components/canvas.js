@@ -104,6 +104,7 @@ export default function Canvas(props) {
                 questionnaire[item].questionType !== "map" ?
 
                     <CanvasQuestion
+                        key={item}
                         data={data}
                         handleUpdateData={handleUpdateData}
                         currentQuestion={item}
@@ -117,13 +118,16 @@ export default function Canvas(props) {
 
                     :
 
-                    <div>
+                    <div
+                    key={item}
+                    >
 
                         {
                             questionnaire[item].mapQuestionOrder && questionnaire[item].mapQuestionOrder.map(
                                 (itemInner) => {
                                     return (
                                         <CanvasQuestion
+                                            key={item + itemInner}
                                             data={markers[currentMarker]}
                                             handleUpdateData={handleUpdateMarker}
                                             currentQuestion={itemInner}
@@ -140,6 +144,7 @@ export default function Canvas(props) {
                         }
 
                         <CanvasQuestion
+                            key={item + 'Instruction'}
                             data={markers[currentMarker]}
                             handleUpdateData={handleUpdateMarker}
                             currentQuestion={questionnaire[item].mapQuestionInstruction}
@@ -204,22 +209,23 @@ export default function Canvas(props) {
 
 
             <Box
-
-                sx={{position: "relative", bottom: 0, top: 0, backgroundColor: "transparent"}}
-            >
-
-            </Box>
-
-
-            <Box elevation={0} justifyItems="center" justifyContent="center" justifySelf="center"
-
-                 sx={{overflowY: 'auto', padding: 2, backgroundColor: "transparent"}}>
-
-
-
+                elevation={0}
+                justifyItems="center"
+                justifyContent="center"
+                justifySelf="center"
+                sx={{
+                    overflowY: 'auto',
+                    padding: 2,
+                    backgroundColor: "transparent"
+            }}>
                 <FormControl
-                    sx={{position: "relative", bottom: 0, top: 0, left: 0, right: 0}}
-                >
+                    sx={{
+                        position: "relative",
+                        bottom: 0,
+                        top: 0,
+                        left: 0,
+                        right: 0
+                }}>
 
                     <Stack
                         alignItems={"center"}
@@ -231,17 +237,16 @@ export default function Canvas(props) {
                         height={"100%"}
                     >
                         <FormLabel id="demo-radio-buttons-group-label">
-                            <Typography variant="h6" textAlign={"center"}>
+                            <Typography
+                                variant="body1"
+                                textAlign={"center"}
+                            >
                                 {questionHeader}
                             </Typography>
                         </FormLabel>
                         {questionsDisplay}
-
                     </Stack>
-
-
                 </FormControl>
-
             </Box>
 
 
