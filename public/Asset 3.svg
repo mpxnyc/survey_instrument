@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 79.87 99.91">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Outline_Gradient);
+      }
+    </style>
+    <linearGradient id="Outline_Gradient" data-name="Outline Gradient" x1="-5.01" y1="94.9" x2="84.88" y2="5.01" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#41bfff"/>
+      <stop offset=".19" stop-color="#7f3f98"/>
+      <stop offset=".48" stop-color="#ff43b3"/>
+      <stop offset=".77" stop-color="#ffcd2e"/>
+      <stop offset="1" stop-color="#59c618"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <rect class="cls-1" width="79.87" height="99.91"/>
+  </g>
+</svg>
