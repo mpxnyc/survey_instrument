@@ -152,7 +152,7 @@ export default function RandomIcon(props) {
 
     return (
         <Box sx={{alignContent: "center", padding: 1}}>
-            {selected ? iconsSelected[chosenIconIndex] : iconsSelected[chosenIconIndex]}
+            {selected ? iconsSelected[chosenIconIndex] : iconsUnSelected[chosenIconIndex]}
         </Box>
 
     );

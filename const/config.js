@@ -9,6 +9,7 @@ export const config = {
     },
     defaultLanguage: "english",
     mapSettings: {
+        libraries: ["places"],
         mapSearchBar: {
             searchThrottleDuration: 1000,
             searchRadius: 100 * 1000,

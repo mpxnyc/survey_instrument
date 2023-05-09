@@ -156,6 +156,19 @@ export default function Canvas(props) {
                             questionHistory={questionHistoryMap}
                         />
 
+                        <CanvasQuestion
+                            key={item + 'removePinQuestion'}
+                            data={markers[currentMarker]}
+                            handleUpdateData={handleUpdateMarker}
+                            currentQuestion={questionnaire[item].mapRemovePinQuestion}
+                            visible={questionCurrentMap === questionnaire[item].mapRemovePinQuestion}
+                            language={language}
+                            handleNextQuestion={handleNextQuestionMap}
+                            handlePreviousQuestion={handlePreviousQuestionMap}
+                            handleToggleLanguage={handleToggleLanguage}
+                            questionHistory={questionHistoryMap}
+                        />
+
                     </div>
 
             )

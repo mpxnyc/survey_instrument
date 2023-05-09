@@ -24,7 +24,7 @@ export default function Index() {
 
   const [cookies, setCookie] = useCookies(['userName']);
 
-  const [surveyData, setSurveyData] = useState(createDataShell());
+  const [surveyData, setSurveyData] = useState(createDataShell(questionnaire.ordering));
   const [language, setLanguage] = useState(config.defaultLanguage);
   const [unchangingVariable, setUnchangingVariable] = useState(0);
 
@@ -206,12 +206,14 @@ export default function Index() {
       const newState = prev
       delete newState[currentMarker]
 
+        setQuestionCurrentMap("");
+      setCurrentMarker(null)
       return (newState)
     })
   }
 
   const handleCancelRemovePin = () => {
-
+      setQuestionCurrentMap("");
   }
 
   const handleFetchVirus = async () => {

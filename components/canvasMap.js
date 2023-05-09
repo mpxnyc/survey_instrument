@@ -1,4 +1,4 @@
-import React, {useReducer, useState} from "react";
+import React, {useEffect, useReducer, useState} from "react";
 import {GoogleMap, Marker, useLoadScript} from "@react-google-maps/api";
 import Box from "@mui/material/Box";
 import {Drawer} from "@mui/material";
@@ -8,9 +8,10 @@ import ControlNavigation from "./ControlNavigation";
 import {config} from "../const/config";
 import services from "../lib/services";
 import Search from "./MapInputSearchBar";
+import {createCheckBoxDataObject, createDataShell} from "../lib/utilityFunctions";
 
 
-const libraries = ["places"];
+
 
 
 export default function CanvasMap(props) {
@@ -39,13 +40,11 @@ export default function CanvasMap(props) {
         = props;
 
 
-    const [instructionsOpen, setInstructionsOpen] = useState(true);
-    const [removePinPromptOpen, setRemovePinPromptOpen] = useState(false);
 
 
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        libraries,
+        libraries: ["places"],
     });
 
 
@@ -53,8 +52,12 @@ export default function CanvasMap(props) {
     const handleMarkerClick = (event) => {
         const placeId = "place" + event.latLng.lat() + event.latLng.lng()
         setCurrentMarker(placeId);
-        setRemovePinPromptOpen(true);
 
+        setQuestionCurrentMap(
+            () => {
+                setQuestionHistoryMap([])
+                return questionnaire[currentQuestion].mapRemovePinQuestion && questionnaire[currentQuestion].mapRemovePinQuestion
+            })
 
     }
 
@@ -67,7 +70,11 @@ export default function CanvasMap(props) {
 
         setMarkers(
             (old) => {
-                const newMarker = {id: placeId, lat: event.latLng.lat(), lng: event.latLng.lng(), censusTract: censusTract};
+                const newMarker = createDataShell(questionnaire[currentQuestion].mapQuestionOrder)
+                newMarker.id = placeId;
+                newMarker.lat = event.latLng.lat();
+                newMarker.lng = event.latLng.lng();
+                newMarker.censusTract = censusTract
                 const result = {...old, [placeId]: newMarker}
                 setCurrentMarker(placeId);
                 handleUpdateSurveyData(currentQuestion, result)
@@ -84,29 +91,6 @@ export default function CanvasMap(props) {
 
 
 
-
-
-    let mapInstructions = <CanvasQuestion
-        data={data}
-        currentQuestion={questionnaire[currentQuestion].mapQuestionInstruction}
-        visible={true}
-        language={language}
-        questionHistory={[]}
-    />
-
-
-
-    let removePinPrompt = <CanvasQuestion
-        data={data}
-        currentQuestion={questionnaire[currentQuestion].mapRemovePinQuestion}
-        visible={removePinPromptOpen}
-        language={language}
-        handleConfirm={handleConfirmRemovePin}
-        handleCancel={handleCancelRemovePin}
-        handleToggleLanguage={handleToggleLanguage}
-        questionHistory={[]}
-
-    />
 
     const backButtonDisabled    = questionHistory.length === 0
     const forwardButtonDisabled =  questionFuture.length === 0
@@ -152,11 +136,14 @@ export default function CanvasMap(props) {
 
 
 
+    console.log("markers existing", Object.values(markers))
+
+
 
     return (
 
-            <div sx={{position: "fixed", bottom: 0, top: 0, left: 0, right: 0}}>
-                {visible && <Box>
+            <Drawer sx={{position: "fixed", bottom: 0, top: 0, left: 0, right: 0}} open={visible}>
+                { visible && <Box>
                     <GoogleMap
                         id="map"
                         mapContainerStyle={config.mapSettings.mapContainerStyle}
@@ -188,12 +175,10 @@ export default function CanvasMap(props) {
                         }
 
                     </GoogleMap>
-                    {mapInstructions}
-                    {removePinPrompt}
                     {controlNavigationButtons}
                 </Box>
                 }
-            </div>
+            </Drawer>
 
 
 

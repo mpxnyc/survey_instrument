@@ -166,6 +166,7 @@ const SelectionItem = (props) => {
                 }
             }
         >
+
             <Stack
                 justifyContent={"center"}
                 alignItems={"center"}
@@ -184,6 +185,7 @@ const SelectionItem = (props) => {
             >
 
 
+
                 <Typography
                     alignContent={"center"}
                     fontSize={selected ? 14 : 14}
@@ -195,6 +197,7 @@ const SelectionItem = (props) => {
                     }
                 >
                     {text}
+
                 </Typography>
             </Stack>
         </Card>
