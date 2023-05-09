@@ -27,7 +27,7 @@ export default function InputRadio(props) {
                 value={value}
                 onChange={handleChange}
             >
-                {Object.entries(questionnaire[questionName].options[language]).map((item) => {return (<FormControlLabel value={item[0]} control={<Radio />} label={<Typography color="primary">{item[1]}</Typography>} />)})}
+                {Object.entries(questionnaire[questionName].options[language]).map((item) => {return (<FormControlLabel key={item[0]} value={item[0]} control={<Radio />} label={<Typography color="primary">{item[1]}</Typography>} />)})}
             </RadioGroup>
 
     );

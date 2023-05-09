@@ -197,21 +197,15 @@ export default function Canvas(props) {
     return (
         <Dialog
             open           = {questionType !== "map" || questionCurrentMap}
-            justifyContent = "center"
-            alignItems     = "center"
-            square         = {true}
             elevation      = {10}
             hideBackdrop   = {true}
             sx={{backgroundColor: "transparent"}}
-
-
         >
-
 
             <Box
                 elevation={0}
                 justifyItems="center"
-                justifyContent="center"
+
                 justifySelf="center"
                 sx={{
                     overflowY: 'auto',
@@ -228,8 +222,8 @@ export default function Canvas(props) {
                 }}>
 
                     <Stack
-                        alignItems={"center"}
-                        justifyContent={"center"}
+
+
                         justifySelf={"center"}
                         alignSelf={"center"}
                         direction={"column"}
@@ -240,6 +234,7 @@ export default function Canvas(props) {
                             <Typography
                                 variant="body1"
                                 textAlign={"center"}
+                                color={"primary"}
                             >
                                 {questionHeader}
                             </Typography>

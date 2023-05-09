@@ -14,8 +14,8 @@ export default function InputLongtext(props) {
             <Typography variant={"h2"}>{questionnaire[questionName].heading && questionnaire[questionName].heading[language]}</Typography>
             <Typography variant={"h5"}>{questionnaire[questionName].subtitle && questionnaire[questionName].subtitle[language]}</Typography>
             {questionnaire[questionName].body[language].map(
-                (item) => {
-                    return(<Typography variant={"body1"}>{item}</Typography>)
+                (item, index) => {
+                    return(<Typography key={index} variant={"body1"}>{item}</Typography>)
                 }
             )}
         </Box>

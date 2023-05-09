@@ -73,7 +73,6 @@ export const questionnaire = {
          'countSexGS',
          'countSexNGS',
          'placesHookup',
-        'inviteToSurvey',
          'mpxVax1',
          'mpxVax1Date',
          'mpxVax2',
@@ -97,7 +96,6 @@ export const questionnaire = {
         'mpxRiskChangePostVax2',
         'mpxRiskOtherText',
         'serviceDelivery',
-        'inviteToSurvey',
         'contactMe',
         'contactEmail',
         'thankYou'

@@ -28,8 +28,7 @@ export default function CanvasQuestion(props) {
         handleUpdateData,
         currentQuestion,
         visible,
-        language,
-        key
+        language
     } = props;
 
 
@@ -45,7 +44,6 @@ export default function CanvasQuestion(props) {
         <Box
             width={"100%"}
             height={"100%"}
-            key={key}
         >
             {visible && questionComponent}
         </Box>

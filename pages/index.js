@@ -11,7 +11,7 @@ import Canvas from "../components/canvas";
 import CanvasMap from "../components/canvasMap";
 import CanvasViralGame from "../components/canvasViralGame";
 
-import {getAvailableQuestions} from "../lib/utilityFunctions";
+import {createDataShell, getAvailableQuestions} from "../lib/utilityFunctions";
 import services from "../lib/services";
 
 
@@ -24,7 +24,7 @@ export default function Index() {
 
   const [cookies, setCookie] = useCookies(['userName']);
 
-  const [surveyData, setSurveyData] = useState({[config.systemGeneratedVariables.variableNameForLastQuestion]: questionnaire.ordering[0]});
+  const [surveyData, setSurveyData] = useState(createDataShell());
   const [language, setLanguage] = useState(config.defaultLanguage);
   const [unchangingVariable, setUnchangingVariable] = useState(0);
 
@@ -40,6 +40,8 @@ export default function Index() {
 
   const [currentVirus, setCurrentVirus] = useState({});
 
+
+
   const triggerSaveSurvey = async (data) => {
     console.log("Save Triggered")
 
@@ -50,20 +52,27 @@ export default function Index() {
   const triggerAssignId = async () => {
     console.log("Assign ID Triggered")
 
-    const id = await services.assignID();
 
-    setSurveyData(
-        (current) => {
-          const newData = current;
-          newData["publicId"] = id && id.public_id
-          newData["userName"] = id && id.user_name
+      try {
+          const id = await services.assignID();
+
+          setSurveyData(
+              (current) => {
+                  const newData = current;
+                  newData["publicId"] = id && id.public_id
+                  newData["userName"] = id && id.user_name
 
 
-          setCookie('userName', id && id.user_name, {maxAge: config.testing ? config.cookieDuration.testing : config.cookieDuration.production})
-          console.log("set cookie")
+                  setCookie('userName', id && id.user_name, {maxAge: config.testing ? config.cookieDuration.testing : config.cookieDuration.production})
+                  console.log("set cookie")
 
-          return newData;
-        })
+                  return newData;
+              })
+
+      } catch(e) {
+        console.log("Assign ID Failed")
+      }
+
   };
 
   const triggerFetchLastQuestion = async (data) => {
