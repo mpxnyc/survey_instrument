@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
 import {useRouter} from "next/router";
-import Unicorn from '../public/Asset 2.svg'
+import Peaches from '../public/peaches.svg'
 
 import {questionnaire} from "../const/questionnaire";
 import {config} from "../const/config";
@@ -337,12 +337,14 @@ export default function Index() {
 
   return (
 
-      <Box maxWidth maxHeight sx={{backgroundColor: "pink", height: "100%", width: "100%", position: "absolute"}} >
+      <Box maxWidth maxHeight sx={{backgroundColor: "white", height: "100%", width: "100%", position: "absolute", overflow: "clip"}} >
 
           <Box
-          sx={{margin: 10,
-          opacity: 0.5 }}>
-              <Image src={Unicorn} height={200} width={200}/>
+              height={"100%"}
+              width={"100%"}
+
+          sx={{opacity: 0.7, objectFit: "cover"}}>
+              <Image src={Peaches}/>
           </Box>
 
 
