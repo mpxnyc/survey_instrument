@@ -52,8 +52,8 @@ export default function InputCheckbox(props) {
                                 checked={value && value[item[0]]}
                                 onChange={handleCheckBoxChange}
                                 name={item[0]}
-                                icon={<SelectionItemCheckbox selected={false} text={item[1]}/>}
-                                checkedIcon={<SelectionItemCheckbox selected={true} text={item[1]}/>}
+                                icon={<SelectionItemCheckbox selected={false} text={item[1]} colorBackground={colorBackground} colorText={colorText}/>}
+                                checkedIcon={<SelectionItemCheckbox selected={true} text={item[1]} colorBackground={colorBackground} colorText={colorText}/>}
                             />
                         }
                         />)})}
@@ -65,7 +65,7 @@ export default function InputCheckbox(props) {
 
 const SelectionItemCheckbox = (props) => {
 
-    const {text, selected} = props;
+    const {text, selected, colorBackground, colorText} = props;
 
     return(
         <Card
@@ -78,8 +78,8 @@ const SelectionItemCheckbox = (props) => {
                     margin: 0,
 
                     border: selected ? 2: 2,
-                    borderColor: theme.palette.secondary.main,
-                    backgroundColor: selected ? theme.palette.secondary.main : null,
+                    borderColor: colorText,
+                    backgroundColor: selected ? colorText : colorBackground,
                     width: 60,
                     height: 60,
                     alignContent: "center",
@@ -115,7 +115,7 @@ const SelectionItemCheckbox = (props) => {
                     <Typography
                         align={"center"}
 
-                        color= {selected ? "white" : theme.palette.secondary.main}
+                        color= {selected ? colorBackground : colorText}
                         variant={"body2"}
                         sx={{padding: 2}}
                     >
