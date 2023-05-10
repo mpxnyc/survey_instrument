@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
 import {useRouter} from "next/router";
 import Peaches from '../public/peaches.svg'
+import Beach from '../public/beach.png'
 
 import {questionnaire} from "../const/questionnaire";
 import {config} from "../const/config";
@@ -353,7 +354,7 @@ export default function Index() {
               width={"100%"}
 
           sx={{opacity: 0.5, objectFit: "cover"}}>
-              <Image src={Peaches}/>
+              <Image src={Beach}/>
           </Box>
 
 
