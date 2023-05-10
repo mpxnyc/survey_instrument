@@ -56,31 +56,28 @@ const symptomsList = {
 export const questionnaire = {
     'ordering': [
         'prior',
-        'giveUserName',
         'age',
         'consentStudy',
-         'exclusiveUser',
-        'getUserName',
-         'home',
-         'groupSex',
-         'placesGS',
-         'race',
-         'sex',
-         'gender',
-         'sexualOrientation',
-         'countFriends',
+        'home',
+        'groupSex',
+        'placesGS',
+        'race',
+        'sex',
+        'gender',
+        'sexualOrientation',
+        'countFriends',
         'inviteToSurvey',
-         'countSexGS',
-         'countSexNGS',
-         'placesHookup',
-         'mpxVax1',
-         'mpxVax1Date',
-         'mpxVax2',
-         'mpxVax2Date',
-         'mpxSymptoms',
-         'mpxTest',
-         'mpxDiagnosis',
-         'mpxCare',
+        'countSexGS',
+        'countSexNGS',
+        'placesHookup',
+        'mpxVax1',
+        'mpxVax1Date',
+        'mpxVax2',
+        'mpxVax2Date',
+        'mpxSymptoms',
+        'mpxTest',
+        'mpxDiagnosis',
+        'mpxCare',
         'covidTestPositive',
         'mpxAnotherQuestion',
         'hivStatus',
@@ -234,12 +231,10 @@ export const questionnaire = {
             spanish: "SP How many LGBTQ friends do you have who are important to you for any reason? Count only those you have been in touch with over the past 4 weeks."
         },
         options: {
-            english: {'_': 'Number of Friends'},
-            spanish: {'_': 'SP Number of Friends'}
+            english: {'none': 'None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Over 10'},
+            spanish: {'none': 'SP None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'SP Over 10'}
         },
-        questionType: "integer",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        questionType: "radio"
     },
     'countSexGS': {
         question: {
@@ -251,8 +246,7 @@ export const questionnaire = {
             spanish: {'count': 'Count'}
         },
         questionType: "integer",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "groupSex", value: "yes", equals: true}
     },
     'countSexNGS': {
         question: {
@@ -264,8 +258,7 @@ export const questionnaire = {
             spanish: {'count': 'Count'}
         },
         questionType: "integer",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "groupSex", value: "no", equals: true}
     },
     'covidTestPositive': {
         question: {
@@ -347,8 +340,7 @@ export const questionnaire = {
         },
         options: yesNoResponse,
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "", value: "", equals: false}
     },
     'hivLastTest': {
         question: {
@@ -372,8 +364,7 @@ export const questionnaire = {
             }
         },
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "hivStatus", value: "positive", equals: false}
     },
     'hivPrep': {
         question: {
@@ -382,8 +373,7 @@ export const questionnaire = {
         },
         options: yesNoResponse,
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "hivStatus", value: "positive", equals: false}
     },
     'hivStatus': {
         question: {
@@ -424,8 +414,7 @@ export const questionnaire = {
             }
         },
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "hivStatus", value: "positive", equals: true}
     },
     'home': {
         questionType: "map",
@@ -441,8 +430,8 @@ export const questionnaire = {
             spanish: "SP Home"
         },
         body: {
-            english: "Please tap on the map to show where home is",
-            spanish: "sp Please tap on the map to show where home is"
+            english: ["Please tap on the map to show where home is"],
+            spanish: ["sp Please tap on the map to show where home is"]
         }
     },
     'inviteToSurvey': {
@@ -534,8 +523,7 @@ export const questionnaire = {
             }
         },
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "mpxVax1", value: "yes", equals: true}
     },
     'mpxRiskChangePostVax2': {
         question: {
@@ -555,8 +543,7 @@ export const questionnaire = {
             }
         },
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "mpxVax2", value: "yes", equals: true}
     },
     'mpxRiskChangesPre2022': {
         question: {
@@ -575,9 +562,7 @@ export const questionnaire = {
                 'changed_other_reasons': 'SP Changed for other reasons'
             }
         },
-        questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        questionType: "radio"
     },
     'mpxRiskChangesPreVax1': {
         question: {
@@ -597,8 +582,7 @@ export const questionnaire = {
             }
         },
         questionType: "plaintext",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "mpxVax1", value: "yes", equals: true}
     },
     'mpxRiskOtherText': {
         question: {
@@ -620,8 +604,7 @@ export const questionnaire = {
         },
         options: yesNoResponse,
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "", value: "", equals: false}
     },
     'mpxRiskStrategies': {
         question: {
@@ -647,8 +630,7 @@ export const questionnaire = {
             }
         },
         questionType: "checkbox",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "mpxRiskReduce", value: "yes", equals: true}
     },
     'mpxRiskStrategiesOtherText': {
         question: {
@@ -660,8 +642,7 @@ export const questionnaire = {
             spanish: {'description': 'Description'}
         },
         questionType: "plaintext",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "mpxRiskStrategies", value: "other", equals: true}
     },
     'mpxSymptoms': {
         question: {
@@ -714,8 +695,7 @@ export const questionnaire = {
             spanish: {'date': 'Date'}
         },
         questionType: "plaintext",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "mpxVax1", value: "yes", equals: true}
     },
     'mpxVax2': {
         question: {
@@ -735,8 +715,7 @@ export const questionnaire = {
             }
         },
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "mpxVax1", value: "yes", equals: true}
     },
     'mpxVax2Date': {
         question: {
@@ -748,8 +727,7 @@ export const questionnaire = {
             spanish: {'date': 'Date'}
         },
         questionType: "plaintext",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "mpxVax2", value: "yes", equals: true}
     },
     'nudesGameExplain': {
         questionType: "longtext",
@@ -886,16 +864,15 @@ export const questionnaire = {
     },
     'placeCount': {
         question: {
-            english: "How many people were  hooking up at this place?",
+            english: "How many people were hooking up at this place?",
             spanish: "SP How many people were  hooking up at this place?"
         },
         options: {
-            english: {'count': 'Count'},
-            spanish: {'count': 'Count'}
+            english: {'none': 'None', '_2_5': '2-5 People', '_6_10': '6-10 People', '_11_20': '11-20 People', '_21_50': '21-50 People', '_51_100': '51-100 People', '_100plus': 'Over 100 People'},
+            spanish: {'none': 'None', '_2_5': 'Sp 2-5 People', '_6_10': 'Sp 6-10 People', '_11_20': 'Sp 11-20 People', '_21_50': 'SP 21-50 People', '_51_100': 'SP 51-100 People', '_100plus': 'SP Over 100 People'}
+
         },
-        questionType: "integer",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        questionType: "radio"
     },
     'placeDrugs': {
         question: {
@@ -950,12 +927,10 @@ export const questionnaire = {
             spanish: "SP Over the past 4 weeks, how many times have you visited this place? "
         },
         options: {
-            english: {'count': 'Number of Times'},
-            spanish: {'count': 'SP Number of Times'}
+            english: {'_1': '1 Time', '_2_4': '2-4 Times', '_5_10': '5-10 Times', '_10plus': 'Over 10 Times'},
+            spanish: {'_1': 'SP 1 Time', '_2_4': 'SP 2-4 Times', '_5_10': 'SP 5-10 Times', '_10plus': 'SP Over 10 Times'},
         },
-        questionType: "integer",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        questionType: "radio"
     },
     'placeSex': {
         question: {
@@ -963,19 +938,18 @@ export const questionnaire = {
             spanish: "SP Over the past 4 weeks, how many times have you had sexual contact at this place? "
         },
         options: {
-            english: {'count': 'Number of Times'},
-            spanish: {'count': 'Number of Times'}
+            english: {'none': 'None', '_1': '1 Time', '_2_4': '2-4 Times', '_5_10': '5-10 Times', '_10plus': 'Over 10 Times'},
+            spanish: {'none': 'Sp None', '_1': 'SP 1 Time', '_2_4': 'SP 2-4 Times', '_5_10': 'SP 5-10 Times', '_10plus': 'SP Over 10 Times'},
         },
-        questionType: "integer",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        questionType: "radio"
     },
     'placesGS': {
         questionType: "map",
         mapQuestionInstruction: "placesGSInstructions",
-        mapQuestionOrder: ["placeSex", "placeCount", "placeType", "placeDrugUse", "placeDrugs"],
+        mapQuestionOrder: ["placeType", "placeFreq", "placeSex", "placeCount"],
         mapRemovePinQuestion: "mapRemovePinQuestion",
-        personPlaceRelation: "HOOKUP_IN"
+        personPlaceRelation: "HOOKUP_IN",
+        skipLogic: {question: "groupSex", value: "yes", equals: true}
     },
     'placesGSInstructions': {
         questionType: "instruction",

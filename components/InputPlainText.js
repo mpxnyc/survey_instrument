@@ -4,7 +4,7 @@ import * as React from "react";
 import {questionnaire} from "../const/questionnaire";
 import {useEffect} from "react";
 
-export default function InputTextEntry(props) {
+export default function InputPlainText(props) {
     const {data, handleUpdateData, questionName, language} = props;
     const [value, setValue] = React.useState(data[questionName]);
 
@@ -25,11 +25,9 @@ export default function InputTextEntry(props) {
     }
 
 
-
-
     return (
 
-        <TextField  value={value} onChange={handleTextBoxChange} sx={{justifySelf: "center"}} />
+        <TextField fullWidth multiline variant="standard" width={"100%"} value={value} onChange={handleTextBoxChange} sx={{justifySelf: "center"}} />
 
     );
 }

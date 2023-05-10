@@ -4,15 +4,20 @@ import {questionnaire} from "../const/questionnaire";
 import {useState} from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import {config} from "../const/config";
 
 
-export default function InputPrompt(props) {
+export default function OutputInstructions(props) {
     const {questionName, language} = props;
 
     return (
         <Box>
-            <Typography>{questionnaire[questionName].heading[language]}</Typography>
-            <Typography>{questionnaire[questionName].body[language]}</Typography>
+            {questionnaire[questionName].body[language].map(
+                (line) => {
+                    return <Typography align="center" variant="body1" color={config.colorText} gutterBottom sx={{margin: 2}}>{line}</Typography>
+                }
+            )}
+
         </Box>
     );
 }
