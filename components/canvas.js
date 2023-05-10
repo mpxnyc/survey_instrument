@@ -223,15 +223,10 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
             open           = {dialogOpen}
             elevation      = {10}
             hideBackdrop   = {true}
-sx={{backgroundColor: null}}
+            PaperProps={{sx: {backgroundColor: "transparent", border: 3, borderColor: colorText, borderRadius: 5} }}
 
         >
-            <Box
-            sx={{
-                border: 3,
-                borderColor: colorText,
-            borderRadius: 5}}
-            >
+
                 <Box
                     elevation={0}
                     justifyItems="center"
@@ -297,7 +292,7 @@ sx={{backgroundColor: null}}
                     colorText              = {colorText}
                 />
 
-            </Box>
+
 
 
 

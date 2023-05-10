@@ -364,8 +364,8 @@ export default function Index() {
             handleUpdateSurveyData={handleUpdateSurveyData}
             currentQuestion={questionCurrent}
             questionFuture={questionFuture}
-            //visible={questionCurrent && questionnaire[questionCurrent] && questionnaire[questionCurrent].questionType === "map"}
-            visible={true}
+            visible={questionCurrent && questionnaire[questionCurrent] && questionnaire[questionCurrent].questionType === "map"}
+
             language={language}
             handleNextQuestion={handleNextQuestion}
             handlePreviousQuestion={handlePreviousQuestion}
