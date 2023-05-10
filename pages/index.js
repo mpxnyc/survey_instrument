@@ -118,13 +118,22 @@ export default function Index() {
 
   const handleNextQuestion = () => {
 
+      if (surveyData[questionCurrent] === questionnaire[questionCurrent].exitCondition) {
+          setQuestionCurrent(
+              () => {
+                  setQuestionFuture([])
+                  return questionnaire.milestones.surveyComplete
+              }
+          )
+
+          return
+      }
 
     if (surveyData.cookiesUsername) {
       questionnaire.milestones.confirmCookie.includes(questionCurrent) && triggerConfirmCookie()
     } else {
       questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName && triggerAssignId()
     }
-
 
     const availableQuestions = getAvailableQuestions(surveyData, questionCurrent, questionHistory, questionnaire.ordering);
 

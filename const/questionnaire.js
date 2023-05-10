@@ -100,7 +100,8 @@ export const questionnaire = {
     'milestones': {
         assignId: ["consentStudy"],
         retrieveId: ['giveUserName'],
-        confirmCookie: ['exclusiveUser']
+        confirmCookie: ['exclusiveUser'],
+        surveyComplete: 'thankYou'
     },
     'buttons': {
         'take_survey': {
@@ -158,8 +159,7 @@ export const questionnaire = {
             },
         },
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        exitCondition: '_under_18'
     },
     'consentGame': {
         heading: {
@@ -1132,8 +1132,8 @@ export const questionnaire = {
             spanish: "SP Thank you!"
         },
         body: {
-            english: "Thank you! We recorded your response.",
-            spanish: "SP Thank you! We recorded your response."
+            english: ["Thank you! We recorded your response."],
+            spanish: ["SP Thank you! We recorded your response."]
         }
     }
 }

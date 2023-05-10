@@ -1,3 +1,4 @@
+import {mapStyles} from "./mapStyles";
 
 
 export const config = {
@@ -22,6 +23,7 @@ export const config = {
             width: "100vw",
         },
         options: {
+            styles: mapStyles,
             disableDefaultUI: true,
             zoomControl: true,
         },
