@@ -75,7 +75,6 @@ const SelectionItemRadio = (props) => {
                     alignContent: "center",
                     alignItems: "center",
                     padding: 4,
-                    borderRadius: 1000,
                     alignSelf: "center"
                 }
             }
