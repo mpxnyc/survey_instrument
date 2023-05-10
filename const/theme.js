@@ -19,7 +19,8 @@ const theme = createTheme({
       palette: {
         mode: 'light',
         primary: {
-          main: '#009BE8',
+          main: config.colorText,
+            contrastText: config.colorBackground
         },
         secondary: {
           main: '#f73c95',

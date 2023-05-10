@@ -1,12 +1,13 @@
 
-import {Box, Button, Stack, Typography} from "@mui/material";
+import {Box, Button, Fab, Stack, Typography} from "@mui/material";
 
 import {RWebShare} from "react-web-share";
 import React, {useState} from "react";
 import {config} from "../const/config";
 import {questionnaire} from "../const/questionnaire";
 import FormControl from "@mui/material/FormControl";
-
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import Diversity1Icon from '@mui/icons-material/Diversity1';
 
 export const InputOutReferral = (props) => {
     const {language, handleUpdateData, questionName, data} = props;
@@ -48,8 +49,13 @@ export const InputOutReferral = (props) => {
 
     return (
         <FormControl>
-            <Typography>{questionnaire[questionName].sharePromptHeading[language]}</Typography>
-            <Typography>{questionnaire[questionName].sharePromptBody[language]}</Typography>
+            <Typography variant="h4" color={"primary"}>{questionnaire[questionName].sharePromptHeading[language]}</Typography>
+            {questionnaire[questionName].sharePromptBody[language].map(
+                (line) => {
+                    return  <Typography variant={"body1"} color={"primary"} gutterBottom sx={{margin: 2}}>{line}</Typography>
+                }
+            )}
+
             <Stack direction="column" alignContent={"center"} alignItems={"center"} >
                 <Stack direction="row" alignContent={"center"} alignItems={"center"} >
                     <RWebShare
@@ -60,27 +66,14 @@ export const InputOutReferral = (props) => {
                         }}
                         onClick={() => handleClickCounter("friend")}
                     >
-                        <Button variant={"outlined"} >
+                        <Fab color={"primary"} size={"large"}>
                             <Stack direction="column" alignContent={"center"} alignItems={"center"} >
-                               <Typography>Friends</Typography>
+                               <GroupAddIcon/>
+
                             </Stack>
-                        </Button>
+                        </Fab>
                     </RWebShare>
 
-                    <RWebShare
-                        data={{
-                            text: questionnaire[questionName].shareMessage[language],
-                            url: urlHookups,
-                            title: "MPX NYC",
-                        }}
-                        onClick={() => handleClickCounter("hookup")}
-                    >
-                        <Button variant={"outlined"} >
-                            <Stack direction="column" alignContent={"center"} alignItems={"center"} >
-                                <Typography>Hookups</Typography>
-                            </Stack>
-                        </Button>
-                    </RWebShare>
                 </Stack>
             </Stack>
         </FormControl>

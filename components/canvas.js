@@ -12,6 +12,7 @@ import {RadioQuestion} from "./InputRadioEmoji";
 import theme from "../const/theme";
 import Image from "next/image";
 import Unicorn from "../const/graphics/MPX_unicorn.svg";
+import {config} from "../const/config";
 
 
 export default function Canvas(props) {
@@ -201,11 +202,13 @@ export default function Canvas(props) {
         handlePreviousQuestion :
         handlePreviousQuestionMap
 
+    const navigationType = questionFormat.navigationType;
+
     const handleCloseDialog = () => {
-        setQuestionCurrentMap("")
+        questionFormat.navigationType === "instruction" && setQuestionCurrentMap("")
     }
 
-    const navigationType = questionFormat.navigationType;
+
 
 
     const questionHeader = questionType === "map" ?
@@ -223,10 +226,13 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
             open           = {dialogOpen}
             elevation      = {10}
             hideBackdrop   = {true}
-            PaperProps={{sx: {backgroundColor: "transparent", border: 3, borderColor: colorText, borderRadius: 5} }}
+            PaperProps     = {{sx: {backgroundColor: "transparent", border: 3, borderColor: colorText, borderRadius: 5} }}
+            onClose        = {handleCloseDialog}
 
         >
-
+            <Box
+            sx={{backgroundColor: config.colorBackground}}
+            >
                 <Box
                     elevation={0}
                     justifyItems="center"
@@ -235,7 +241,7 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
                     sx={{
                         overflowY: 'auto',
                         padding: 2,
-                        backgroundColor: "transparent"
+                        backgroundColor: config.colorBackground
 
                     }}>
                     <FormControl
@@ -291,6 +297,9 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
                     colorBackground        = {colorBackground}
                     colorText              = {colorText}
                 />
+
+            </Box>
+
 
 
 
