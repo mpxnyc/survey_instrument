@@ -352,7 +352,7 @@ export default function Index() {
               height={"100%"}
               width={"100%"}
 
-          sx={{opacity: 0.7, objectFit: "cover"}}>
+          sx={{opacity: 0.5, objectFit: "cover"}}>
               <Image src={Peaches}/>
           </Box>
 
