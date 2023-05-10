@@ -4,7 +4,7 @@ export const config = {
     testing: true,
     saveThrottleDuration: 1000*5,
     colorBackground: "white",
-    colorText: "green",
+    colorText: "#EA773D",
     cookieDuration : {
         testing: 1,
         production: 60*60*24*29*6
