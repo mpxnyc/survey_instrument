@@ -223,72 +223,82 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
             open           = {dialogOpen}
             elevation      = {10}
             hideBackdrop   = {true}
+sx={{backgroundColor: null}}
 
         >
-
             <Box
-                elevation={0}
-                justifyItems="center"
+            sx={{
+                border: 3,
+                borderColor: colorText,
+            borderRadius: 5}}
+            >
+                <Box
+                    elevation={0}
+                    justifyItems="center"
 
-                justifySelf="center"
-                sx={{
-                    overflowY: 'auto',
-                    padding: 2,
-                    backgroundColor: "transparent"
-            }}>
-                <FormControl
+                    justifySelf="center"
                     sx={{
-                        position: "relative",
-                        bottom: 0,
-                        top: 0,
-                        left: 0,
-                        right: 0
-                }}>
+                        overflowY: 'auto',
+                        padding: 2,
+                        backgroundColor: "transparent"
 
-                    <Stack
+                    }}>
+                    <FormControl
+                        sx={{
+                            position: "relative",
+                            bottom: 0,
+                            top: 0,
+                            left: 0,
+                            right: 0
+                        }}>
+
+                        <Stack
 
 
-                        justifySelf={"center"}
-                        alignSelf={"center"}
-                        direction={"column"}
-                        width={"100%"}
-                        height={"100%"}
-                    >
-                        <FormLabel id="demo-radio-buttons-group-label">
-                            <Typography
-                                variant="body1"
-                                textAlign={"center"}
-                                color={colorText}
-                            >
-                                {questionHeader}
-                            </Typography>
-                        </FormLabel>
-                        {questionsDisplay}
-                    </Stack>
-                </FormControl>
+                            justifySelf={"center"}
+                            alignSelf={"center"}
+                            direction={"column"}
+                            width={"100%"}
+                            height={"100%"}
+                        >
+                            <FormLabel id="demo-radio-buttons-group-label">
+                                <Typography
+                                    variant="body1"
+                                    textAlign={"center"}
+                                    color={colorText}
+                                >
+                                    {questionHeader}
+                                </Typography>
+                            </FormLabel>
+                            {questionsDisplay}
+                        </Stack>
+                    </FormControl>
+                </Box>
+
+
+
+                <ControlNavigation
+                    data                   = {data}
+                    type                   = {navigationType}
+                    handleNextQuestion     = {handleNext}
+                    handlePreviousQuestion = {handlePrevious}
+                    handleConfirm          = {handleConfirm}
+                    handleCancel           = {handleCancel}
+                    handleToggleLanguage   = {handleToggleLanguage}
+                    questionHistory        = {questionHistory}
+                    currentQuestion        = {questionCurrent}
+                    variant                = {"outlined"}
+                    color                  = {"primary"}
+                    backButtonDisabled     = {backButtonDisabled}
+                    forwardButtonDisabled  = {forwardButtonDisabled}
+                    handleCloseDialog      = {handleCloseDialog}
+                    language               = {language}
+                    colorBackground        = {colorBackground}
+                    colorText              = {colorText}
+                />
+
             </Box>
 
-
-
-            <ControlNavigation
-                data                   = {data}
-                type                   = {navigationType}
-                handleNextQuestion     = {handleNext}
-                handlePreviousQuestion = {handlePrevious}
-                handleConfirm          = {handleConfirm}
-                handleCancel           = {handleCancel}
-                handleToggleLanguage   = {handleToggleLanguage}
-                questionHistory        = {questionHistory}
-                currentQuestion        = {questionCurrent}
-                variant                = {"outlined"}
-                color                  = {"primary"}
-                backButtonDisabled     = {backButtonDisabled}
-                forwardButtonDisabled  = {forwardButtonDisabled}
-                handleCloseDialog      = {handleCloseDialog}
-                language               = {language}
-                colorBackground        = {colorBackground}
-                colorText              = {colorText}
-            />
 
 
 
