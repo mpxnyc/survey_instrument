@@ -394,6 +394,8 @@ export default function Index() {
             setQuestionFutureMap={setQuestionFutureMap}
             handleConfirm={handleConfirmRemovePin}
             handleCancel={handleCancelRemovePin}
+            colorBackground={config.colorBackground}
+            colorText={config.colorText}
         />
 
         <CanvasViralGame

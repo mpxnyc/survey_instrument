@@ -9,7 +9,7 @@ import RandomIcon from "./ControlGraphicsIcons";
 import Box from "@mui/material/Box";
 
 export default function InputCheckbox(props) {
-    const {data, handleUpdateData, questionName, language} = props;
+    const {data, handleUpdateData, questionName, language, colorBackground, colorText} = props;
     const [value, setValue] = React.useState(data[questionName]);
 
 
@@ -38,13 +38,15 @@ export default function InputCheckbox(props) {
                 id={questionName}
                 row={true}
                 aria-labelledby="demo-radio-buttons-group-label"
+                sx={{display: "flex",  textAlign: "center", alignItems: "center", alignContent: "center", alignSelf: "center", justifySelf: "center", justifyContent: "center", justifyItems: "center"}}
+
             >
                 {Object.entries(questionnaire[questionName].options[language]).map(
                     (item) => {
 
                     return (
                         <FormControlLabel
-
+                            sx={{margin: 0}}
                             control={
                             <Checkbox
                                 checked={value && value[item[0]]}
@@ -61,7 +63,7 @@ export default function InputCheckbox(props) {
     );
 }
 
-export const SelectionItemCheckbox = (props) => {
+const SelectionItemCheckbox = (props) => {
 
     const {text, selected} = props;
 
@@ -75,15 +77,14 @@ export const SelectionItemCheckbox = (props) => {
                 {
                     margin: 0,
 
-                    border: selected ? 4: 0,
+                    border: selected ? 2: 2,
                     borderColor: theme.palette.secondary.main,
                     backgroundColor: selected ? theme.palette.secondary.main : null,
-                    width: 100,
-                    height: 100,
+                    width: 60,
+                    height: 60,
                     alignContent: "center",
                     alignItems: "center",
-                    padding: 1,
-                    borderRadius: 1000,
+                    padding: 5,
                     alignSelf: "center"
                 }
             }
@@ -113,10 +114,10 @@ export const SelectionItemCheckbox = (props) => {
                     >
                     <Typography
                         align={"center"}
-                        fontSize={selected ? 25 : 16}
-                        fontWeight={"bold"}
+
                         color= {selected ? "white" : theme.palette.secondary.main}
-variant={"caption"}
+                        variant={"body2"}
+                        sx={{padding: 2}}
                     >
                         {text}
                     </Typography>

@@ -19,7 +19,9 @@ export default function ControlNavigation(props) {
         color,
         backButtonDisabled,
         forwardButtonDisabled,
-        handleCloseDialog
+        handleCloseDialog,
+        colorBackground,
+        colorText
 
     } = props;
 
@@ -36,22 +38,22 @@ export default function ControlNavigation(props) {
         case "funkybox":
             buttonsNavigate =
                 <ButtonGroup>
-                <Button variant={'outlined'} color={'primary'}>{questionnaire.buttons.check_results[language]}</Button>
-                <Button variant={'contained'} color={'primary'} onClick={handlePreviousQuestion}>{questionnaire.buttons.challenge_friends[language]}</Button>
-                <Button variant={'contained'} color={'secondary'} onClick={handleNextQuestion}>{questionnaire.buttons.take_survey[language]}</Button>
+                <Button variant={'outlined'} color={colorText}>{questionnaire.buttons.check_results[language]}</Button>
+                <Button variant={'contained'} color={colorText} onClick={handlePreviousQuestion}>{questionnaire.buttons.challenge_friends[language]}</Button>
+                <Button variant={'contained'} color={colorText} onClick={handleNextQuestion}>{questionnaire.buttons.take_survey[language]}</Button>
             </ButtonGroup>
             break;
         case "surveydone":
             buttonsNavigate =
                 <ButtonGroup>
-                    <Button variant={'outlined'} color={'primary'}>{questionnaire.buttons.check_results[language]}</Button>
-                    <Button variant={'contained'} color={'primary'}>{questionnaire.buttons.challenge_friends[language]}</Button>
+                    <Button variant={'outlined'} color={colorText}>{questionnaire.buttons.check_results[language]}</Button>
+                    <Button variant={'contained'} color={colorText}>{questionnaire.buttons.challenge_friends[language]}</Button>
                 </ButtonGroup>
             break;
         case "question":
-            buttonsNavigate = <ButtonGroup variant={variant} color={color} aria-label="outlined button group">
-                <Button variant={variant} color={color} onClick={handlePreviousQuestion}  disabled={backButtonDisabled}><SkipPreviousIcon/></Button>
-                <Button variant={variant} color={color} onClick={handleNextQuestion}      disabled={forwardButtonDisabled}><SkipNextIcon/></Button>
+            buttonsNavigate = <ButtonGroup variant={variant} aria-label="outlined button group">
+                <Button variant={variant}  onClick={handlePreviousQuestion}  disabled={backButtonDisabled}><SkipPreviousIcon/></Button>
+                <Button variant={variant} color={"primary"} onClick={handleNextQuestion}      disabled={forwardButtonDisabled}><SkipNextIcon/></Button>
             </ButtonGroup>
             break;
         case "confirm":

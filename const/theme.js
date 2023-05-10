@@ -1,6 +1,7 @@
 import {Montserrat, Roboto} from 'next/font/google';
 import { createTheme } from '@mui/material/styles';
 import {blue} from '@mui/material/colors';
+import {config} from "./config";
 
 export const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -22,7 +23,7 @@ const theme = createTheme({
         },
         secondary: {
           main: '#f73c95',
-        },
+        }
       },
       typography: montserrat,
       spacing: 8,

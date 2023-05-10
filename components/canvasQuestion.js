@@ -28,13 +28,15 @@ export default function CanvasQuestion(props) {
         handleUpdateData,
         currentQuestion,
         visible,
-        language
+        language,
+        colorBackground,
+        colorText
     } = props;
 
 
     const questionType = currentQuestion && questionnaire[currentQuestion].questionType
 
-    const questionFormat = getQuestionFormat(questionType, data, handleUpdateData, currentQuestion, language)
+    const questionFormat = getQuestionFormat(questionType, data, handleUpdateData, currentQuestion, language, colorBackground, colorText)
 
     const questionComponent = questionFormat.component;
 

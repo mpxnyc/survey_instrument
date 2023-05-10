@@ -37,7 +37,9 @@ export default function Canvas(props) {
         setQuestionCurrentMap,
         handleConfirm,
         handleCancel,
-        setQuestionFutureMap
+        setQuestionFutureMap,
+        colorBackground,
+        colorText
     } = props;
 
 
@@ -115,6 +117,8 @@ export default function Canvas(props) {
                         handlePreviousQuestion={handlePreviousQuestion}
                         handleToggleLanguage={handleToggleLanguage}
                         questionHistory={questionHistory}
+                        colorBackground={colorBackground}
+                        colorText={colorText}
                     />
 
                     :
@@ -138,6 +142,8 @@ export default function Canvas(props) {
                                             handlePreviousQuestion={handlePreviousQuestionMap}
                                             handleToggleLanguage={handleToggleLanguage}
                                             questionHistory={questionHistoryMap}
+                                            colorBackground={colorBackground}
+                                            colorText={colorText}
                                         />
                                     )
                                 }
@@ -155,6 +161,8 @@ export default function Canvas(props) {
                             handlePreviousQuestion={handlePreviousQuestionMap}
                             handleToggleLanguage={handleToggleLanguage}
                             questionHistory={questionHistoryMap}
+                            colorBackground={colorBackground}
+                            colorText={colorText}
                         />
 
                         <CanvasQuestion
@@ -168,6 +176,8 @@ export default function Canvas(props) {
                             handlePreviousQuestion={handlePreviousQuestionMap}
                             handleToggleLanguage={handleToggleLanguage}
                             questionHistory={questionHistoryMap}
+                            colorBackground={colorBackground}
+                            colorText={colorText}
                         />
 
                     </div>
@@ -180,8 +190,8 @@ export default function Canvas(props) {
     const questionTypeMap = questionCurrentMap && questionnaire[questionCurrentMap].questionType
 
     const questionFormat = questionType !== "map" ?
-        getQuestionFormat(questionType,    data, handleUpdateData, questionCurrent,    language) :
-        getQuestionFormat(questionTypeMap, data, handleUpdateData, questionCurrentMap, language)
+        getQuestionFormat(questionType,    data, handleUpdateData, questionCurrent,    language, colorBackground, colorText) :
+        getQuestionFormat(questionTypeMap, data, handleUpdateData, questionCurrentMap, language, colorBackground, colorText)
 
     const handleNext =  questionType !== "map" ?
         handleNextQuestion :
@@ -248,7 +258,7 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
                             <Typography
                                 variant="body1"
                                 textAlign={"center"}
-                                color={theme.palette.secondary.main}
+                                color={colorText}
                             >
                                 {questionHeader}
                             </Typography>
@@ -276,6 +286,8 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
                 forwardButtonDisabled  = {forwardButtonDisabled}
                 handleCloseDialog      = {handleCloseDialog}
                 language               = {language}
+                colorBackground        = {colorBackground}
+                colorText              = {colorText}
             />
 
 
