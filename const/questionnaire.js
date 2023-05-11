@@ -242,10 +242,10 @@ export const questionnaire = {
             spanish: "SP Other than the people in the places you mentioned in the previous questions, how many people have you hooked-up with over the past 4 weeks, excluding primary partners?"
         },
         options: {
-            english: {'count': 'Count'},
-            spanish: {'count': 'Count'}
+            english: {'none': 'None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Over 10'},
+            spanish: {'none': 'SP None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'SP Over 10'}
         },
-        questionType: "integer",
+        questionType: "radio",
         skipLogic: {question: "groupSex", value: "yes", equals: true}
     },
     'countSexNGS': {
@@ -254,10 +254,10 @@ export const questionnaire = {
             spanish: "SP How many people have you hooked-up with over the past 4 weeks, excluding primary partners?"
         },
         options: {
-            english: {'count': 'Count'},
-            spanish: {'count': 'Count'}
+            english: {'none': 'None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Over 10'},
+            spanish: {'none': 'SP None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'SP Over 10'}
         },
-        questionType: "integer",
+        questionType: "radio",
         skipLogic: {question: "groupSex", value: "no", equals: true}
     },
     'covidTestPositive': {
