@@ -50,7 +50,13 @@ export default function CanvasMap(props) {
 
 
     const handleMarkerClick = (event) => {
+
+
+
         const placeId = "place" + event.latLng.lat() + event.latLng.lng()
+
+        if (markers[placeId].variable !== currentQuestion) return
+
         setCurrentMarker(placeId);
 
         setQuestionCurrentMap(
@@ -76,7 +82,16 @@ export default function CanvasMap(props) {
                 newMarker.lat = event.latLng.lat();
                 newMarker.lng = event.latLng.lng();
                 newMarker.censusTract = censusTract
-                const result = {...old, [placeId]: newMarker}
+
+                let result;
+
+                if (currentQuestion === "home") {
+                    const updatedOldMarkers = Object.entries(old).filter((item) => {return (item[1].variable !== "home")})
+                    result = {...updatedOldMarkers, [placeId]: newMarker}
+                } else {
+                    result = {...old, [placeId]: newMarker}
+                }
+
                 setCurrentMarker(placeId);
 
                 const entriesForQuestion = Object.fromEntries(Object.entries(result).filter((item) => {return (item[1].variable === currentQuestion)}))
@@ -159,7 +174,7 @@ export default function CanvasMap(props) {
                             Object.values(markers).map(
                                 (marker) => {
 
-console.log("marker", marker)
+
 
                                     return (
                                         <MarkerF

@@ -58,12 +58,11 @@ const SelectionItemRadio = (props) => {
 
     const {text, selected, colorBackground, colorText} = props;
 
-    console.log("colorBackground", colorBackground)
-    console.log("colorText", colorText)
+
 
     return(
         <Card
-            backgroundColor={colorBackground}
+
             color={colorText}
             elevation={0}
             sx={

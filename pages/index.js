@@ -215,12 +215,22 @@ export default function Index() {
   }
 
   const handleConfirmRemovePin = () => {
+
+
+
     setMarkers((prev) => {
+
+
       const newState = prev
       delete newState[currentMarker]
 
         setQuestionCurrentMap("");
       setCurrentMarker(null)
+
+        const entriesForQuestion = Object.fromEntries(Object.entries(newState).filter((item) => {return (item[1].variable === questionCurrent)}))
+
+        handleUpdateSurveyData(questionCurrent, entriesForQuestion)
+
       return (newState)
     })
   }
@@ -340,6 +350,7 @@ export default function Index() {
 
       }, [surveyData.receivedVirus, surveyData.publicId, surveyData.referrerPublicId]
   )
+
 
 
 

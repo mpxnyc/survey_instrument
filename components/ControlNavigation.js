@@ -35,7 +35,7 @@ export default function ControlNavigation(props) {
     let buttonsNavigate;
 
 
-    console.log("type", type)
+
 
     switch (type) {
         case "funkybox":

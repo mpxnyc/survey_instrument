@@ -51,8 +51,8 @@ export const InputOutReferral = (props) => {
         <FormControl>
             <Typography variant="h4" color={"primary"}>{questionnaire[questionName].sharePromptHeading[language]}</Typography>
             {questionnaire[questionName].sharePromptBody[language].map(
-                (line) => {
-                    return  <Typography variant={"body1"} color={"primary"} gutterBottom sx={{margin: 2}}>{line}</Typography>
+                (line, index) => {
+                    return  <Typography key={index} variant={"body1"} color={"primary"} gutterBottom sx={{margin: 2}}>{line}</Typography>
                 }
             )}
 

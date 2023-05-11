@@ -46,6 +46,7 @@ export default function InputCheckbox(props) {
 
                     return (
                         <FormControlLabel
+                            key={item[0]}
                             sx={{margin: 0}}
                             control={
                             <Checkbox
@@ -70,7 +71,6 @@ const SelectionItemCheckbox = (props) => {
     return(
         <Card
 
-            backgroundColor="primary"
             color="primary"
             elevation={0}
             sx={

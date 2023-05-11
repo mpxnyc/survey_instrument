@@ -468,8 +468,8 @@ export const questionnaire = {
             spanish: "Would uyou like to confirm this?(Spanish)"
         },
         body: {
-            english: "Would uyou like to confirm this? Body",
-            spanish: "Would uyou like to confirm this? Body (Spanish)"
+            english: ["Would you like to confirm this? Body"],
+            spanish: ["Would you like to confirm this? Body (Spanish)"]
         }
     },
     'mpxAnotherQuestion': {
