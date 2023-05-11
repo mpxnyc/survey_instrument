@@ -70,6 +70,7 @@ export default function Index() {
       try {
           const id = await services.assignID();
 
+          console.log("id", id)
           setSurveyData(
               (current) => {
                   const newData = current;
@@ -118,7 +119,9 @@ export default function Index() {
       newData.userName && triggerSaveSurvey(newData)
 
       const newIndex = questionnaire.ordering.indexOf(name)
-      const currentIndex = newData.lastQuestion && questionnaire.ordering.indexOf(newData.lastQuestion)
+      const currentIndex = questionnaire.ordering.indexOf(newData.lastQuestion)
+
+        console.log("currentIndex newindex", currentIndex, newIndex)
 
       if (currentIndex < newIndex) newData.lastQuestion = name;
 
@@ -131,8 +134,9 @@ export default function Index() {
 
   const handleNextQuestion = () => {
 
-      if (surveyData[questionCurrent] && (surveyData[questionCurrent] === questionnaire[questionCurrent].exitCondition)) {
 
+      if (surveyData[questionCurrent] && (surveyData[questionCurrent] === questionnaire[questionCurrent].exitCondition)) {
+// if its a question with exit condition go to final question
 
           setQuestionCurrent(
               () => {
@@ -145,9 +149,27 @@ export default function Index() {
       }
 
     if (surveyData.cookiesUsername) {
+        // if we have a cookie with user name, confirm cookie
       questionnaire.milestones.confirmCookie.includes(questionCurrent) && triggerConfirmCookie()
     } else {
       questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName && triggerAssignId()
+    }
+
+    if (questionnaire[questionCurrent].questionType === "checkbox") {
+        // make sure that logical question  obtains 'false' instead of 'null' once user has seen it
+
+        setSurveyData(
+            (current) => {
+                const innerVariableNames = Object.keys(current[questionCurrent])
+                innerVariableNames.map(
+                    (item) => {
+                        current[questionCurrent][item] = false;
+                    }
+                )
+
+                return current
+            }
+        )
     }
 
     const availableQuestions = getAvailableQuestions(surveyData, questionCurrent, questionHistory, questionnaire.ordering);
@@ -350,6 +372,8 @@ export default function Index() {
 
         console.log("cookies", cookies && cookies)
         cookies && handleUpdateSurveyData("cookiesUsername", cookies.userName)
+          handleUpdateSurveyData(config.systemGeneratedVariables.variableNameForLastQuestion, questionnaire.ordering[0])
+
 
       },
       [unchangingVariable]
