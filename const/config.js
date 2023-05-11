@@ -12,6 +12,11 @@ export const config = {
     },
     defaultLanguage: "english",
     mapSettings: {
+        iconURL: {
+            'home': '/MPX_unicorn.svg',
+            'placesGS': '/MPX_droplets.svg',
+            'placesHookup': '/MPX_handshake.svg'
+        },
         libraries: ["places"],
         mapSearchBar: {
             searchThrottleDuration: 1000,

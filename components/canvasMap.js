@@ -71,13 +71,17 @@ export default function CanvasMap(props) {
         setMarkers(
             (old) => {
                 const newMarker = createDataShell(questionnaire[currentQuestion].mapQuestionOrder)
+                newMarker.variable = currentQuestion;
                 newMarker.id = placeId;
                 newMarker.lat = event.latLng.lat();
                 newMarker.lng = event.latLng.lng();
                 newMarker.censusTract = censusTract
                 const result = {...old, [placeId]: newMarker}
                 setCurrentMarker(placeId);
-                handleUpdateSurveyData(currentQuestion, result)
+
+                const entriesForQuestion = Object.fromEntries(Object.entries(result).filter((item) => {return (item[1].variable === currentQuestion)}))
+
+                handleUpdateSurveyData(currentQuestion, entriesForQuestion)
                 return result
             })
 
@@ -154,13 +158,16 @@ export default function CanvasMap(props) {
                         {
                             Object.values(markers).map(
                                 (marker) => {
+
+console.log("marker", marker)
+
                                     return (
                                         <MarkerF
                                             key={marker && `${marker.lat}-${marker.lng}`}
                                             position={marker && {lat: marker.lat, lng: marker.lng}}
                                             onClick={handleMarkerClick}
                                             icon={{
-                                                url: `/MPX_unicorn.svg`,
+                                                url: config.mapSettings.iconURL[marker.variable] ? config.mapSettings.iconURL[marker.variable] : '/MPX_unicorn.svg',
                                                 origin: new window.google.maps.Point(0, 0),
                                                 anchor: new window.google.maps.Point(15, 15),
                                                 scaledSize: new window.google.maps.Size(50, 50),
