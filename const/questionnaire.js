@@ -948,7 +948,7 @@ export const questionnaire = {
         mapQuestionInstruction: "placesGSInstructions",
         mapQuestionOrder: ["placeType", "placeFreq", "placeSex", "placeCount"],
         mapRemovePinQuestion: "mapRemovePinQuestion",
-        personPlaceRelation: "HOOKUP_IN",
+        personPlaceRelation: "GROUP_SEX_IN",
         skipLogic: {question: "groupSex", value: "yes", equals: true}
     },
     'placesGSInstructions': {
@@ -973,7 +973,7 @@ export const questionnaire = {
         mapQuestionInstruction: "placesHookupInstructions",
         mapQuestionOrder: [],
         mapRemovePinQuestion: "mapRemovePinQuestion",
-        personPlaceRelation: "GROUP_SEX_IN"
+        personPlaceRelation: "HOOKUP_IN"
     },
     'placesHookupInstructions': {
         questionType: "instruction",

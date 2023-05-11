@@ -3,7 +3,7 @@ import {mapStyles} from "./mapStyles";
 
 export const config = {
     testing: true,
-    saveThrottleDuration: 1000*5,
+    saveThrottleDuration: 1000*10,
     colorBackground: "white",
     colorText: "#EA773D",
     cookieDuration : {

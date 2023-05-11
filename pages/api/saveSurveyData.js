@@ -14,7 +14,7 @@ export default async function handler(req,resp) {
 
     const updateMode = true;
 
-    const endpoint = updateMode === true ? `${process.env.BACKEND_SERVER_URL}/survey/update` : `${process.env.BACKEND_SERVER_URL}/survey`;
+    const endpoint = `${process.env.BACKEND_SERVER_URL}/survey/update`
 
     try {
 

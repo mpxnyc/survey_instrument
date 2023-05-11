@@ -148,7 +148,7 @@ export default function CanvasMap(props) {
     }, []);
 
     if (loadError) {
-        setErrorDialog({open: true, type: "network", escapable: false});
+
         return "No Network...";
     }
     if (!isLoaded) return "Loading...";
