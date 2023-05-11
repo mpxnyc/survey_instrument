@@ -44,12 +44,22 @@ export default function Index() {
 
   const [currentVirus, setCurrentVirus] = useState({});
 
-
+    let busySaving = false
 
   const triggerSaveSurvey = async (data) => {
     console.log("Save Triggered")
 
-    await services.saveSurvey(data);
+      if (busySaving) {
+          console.log("still busy saving")
+          return;
+      } else {
+          busySaving = true
+          console.log("busySaving", busySaving)
+          const result = await services.saveSurvey(data);
+          busySaving = false
+          console.log("finishedSaving", busySaving, result)
+      }
+
 
   };
 
@@ -98,13 +108,15 @@ export default function Index() {
   }
 
   const handleUpdateSurveyData = (name, value) => {
+      console.log("ahndle update survey data", name, value)
 
-    setSurveyData((old) => {
+    setSurveyData( (old) => {
 
       const newData = old;
       newData[name] = value
 
       newData.userName && triggerSaveSurvey(newData)
+
       const newIndex = questionnaire.ordering.indexOf(name)
       const currentIndex = newData.lastQuestion && questionnaire.ordering.indexOf(newData.lastQuestion)
 
@@ -119,7 +131,9 @@ export default function Index() {
 
   const handleNextQuestion = () => {
 
-      if (surveyData[questionCurrent] === questionnaire[questionCurrent].exitCondition) {
+      if (surveyData[questionCurrent] && (surveyData[questionCurrent] === questionnaire[questionCurrent].exitCondition)) {
+
+
           setQuestionCurrent(
               () => {
                   setQuestionFuture([])

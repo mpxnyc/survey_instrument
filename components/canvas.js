@@ -94,8 +94,9 @@ export default function Canvas(props) {
             const newData = old;
             newData[currentMarker][name] = value
 
+            const entriesForQuestion = Object.fromEntries(Object.entries(newData).filter((item) => { return (item[1].variable === questionCurrent)}))
 
-            handleUpdateData(questionCurrent, newData)
+            handleUpdateData(questionCurrent, entriesForQuestion)
             return newData;
         })
 

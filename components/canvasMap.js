@@ -94,7 +94,7 @@ export default function CanvasMap(props) {
 
                 setCurrentMarker(placeId);
 
-                const entriesForQuestion = Object.fromEntries(Object.entries(result).filter((item) => {return (item[1].variable === currentQuestion)}))
+                const entriesForQuestion = Object.fromEntries(Object.entries(result).filter((item) => { return (item[1].variable === currentQuestion)}))
 
                 handleUpdateSurveyData(currentQuestion, entriesForQuestion)
                 return result

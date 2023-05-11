@@ -14,6 +14,7 @@ export default function InputRadio(props) {
 
     const handleChange = (event) => {
         setValue(() => {
+            console.log("handle change, questionName and target value", questionName, event.target.value)
             handleUpdateData(questionName, event.target.value)
             return event.target.value
         })
