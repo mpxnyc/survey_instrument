@@ -1,5 +1,5 @@
 import React, {useEffect, useReducer, useState} from "react";
-import {GoogleMap, Marker, useLoadScript} from "@react-google-maps/api";
+import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
 import Box from "@mui/material/Box";
 import {Drawer} from "@mui/material";
 import CanvasQuestion from "./canvasQuestion";
@@ -44,7 +44,7 @@ export default function CanvasMap(props) {
 
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        libraries: ["places"],
+        libraries: config.mapSettings.libraries,
     });
 
 
@@ -136,9 +136,6 @@ export default function CanvasMap(props) {
 
 
 
-    console.log("markers existing", Object.values(markers))
-
-
 
     return (
 
@@ -158,7 +155,7 @@ export default function CanvasMap(props) {
                             Object.values(markers).map(
                                 (marker) => {
                                     return (
-                                        <Marker
+                                        <MarkerF
                                             key={marker && `${marker.lat}-${marker.lng}`}
                                             position={marker && {lat: marker.lat, lng: marker.lng}}
                                             onClick={handleMarkerClick}

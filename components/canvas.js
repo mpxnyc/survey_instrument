@@ -226,12 +226,11 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
             open           = {dialogOpen}
             elevation      = {10}
             hideBackdrop   = {true}
-            PaperProps     = {{sx: {backgroundColor: "transparent", border: 3, borderColor: colorText, borderRadius: 5} }}
-            onClose        = {handleCloseDialog}
+            PaperProps={{sx: {backgroundColor: "transparent", border: 3, borderColor: colorText, borderRadius: 5} }}
 
         >
             <Box
-            sx={{backgroundColor: config.colorBackground}}
+            sx={{backgroundColor: config.colorBackground, overflow: "clip"}}
             >
                 <Box
                     elevation={0}
