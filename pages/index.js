@@ -178,7 +178,7 @@ export default function Index() {
                 const innerVariableNames = Object.keys(current[questionCurrent])
                 innerVariableNames.map(
                     (item) => {
-                        current[questionCurrent][item] = false;
+                        current[questionCurrent][item] = !current[questionCurrent][item] ? false : current[questionCurrent][item];
                     }
                 )
 

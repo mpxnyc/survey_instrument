@@ -172,7 +172,7 @@ const safetyButtonClick = () => {
 
     return (
 
-            <Drawer sx={{position: "fixed", bottom: 0, top: 0, left: 0, right: 0}} open={visible} variant={"contained"}>
+            <Drawer sx={{position: "fixed", bottom: 0, top: 0, left: 0, right: 0}} open={visible}>
                 { visible && <Box>
                     <GoogleMap
                         id="map"

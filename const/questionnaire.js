@@ -1,3 +1,6 @@
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import {ArrowUpward} from "@mui/icons-material";
 
 const yesNoResponse = {
     'english': {
@@ -88,12 +91,12 @@ export const questionnaire = {
         'placesUsualCare',
         'placesOptimalCare',
         'mpxRiskReduce',
-        'mpxRiskStrategies',
-        'mpxRiskStrategiesOtherText',
-        'mpxRiskChangesPre2022',
-        'mpxRiskChangesPreVax1',
-        'mpxRiskChangePostVax1',
+        'mpxRiskChangeNoVax',
+        'mpxRiskChangePreVax1',
+        'mpxRiskChangePreVax2',
         'mpxRiskChangePostVax2',
+        'mpxRiskChange2023',
+        'mpxRiskStrategiesOtherText',
         'mpxRiskOtherText',
         'serviceDelivery',
         'contactMe',
@@ -484,18 +487,18 @@ export const questionnaire = {
         sharePromptBody: {
             english: [
                 'To learn how to stop new diseases quickly, we are building a community map of queer and trans people in New York City. This is a giant network connecting friends and hookups.',
-                'Contribute to this effort by sharing the survey with up to 10 friends you have communicated with in the past 4 weeks using the button below.',
+                'Contribute to this effort by sharing the survey with up to 10 friends or hookups (sexual partners) you have communicated with in the past 4 weeks using the button below.',
                 'Each additional person you successfully link with helped us to understand how to spread important information quickly when a new infection like MPOX starts.',
                 'For those who successfully connect friends, we will provide a free anonymized report summarizing study results for your friend circle.',
                 'Click here to share this survey with queer and trans friends you have communicated with in the past 4 weeks.'
-            ],
+            ].slice(0,2),
             spanish: [
                 'SP To learn how to stop new diseases quickly, we are building a community map of queer and trans people in New York City. This is a giant network connecting friends and hookups.',
-                'Contribute to this effort by sharing the survey with up to 10 friends you have communicated with in the past 4 weeks using the button below.',
+                'Contribute to this effort by sharing the survey with up to 10 friends or hookups (sexual partners) you have communicated with in the past 4 weeks using the button below.',
                 'Each additional person you successfully link with helped us to understand how to spread important information quickly when a new infection like MPOX starts.',
                 'For those who successfully connect friends, we will provide a free anonymized report summarizing study results for your friend circle.',
                 'Click here to share this survey with queer and trans friends you have communicated with in the past 4 weeks.'
-            ],
+            ].slice(0,2),
         },
         shareMessage: {
             english: "",
@@ -558,84 +561,183 @@ export const questionnaire = {
         skipLogic: {question: "", value: "", equals: false},
         displayLogic: {question: "", value: "", equals: false}
     },
-    'mpxRiskChangePostVax1': {
+    'mpxRiskChangeNoVax': {
         question: {
-            english: "How did you change your level of sexual risk after getting the first mpx vaccine dose?",
-            spanish: "SP How did you change your level of sexual risk after getting the first mpx vaccine dose?"
+            english: "How did your sex life change when you first learned about MPOX?",
+            spanish: "SP How did your sex life change when you first learned about MPOX?"
         },
         options: {
             english: {
-                'increased_risk': 'Increased Risk',
-                'no_change': 'No Change',
-                'lowered_risk': 'Lowered Risk'
+                rows: {
+                    'oral_give': 'Getting Oral Sex',
+                    'oral_receive': 'Giving Oral Sex',
+                    'topping': 'Topping',
+                    'bottoming': 'Bottoming'
+                },
+                columns: {
+                    'decreased': 'More',
+                    'no_change': 'Same',
+                    'increased': 'Less'
+                }
             },
             spanish: {
-                'increased_risk': 'SP Increased Risk',
-                'no_change': 'SP No Change',
-                'lowered_risk': 'SP Lowered Risk'
-            }
+                rows: {
+                    'oral_give': 'Getting Oral Sex',
+                    'oral_receive': 'Giving Oral Sex',
+                    'topping': 'Topping',
+                    'bottoming': 'Bottoming'
+                },
+                columns: {
+                    'decreased': 'More',
+                    'no_change': 'Same',
+                    'increased': 'Less'
+                }
+            },
         },
-        questionType: "radio",
+        questionType: "radiogrid"
+    },
+    'mpxRiskChange2023': {
+        question: {
+            english: "How is your current sex life different than it was in 2022?",
+            spanish: "SP How is your current sex life different than it was in 2022?"
+        },
+        options: {
+            english: {
+                rows: {
+                    'oral_give': 'Getting Oral Sex',
+                    'oral_receive': 'Giving Oral Sex',
+                    'topping': 'Topping',
+                    'bottoming': 'Bottoming'
+                },
+                columns: {
+                    'decreased': 'More',
+                    'no_change': 'Same',
+                    'increased': 'Less'
+                }
+            },
+            spanish: {
+                rows: {
+                    'oral_give': 'Getting Oral Sex',
+                    'oral_receive': 'Giving Oral Sex',
+                    'topping': 'Topping',
+                    'bottoming': 'Bottoming'
+                },
+                columns: {
+                    'decreased': 'More',
+                    'no_change': 'Same',
+                    'increased': 'Less'
+                }
+            },
+        },
+        questionType: "radiogrid"
+    },
+    'mpxRiskChangePreVax1': {
+        question: {
+            english: "How did your sex life change after you learned about MPOX but before you got the first dose of MPOX vaccine?",
+            spanish: "SP How did your sex life change after you learned about MPOX but before you got the first dose of MPOX vaccine?"
+        },
+        options: {
+            english: {
+                rows: {
+                    'oral_give': 'Getting Oral Sex',
+                    'oral_receive': 'Giving Oral Sex',
+                    'topping': 'Topping',
+                    'bottoming': 'Bottoming'
+                },
+                columns: {
+                    'decreased': 'More',
+                    'no_change': 'Same',
+                    'increased': 'Less'
+                }
+            },
+            spanish: {
+                rows: {
+                    'oral_give': 'Getting Oral Sex',
+                    'oral_receive': 'Giving Oral Sex',
+                    'topping': 'Topping',
+                    'bottoming': 'Bottoming'
+                },
+                columns: {
+                    'decreased': 'More',
+                    'no_change': 'Same',
+                    'increased': 'Less'
+                }
+            },
+        },
+        questionType: "radiogrid",
         skipLogic: {question: "mpxVax1", value: "yes", equals: true}
+    },
+    'mpxRiskChangePreVax2': {
+        question: {
+            english: "How did your sex life change after your first dose and before the second dose of MPOX vaccine?",
+            spanish: "SP How did your sex life change after your first dose and before the second dose of MPOX vaccine?"
+        },
+        options: {
+            english: {
+                rows: {
+                    'oral_give': 'Getting Oral Sex',
+                    'oral_receive': 'Giving Oral Sex',
+                    'topping': 'Topping',
+                    'bottoming': 'Bottoming'
+                },
+                columns: {
+                    'decreased': 'More',
+                    'no_change': 'Same',
+                    'increased': 'Less'
+                }
+            },
+            spanish: {
+                rows: {
+                    'oral_give': 'Getting Oral Sex',
+                    'oral_receive': 'Giving Oral Sex',
+                    'topping': 'Topping',
+                    'bottoming': 'Bottoming'
+                },
+                columns: {
+                    'decreased': 'More',
+                    'no_change': 'Same',
+                    'increased': 'Less'
+                }
+            },
+        },
+        questionType: "radiogrid",
+        skipLogic: {question: "mpxVax2", value: "yes", equals: true}
     },
     'mpxRiskChangePostVax2': {
         question: {
-            english: "How did you change your level of sexual risk after getting the second mpx vaccine dose?",
-            spanish: "SP How did you change your level of sexual risk after getting the second mpx vaccine dose?"
+            english: "In 2022, how did you change how you have sex after getting both doses of the MPOX vaccine?",
+            spanish: "SP In 2022, how did you change how you have sex after getting both doses of the MPOX vaccine?"
         },
         options: {
             english: {
-                'increased_risk': 'Increased Risk',
-                'no_change': 'No Change',
-                'lowered_risk': 'Lowered Risk'
+                rows: {
+                    'oral_give': 'Getting Oral Sex',
+                    'oral_receive': 'Giving Oral Sex',
+                    'topping': 'Topping',
+                    'bottoming': 'Bottoming'
+                },
+                columns: {
+                    'decreased': 'More',
+                    'no_change': 'Same',
+                    'increased': 'Less'
+                }
             },
             spanish: {
-                'increased_risk': 'SP Increased Risk',
-                'no_change': 'SP No Change',
-                'lowered_risk': 'SP Lowered Risk'
-            }
+                rows: {
+                    'oral_give': 'Getting Oral Sex',
+                    'oral_receive': 'Giving Oral Sex',
+                    'topping': 'Topping',
+                    'bottoming': 'Bottoming'
+                },
+                columns: {
+                    'decreased': 'More',
+                    'no_change': 'Same',
+                    'increased': 'Less'
+                }
+            },
         },
-        questionType: "radio",
+        questionType: "radiogrid",
         skipLogic: {question: "mpxVax2", value: "yes", equals: true}
-    },
-    'mpxRiskChangesPre2022': {
-        question: {
-            english: "In 2023, how does your sexual behavior compare to your behavior before the summer of 2022? ",
-            spanish: "SP In 2023, how does your sexual behavior compare to your behavior before the summer of 2022? "
-        },
-        options: {
-            english: {
-                'same': 'Same as Pre-Summer 2022',
-                'changed_because_mpox': 'Changed to avoid MPOX infection',
-                'changed_other_reasons': 'Changed for other reasons'
-            },
-            spanish: {
-                'same': 'SP Same as Pre-Summer 2022',
-                'changed_because_mpox': 'SP Changed to avoid MPOX infection',
-                'changed_other_reasons': 'SP Changed for other reasons'
-            }
-        },
-        questionType: "radio"
-    },
-    'mpxRiskChangesPreVax1': {
-        question: {
-            english: "How did you change your level of sexual risk after becoming aware of MPOX and before getting the first MPOX vaccine dose?",
-            spanish: "SP How did you change your level of sexual risk after becoming aware of MPOX and before getting the first MPOX vaccine dose?"
-        },
-        options: {
-            english: {
-                'increased_risk': 'Increased Risk',
-                'no_change': 'No Change',
-                'lowered_risk': 'Lowered Risk'
-            },
-            spanish: {
-                'increased_risk': 'SP Increased Risk',
-                'no_change': 'SP No Change',
-                'lowered_risk': 'SP Lowered Risk'
-            }
-        },
-        questionType: "plaintext",
-        skipLogic: {question: "mpxVax1", value: "yes", equals: true}
     },
     'mpxRiskOtherText': {
         question: {
@@ -652,8 +754,8 @@ export const questionnaire = {
     },
     'mpxRiskReduce': {
         question: {
-            english: "In 2022, did you change your sexual behavior to reduce the risk of getting MPOX?",
-            spanish: "SP In 2022, did you change your sexual behavior to reduce the risk of getting MPOX?"
+            english: "In 2022, did you change your sexual behavior to reduce the chances of getting MPOX?",
+            spanish: "SP In 2022, did you change your sexual behavior to reduce the chances of getting MPOX?"
         },
         options: yesNoResponse,
         questionType: "radio",
@@ -1197,31 +1299,6 @@ export const questionnaire = {
         skipLogic: {question: "", value: "", equals: false},
         displayLogic: {question: "", value: "", equals: false}
     },
-    'placesWork': {
-        questionType: "map",
-        mapQuestionDetail: "placesGSDetail",
-        mapQuestionSafety: "placesGSSafety",
-        mapQuestionInstruction: "placesWorkInstructions",
-        mapQuestionOrder: [],
-        mapRemovePinQuestion: "mapRemovePinQuestion",
-        personPlaceRelation: "GROUP_SEX_IN",
-        skipLogic: {question: "groupSex", value: "yes", equals: true}
-    },
-    'placesWorkInstructions': {
-        questionType: "instruction",
-        heading: {
-            english: "Hooking Up",
-            spanish: "Hooking Up"
-        },
-        body: {
-            english: [
-                'Show us where you work by tapping on the map.'
-            ],
-            spanish: [
-                'SP Show us where you work by tapping on the map.'
-            ],
-        }
-    },
     'placesVax1': {
         questionType: "map",
         mapQuestionDetail: "placesGSDetail",
@@ -1279,7 +1356,7 @@ export const questionnaire = {
         mapQuestionInstruction: "placesUsualCareInstructions",
         mapQuestionOrder: [],
         mapRemovePinQuestion: "mapRemovePinQuestion",
-        personPlaceRelation: "GROUP_SEX_IN",
+        personPlaceRelation: "USUAL_CARE_IN",
         skipLogic: {question: "groupSex", value: "yes", equals: true}
     },
     'placesUsualCareInstructions': {
@@ -1304,7 +1381,7 @@ export const questionnaire = {
         mapQuestionInstruction: "placesOptimalCareInstructions",
         mapQuestionOrder: [],
         mapRemovePinQuestion: "mapRemovePinQuestion",
-        personPlaceRelation: "GROUP_SEX_IN",
+        personPlaceRelation: "IDEAL_CARE_IN",
         skipLogic: {question: "groupSex", value: "yes", equals: true}
     },
     'placesOptimalCareInstructions': {
@@ -1329,7 +1406,7 @@ export const questionnaire = {
         mapQuestionInstruction: "placesMostTimeInstructions",
         mapQuestionOrder: ['placesMostTimeType', 'placesMostTimeTiming'],
         mapRemovePinQuestion: "mapRemovePinQuestion",
-        personPlaceRelation: "GROUP_SEX_IN",
+        personPlaceRelation: "SPEND_MOST_TIME_IN",
         skipLogic: {question: "groupSex", value: "yes", equals: true}
     },
     'placesMostTimeDetail': {

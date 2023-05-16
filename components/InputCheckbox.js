@@ -20,6 +20,7 @@ export default function InputCheckbox(props) {
 
                 const result = {...old, [event.target.name]: event.target.checked}
 
+
                 handleUpdateData(questionName, result)
 
                 return result
@@ -40,17 +41,22 @@ export default function InputCheckbox(props) {
                 aria-labelledby="demo-radio-buttons-group-label"
                 sx={{display: "flex",  textAlign: "center", alignItems: "center", alignContent: "center", alignSelf: "center", justifySelf: "center", justifyContent: "center", justifyItems: "center"}}
 
+
             >
                 {Object.entries(questionnaire[questionName].options[language]).map(
                     (item) => {
+
+                        console.log("name:", item[0])
+                        console.log("checked:", value[item[0]])
 
                     return (
                         <FormControlLabel
                             key={item[0]}
                             sx={{margin: 0}}
+
                             control={
                             <Checkbox
-                                checked={value && value[item[0]]}
+                                checked={value[item[0]]}
                                 onChange={handleCheckBoxChange}
                                 name={item[0]}
                                 icon={<SelectionItemCheckbox selected={false} text={item[1]} colorBackground={colorBackground} colorText={colorText}/>}

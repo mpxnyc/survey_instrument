@@ -8,6 +8,7 @@ import {questionnaire} from "../const/questionnaire";
 import FormControl from "@mui/material/FormControl";
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import Diversity1Icon from '@mui/icons-material/Diversity1';
+import {Droplets, Heart, Peach} from "./ControlGraphicsIcons";
 
 export const InputOutReferral = (props) => {
     const {language, handleUpdateData, questionName, data} = props;
@@ -66,12 +67,27 @@ export const InputOutReferral = (props) => {
                         }}
                         onClick={() => handleClickCounter("friend")}
                     >
-                        <Fab color={"primary"} size={"large"}>
+                        <Button color={"primary"} size={"large"} variant={"outlined"} sx={{padding: 4, margin: 1, borderRadius: 5000}}>
                             <Stack direction="column" alignContent={"center"} alignItems={"center"} >
-                               <GroupAddIcon/>
-
+                               <Heart selected/>
+                                <Typography>Friends</Typography>
                             </Stack>
-                        </Fab>
+                        </Button>
+                    </RWebShare>
+
+                    <RWebShare
+                        data={{
+                            text: questionnaire[questionName].shareMessage[language],
+                            url: urlHookups,
+                            title: "MPX NYC",
+                        }}
+                        onClick={() => handleClickCounter("hookups")}
+                    >
+                        <Button color={"primary"} size={"large"} variant={"outlined"} sx={{padding: 4, margin: 1, borderRadius: 5000}}>
+                            <Stack direction="column" alignContent={"center"} alignItems={"center"} >
+                                <Peach selected/>Hookups
+                            </Stack>
+                        </Button>
                     </RWebShare>
 
                 </Stack>
