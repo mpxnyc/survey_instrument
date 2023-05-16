@@ -101,6 +101,7 @@ export const questionnaire = {
         'serviceDelivery',
         'contactMe',
         'contactEmail',
+        'thankYouShare',
         'thankYou',
         'ineligible'
     ],
@@ -199,12 +200,28 @@ export const questionnaire = {
             spanish: "sp MPX NYC"
         },
         body: {
-            english: ["If you click the next button you've consented!"],
-            spanish: ["sp If you click the next button you've consented!"]
-        },
-        options: {
-            english: [],
-            spanish: []
+            english: [
+                "You are being asked to take part in a survey called MPX NYC. This survey is part of the Rapid Epidemiologic Study of Prevalence, Networks, and Demographics of Monkeypox Infection  (RESPND-MI).",
+                "This research is conducted to learn about monkeypox and HIV among gay, bisexual, other men who have sex with men, and transgender people in New York City. Specifically, the RESPND-MI study team is interested in learning about the social and sexual networks that connect individuals in the New York City. You are being asked to participate in this research because you are over the age of 18 and have either been referred to the survey by someone you know or by an advertisement.",
+                "Your participation in this study is voluntary and you may withdraw your participation at any time for any reason. ",
+                "If you take part in this study, you will be asked to answer several questions about your health and sexual behavior and asked to invite friends and past sexual partners to take the survey. The survey will take fewer than five minutes to answer. To facilitate participation, the survey instrument will save a browser cookie containing an anonymous identifier that will be automatically generated. This cookie cannot be used to track your activity on other websites, will contain no personal information, and will expire 6 months after it is saved.",
+                "The possible risks of participating in this study include breach of confidentiality while filling in your response. We recommend taking the survey in a private setting.",
+                "We cannot promise any benefits to you or others from your taking part in this research. However, possible benefits include knowledge about how best to combat the outbreak of monkeypox. To maximize the potential benefit of your participation in this study, data collected through the study will be made available to researchers upon request so that they can use the data for future research studies.",
+                "By clicking on the “->” button, you consent to participate in the study. You can decline to participate in any part of this study for any reason, and you can end your participation at any time.",
+                "If you have any questions about this study, you can contact Keletso Makofane at 347-688-4203.",
+                "Thank you again for your time and participation."
+            ],
+            spanish: [
+                "SP You are being asked to take part in a survey called MPX NYC. This survey is part of the Rapid Epidemiologic Study of Prevalence, Networks, and Demographics of Monkeypox Infection  (RESPND-MI).",
+                "This research is conducted to learn about monkeypox and HIV among gay, bisexual, other men who have sex with men, and transgender people in New York City. Specifically, the RESPND-MI study team is interested in learning about the social and sexual networks that connect individuals in the New York City. You are being asked to participate in this research because you are over the age of 18 and have either been referred to the survey by someone you know or by an advertisement.",
+                "Your participation in this study is voluntary and you may withdraw your participation at any time for any reason. ",
+                "If you take part in this study, you will be asked to answer several questions about your health and sexual behavior and asked to invite friends and past sexual partners to take the survey. The survey will take fewer than five minutes to answer. To facilitate participation, the survey instrument will save a browser cookie containing an anonymous identifier that will be automatically generated. This cookie cannot be used to track your activity on other websites, will contain no personal information, and will expire 6 months after it is saved.",
+                "The possible risks of participating in this study include breach of confidentiality while filling in your response. We recommend taking the survey in a private setting.",
+                "We cannot promise any benefits to you or others from your taking part in this research. However, possible benefits include knowledge about how best to combat the outbreak of monkeypox. To maximize the potential benefit of your participation in this study, data collected through the study will be made available to researchers upon request so that they can use the data for future research studies.",
+                "By clicking on the “->” button, you consent to participate in the study. You can decline to participate in any part of this study for any reason, and you can end your participation at any time.",
+                "If you have any questions about this study, you can contact Keletso Makofane at 347-688-4203.",
+                "Thank you again for your time and participation."
+            ]
         },
         questionType: "longtext",
         skipLogic: {question: "", value: "", equals: false},
@@ -1616,5 +1633,28 @@ export const questionnaire = {
             english: ["Thank you! We recorded your response."],
             spanish: ["SP Thank you! We recorded your response."]
         }
-    }
+    },
+    'thankYouShare':  {
+    sharePromptHeading: {
+        english: "Thank you!",
+            spanish: "SP Thank you"
+    },
+    sharePromptBody: {
+        english: [
+            'Thank you for participating!',
+            'Please share the survey with up to 10 friends or hookups (sexual partners) you have communicated with in the past 4 weeks using the button below.',
+            'Click below to share this survey with queer and trans friends you have communicated with in the past 4 weeks.'
+        ],
+            spanish: [
+            'SP Thank you for participating!',
+            'Please share the survey with up to 10 friends or hookups (sexual partners) you have communicated with in the past 4 weeks using the button below.',
+            'Click below to share this survey with queer and trans friends you have communicated with in the past 4 weeks.'
+        ],
+    },
+    shareMessage: {
+        english: "",
+            spanish: ""
+    },
+    questionType: "sharedialog"
+}
 }

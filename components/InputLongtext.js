@@ -7,15 +7,15 @@ import Typography from "@mui/material/Typography";
 
 
 export default function InputLongtext(props) {
-    const {questionName, language} = props;
 
+    const {data, handleUpdateData, questionName, language, colorBackground, colorText} = props;
     return (
         <Box>
-            <Typography variant={"h2"}>{questionnaire[questionName].heading && questionnaire[questionName].heading[language]}</Typography>
-            <Typography variant={"h5"}>{questionnaire[questionName].subtitle && questionnaire[questionName].subtitle[language]}</Typography>
+            <Typography variant={"h2"} color={colorText}>{questionnaire[questionName].heading && questionnaire[questionName].heading[language]}</Typography>
+            <Typography variant={"h5"} color={colorText}>{questionnaire[questionName].subtitle && questionnaire[questionName].subtitle[language]}</Typography>
             {questionnaire[questionName].body[language].map(
                 (item, index) => {
-                    return(<Typography key={index} variant={"body1"}>{item}</Typography>)
+                    return(<Typography key={index} variant={"body1"} color={colorText} sx={{margin: 2}}>{item}</Typography>)
                 }
             )}
         </Box>
