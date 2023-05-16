@@ -16,6 +16,9 @@ import CanvasViralGame from "../components/canvasViralGame";
 import {createDataShell, getAvailableQuestions} from "../lib/utilityFunctions";
 import services from "../lib/services";
 import Image from "next/image";
+import {InputCalendarEntry} from "../components/InputCalendarEntry";
+import {LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 
 
@@ -137,12 +140,23 @@ export default function Index() {
 
 
       if (surveyData[questionCurrent] && (surveyData[questionCurrent] === questionnaire[questionCurrent].exitCondition)) {
-// if its a question with exit condition go to final question
 
           setQuestionCurrent(
               () => {
                   setQuestionFuture([])
                   return questionnaire.milestones.surveyComplete
+              }
+          )
+
+          return
+      }
+
+      if (surveyData[questionCurrent] && (surveyData[questionCurrent] === questionnaire[questionCurrent].ineligibleCondition)) {
+
+          setQuestionCurrent(
+              () => {
+                  setQuestionFuture([])
+                  return questionnaire.milestones.surveyIneligible
               }
           )
 

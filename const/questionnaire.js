@@ -98,12 +98,14 @@ export const questionnaire = {
         'serviceDelivery',
         'contactMe',
         'contactEmail',
-        'thankYou'
+        'thankYou',
+        'ineligible'
     ],
     'milestones': {
         assignId: ["consentStudy"],
         retrieveId: ['giveUserName'],
-        surveyComplete: 'thankYou'
+        surveyComplete: 'thankYou',
+        surveyIneligible: 'ineligible'
     },
     'buttons': {
         'take_survey': {
@@ -161,7 +163,7 @@ export const questionnaire = {
             },
         },
         questionType: "radio",
-        exitCondition: '_under_18'
+        ineligibleCondition: '_under_18'
     },
     'consentGame': {
         heading: {
@@ -738,14 +740,14 @@ export const questionnaire = {
     },
     'mpxVax1Date': {
         question: {
-            english: "When were you first vaccinated against monkeypox? ",
-            spanish: "SP When were you first vaccinated against monkeypox? "
+            english: "When were you first vaccinated against monkeypox? (If you don't remember, give us your best guess)",
+            spanish: "SP When were you first vaccinated against monkeypox? (If you don't remember, give us your best guess)"
         },
         options: {
             english: {'date': 'Date'},
             spanish: {'date': 'Date'}
         },
-        questionType: "plaintext",
+        questionType: "date",
         skipLogic: {question: "mpxVax1", value: "yes", equals: true}
     },
     'mpxVax2': {
@@ -770,14 +772,14 @@ export const questionnaire = {
     },
     'mpxVax2Date': {
         question: {
-            english: "When did you get your second dose of MPOX vaccine?",
-            spanish: "SP When did you get your second dose of MPOX vaccine?"
+            english: "When did you get your second dose of MPOX vaccine? (If you don't remember, give us your best guess)",
+            spanish: "SP When did you get your second dose of MPOX vaccine? (If you don't remember, give us your best guess)"
         },
         options: {
             english: {'date': 'Date'},
             spanish: {'date': 'Date'}
         },
-        questionType: "plaintext",
+        questionType: "date",
         skipLogic: {question: "mpxVax2", value: "yes", equals: true}
     },
     'nudesGameExplain': {

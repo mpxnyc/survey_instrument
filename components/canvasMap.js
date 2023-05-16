@@ -1,14 +1,14 @@
-import React, {useEffect, useReducer, useState} from "react";
+import React from "react";
 import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
 import Box from "@mui/material/Box";
-import {Card, Drawer, Fab} from "@mui/material";
-import CanvasQuestion from "./canvasQuestion";
+import {Drawer} from "@mui/material";
+
 import {questionnaire} from "../const/questionnaire";
 import ControlNavigation from "./ControlNavigation";
 import {config} from "../const/config";
 import services from "../lib/services";
 import Search from "./MapInputSearchBar";
-import {createCheckBoxDataObject, createDataShell} from "../lib/utilityFunctions";
+import {createDataShell} from "../lib/utilityFunctions";
 
 import GppMaybeOutlinedIcon from '@mui/icons-material/GppMaybeOutlined';
 import QuestionMarkOutlinedIcon from '@mui/icons-material/QuestionMarkOutlined';

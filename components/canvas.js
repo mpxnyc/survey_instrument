@@ -8,7 +8,7 @@ import {CardMedia, Dialog, FormLabel, Stack} from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import {RadioQuestion} from "./InputRadioEmoji";
+
 import theme from "../const/theme";
 import Image from "next/image";
 import Unicorn from "../const/graphics/MPX_unicorn.svg";
