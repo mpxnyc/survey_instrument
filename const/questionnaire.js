@@ -589,7 +589,10 @@ export const questionnaire = {
                     'oral_give': 'Getting Oral Sex',
                     'oral_receive': 'Giving Oral Sex',
                     'topping': 'Topping',
-                    'bottoming': 'Bottoming'
+                    'bottoming': 'Bottoming',
+                    'using_condoms': 'Using Condoms',
+                    'any': 'Overall amount of Sex'
+
                 },
                 columns: {
                     'decreased': 'More',
@@ -599,10 +602,12 @@ export const questionnaire = {
             },
             spanish: {
                 rows: {
-                    'oral_give': 'Getting Oral Sex',
-                    'oral_receive': 'Giving Oral Sex',
-                    'topping': 'Topping',
-                    'bottoming': 'Bottoming'
+                    'oral_give': 'Sp Getting Oral Sex',
+                    'oral_receive': 'Sp Giving Oral Sex',
+                    'topping': 'Sp Topping',
+                    'bottoming': 'Sp Bottoming',
+                    'using_condoms': 'Sp Using Condoms',
+                    'any': 'Sp Overall amount of Sex'
                 },
                 columns: {
                     'decreased': 'More',
@@ -624,7 +629,10 @@ export const questionnaire = {
                     'oral_give': 'Getting Oral Sex',
                     'oral_receive': 'Giving Oral Sex',
                     'topping': 'Topping',
-                    'bottoming': 'Bottoming'
+                    'bottoming': 'Bottoming',
+                    'using_condoms': 'Using Condoms',
+                    'any': 'Overall amount of Sex'
+
                 },
                 columns: {
                     'decreased': 'More',
@@ -634,10 +642,12 @@ export const questionnaire = {
             },
             spanish: {
                 rows: {
-                    'oral_give': 'Getting Oral Sex',
-                    'oral_receive': 'Giving Oral Sex',
-                    'topping': 'Topping',
-                    'bottoming': 'Bottoming'
+                    'oral_give': 'Sp Getting Oral Sex',
+                    'oral_receive': 'Sp Giving Oral Sex',
+                    'topping': 'Sp Topping',
+                    'bottoming': 'Sp Bottoming',
+                    'using_condoms': 'Sp Using Condoms',
+                    'any': 'Sp Overall amount of Sex'
                 },
                 columns: {
                     'decreased': 'More',
@@ -659,7 +669,10 @@ export const questionnaire = {
                     'oral_give': 'Getting Oral Sex',
                     'oral_receive': 'Giving Oral Sex',
                     'topping': 'Topping',
-                    'bottoming': 'Bottoming'
+                    'bottoming': 'Bottoming',
+                    'using_condoms': 'Using Condoms',
+                    'any': 'Overall amount of Sex'
+
                 },
                 columns: {
                     'decreased': 'More',
@@ -669,10 +682,12 @@ export const questionnaire = {
             },
             spanish: {
                 rows: {
-                    'oral_give': 'Getting Oral Sex',
-                    'oral_receive': 'Giving Oral Sex',
-                    'topping': 'Topping',
-                    'bottoming': 'Bottoming'
+                    'oral_give': 'Sp Getting Oral Sex',
+                    'oral_receive': 'Sp Giving Oral Sex',
+                    'topping': 'Sp Topping',
+                    'bottoming': 'Sp Bottoming',
+                    'using_condoms': 'Sp Using Condoms',
+                    'any': 'Sp Overall amount of Sex'
                 },
                 columns: {
                     'decreased': 'More',
@@ -695,7 +710,10 @@ export const questionnaire = {
                     'oral_give': 'Getting Oral Sex',
                     'oral_receive': 'Giving Oral Sex',
                     'topping': 'Topping',
-                    'bottoming': 'Bottoming'
+                    'bottoming': 'Bottoming',
+                    'using_condoms': 'Using Condoms',
+                    'any': 'Overall amount of Sex'
+
                 },
                 columns: {
                     'decreased': 'More',
@@ -705,10 +723,12 @@ export const questionnaire = {
             },
             spanish: {
                 rows: {
-                    'oral_give': 'Getting Oral Sex',
-                    'oral_receive': 'Giving Oral Sex',
-                    'topping': 'Topping',
-                    'bottoming': 'Bottoming'
+                    'oral_give': 'Sp Getting Oral Sex',
+                    'oral_receive': 'Sp Giving Oral Sex',
+                    'topping': 'Sp Topping',
+                    'bottoming': 'Sp Bottoming',
+                    'using_condoms': 'Sp Using Condoms',
+                    'any': 'Sp Overall amount of Sex'
                 },
                 columns: {
                     'decreased': 'More',
@@ -731,7 +751,10 @@ export const questionnaire = {
                     'oral_give': 'Getting Oral Sex',
                     'oral_receive': 'Giving Oral Sex',
                     'topping': 'Topping',
-                    'bottoming': 'Bottoming'
+                    'bottoming': 'Bottoming',
+                    'using_condoms': 'Using Condoms',
+                    'any': 'Overall amount of Sex'
+
                 },
                 columns: {
                     'decreased': 'More',
@@ -741,10 +764,12 @@ export const questionnaire = {
             },
             spanish: {
                 rows: {
-                    'oral_give': 'Getting Oral Sex',
-                    'oral_receive': 'Giving Oral Sex',
-                    'topping': 'Topping',
-                    'bottoming': 'Bottoming'
+                    'oral_give': 'Sp Getting Oral Sex',
+                    'oral_receive': 'Sp Giving Oral Sex',
+                    'topping': 'Sp Topping',
+                    'bottoming': 'Sp Bottoming',
+                    'using_condoms': 'Sp Using Condoms',
+                    'any': 'Sp Overall amount of Sex'
                 },
                 columns: {
                     'decreased': 'More',
