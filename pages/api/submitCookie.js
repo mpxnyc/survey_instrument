@@ -13,7 +13,7 @@ export default async function handler(req,resp) {
     const data = req.body
 
 
-    const endpoint = `${process.env.BACKEND_SERVER_URL}/survey/update`
+    const endpoint = `${process.env.BACKEND_SERVER_URL}/survey/cookie`
 
     try {
 

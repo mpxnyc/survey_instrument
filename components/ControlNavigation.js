@@ -20,6 +20,7 @@ export default function ControlNavigation(props) {
         color,
         backButtonDisabled,
         forwardButtonDisabled,
+        languageToggleHidden,
         handleCloseDialog,
         colorBackground,
         colorText
@@ -86,7 +87,7 @@ export default function ControlNavigation(props) {
         >
 
             {buttonsNavigate}
-            {languageToggle}
+            {!languageToggleHidden && languageToggle}
         </Stack>
     );
 }

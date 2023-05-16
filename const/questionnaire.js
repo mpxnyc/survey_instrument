@@ -59,31 +59,34 @@ export const questionnaire = {
         'age',
         'consentStudy',
         'home',
+        'race',
         'groupSex',
         'placesGS',
-        'race',
         'sex',
         'gender',
-        'sexualOrientation',
-        'countFriends',
-        'inviteToSurvey',
         'countSexGS',
         'countSexNGS',
         'placesHookup',
+        'sexualOrientation',
+        'countFriends',
+        'inviteToSurvey',
         'mpxVax1',
-        'mpxVax1Date',
+        "placesVax1",
         'mpxVax2',
-        'mpxVax2Date',
+        'placesVax2',
         'mpxSymptoms',
+        'covidTestPositive',
         'mpxTest',
         'mpxDiagnosis',
         'mpxCare',
-        'covidTestPositive',
         'mpxAnotherQuestion',
+        'placesMostTime',
         'hivStatus',
         'hivLastTest',
         'hivSuppressed',
         'hivPrep',
+        'placesUsualCare',
+        'placesOptimalCare',
         'mpxRiskReduce',
         'mpxRiskStrategies',
         'mpxRiskStrategiesOtherText',
@@ -100,7 +103,6 @@ export const questionnaire = {
     'milestones': {
         assignId: ["consentStudy"],
         retrieveId: ['giveUserName'],
-        confirmCookie: ['exclusiveUser'],
         surveyComplete: 'thankYou'
     },
     'buttons': {
@@ -238,8 +240,8 @@ export const questionnaire = {
     },
     'countSexGS': {
         question: {
-            english: "Other than the people in the places you mentioned in the previous questions, how many people have you hooked-up with over the past 4 weeks, excluding primary partners?",
-            spanish: "SP Other than the people in the places you mentioned in the previous questions, how many people have you hooked-up with over the past 4 weeks, excluding primary partners?"
+            english: "Other than the people in the places you mentioned in the previous questions, how many people have you had sexual contact with over the past 4 weeks, excluding primary partners?",
+            spanish: "SP Other than the people in the places you mentioned in the previous questions, how many people have you had sexual contact with over the past 4 weeks, excluding primary partners?"
         },
         options: {
             english: {'none': 'None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Over 10'},
@@ -250,8 +252,8 @@ export const questionnaire = {
     },
     'countSexNGS': {
         question: {
-            english: "How many people have you hooked-up with over the past 4 weeks, excluding primary partners?",
-            spanish: "SP How many people have you hooked-up with over the past 4 weeks, excluding primary partners?"
+            english: "How many people have you had sexual contact with over the past 4 weeks, excluding primary partners?",
+            spanish: "SP How many people have you had sexual contact with over the past 4 weeks, excluding primary partners?"
         },
         options: {
             english: {'none': 'None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Over 10'},
@@ -419,9 +421,47 @@ export const questionnaire = {
     'home': {
         questionType: "map",
         mapQuestionInstruction: "homeInstructions",
+        mapQuestionDetail: "homeDetail",
+        mapQuestionSafety: "homeSafety",
         mapQuestionOrder: [],
         mapRemovePinQuestion: "mapRemovePinQuestion",
         personPlaceRelation: "LIVES_IN"
+    },
+    'homeDetail': {
+        questionType: "instruction",
+        heading: {
+            english: "Group Sex",
+            spanish: "SP Group Sex"
+        },
+        body: {
+            english: [
+                "Use the search bar to search for a neighborhood, place name, or address.",
+                "You can drag the map and zoom in and out",
+                "Tap on the location of your home and a marker will show the location on the map"
+            ],
+            spanish: [
+                "SP Use the search bar to search for a neighborhood",
+                "You can drag the map and zoom in and out",
+                "Tap on the location of your home and a marker will show the location on the map"
+            ],
+        }
+    },
+    'homeSafety': {
+        questionType: "instruction",
+        heading: {
+            english: "Group Sex",
+            spanish: "SP Group Sex"
+        },
+        body: {
+            english: [
+                "We will not save the exact location of the places you select, or any information that could possibly identify you.",
+                "We only save the census tract. Census tracts are areas which each contain 1000 to 8000 residents each. "
+            ],
+            spanish: [
+                "SP We will not save the exact location of the places you select, or any information that could possibly identify you.",
+                "We only save the census tract. Census tracts are areas which each contain 1000 to 8000 residents each. "
+            ],
+        }
     },
     'homeInstructions': {
         questionType: "instruction",
@@ -430,8 +470,8 @@ export const questionnaire = {
             spanish: "SP Home"
         },
         body: {
-            english: ["Please tap on the map to show where home is"],
-            spanish: ["sp Please tap on the map to show where home is"]
+            english: ["Where do you live?", 'Let us know by tapping on the map.'],
+            spanish: ["SP Where do you live?", 'Let us know by tapping on the map.']
         }
     },
     'inviteToSurvey': {
@@ -460,6 +500,17 @@ export const questionnaire = {
             spanish: ""
         },
         questionType: "sharedialog"
+    },
+    'ineligible': {
+        questionType: "instruction",
+        heading: {
+            english: "Sorry!",
+            spanish: "SP Sorry!"
+        },
+        body: {
+            english: ["Sorry! Unfortunately you are not eligible for this survey."],
+            spanish: ["SP Unfortunately you are not eligible for this survey."]
+        }
     },
     "mapRemovePinQuestion": {
         questionType: "confirm",
@@ -868,8 +919,8 @@ export const questionnaire = {
             spanish: "SP How many people were  hooking up at this place?"
         },
         options: {
-            english: {'none': 'None', '_2_5': '2-5 People', '_6_10': '6-10 People', '_11_20': '11-20 People', '_21_50': '21-50 People', '_51_100': '51-100 People', '_100plus': 'Over 100 People'},
-            spanish: {'none': 'None', '_2_5': 'Sp 2-5 People', '_6_10': 'Sp 6-10 People', '_11_20': 'Sp 11-20 People', '_21_50': 'SP 21-50 People', '_51_100': 'SP 51-100 People', '_100plus': 'SP Over 100 People'}
+            english: {'none': 'None', '_2_5': '2-5', '_6_10': '6-10', '_11_20': '11-20', '_21_50': '21-50', '_51_100': '51-100', '_100plus': 'Over 100'},
+            spanish: {'none': 'None', '_2_5': 'Sp 2-5', '_6_10': 'Sp 6-10', '_11_20': 'Sp 11-20', '_21_50': 'SP 21-50', '_51_100': 'SP 51-100', '_100plus': 'SP Over 100'}
 
         },
         questionType: "radio"
@@ -927,8 +978,8 @@ export const questionnaire = {
             spanish: "SP Over the past 4 weeks, how many times have you visited this place? "
         },
         options: {
-            english: {'_1': '1 Time', '_2_4': '2-4 Times', '_5_10': '5-10 Times', '_10plus': 'Over 10 Times'},
-            spanish: {'_1': 'SP 1 Time', '_2_4': 'SP 2-4 Times', '_5_10': 'SP 5-10 Times', '_10plus': 'SP Over 10 Times'},
+            english: {'_1': 'Once', '_2_4': '2-4', '_5_10': '5-10', '_10plus': 'Over 10'},
+            spanish: {'_1': 'SP Once', '_2_4': 'SP 2-4', '_5_10': 'SP 5-10', '_10plus': 'SP Over 10'},
         },
         questionType: "radio"
     },
@@ -938,18 +989,58 @@ export const questionnaire = {
             spanish: "SP Over the past 4 weeks, how many times have you had sexual contact at this place? "
         },
         options: {
-            english: {'none': 'None', '_1': '1 Time', '_2_4': '2-4 Times', '_5_10': '5-10 Times', '_10plus': 'Over 10 Times'},
-            spanish: {'none': 'Sp None', '_1': 'SP 1 Time', '_2_4': 'SP 2-4 Times', '_5_10': 'SP 5-10 Times', '_10plus': 'SP Over 10 Times'},
+            english: {'none': 'None', '_1': '1', '_2_4': '2-4', '_5_10': '5-10', '_10plus': 'Over 10'},
+            spanish: {'none': 'Sp None', '_1': 'SP 1', '_2_4': 'SP 2-4', '_5_10': 'SP 5-10', '_10plus': 'SP Over 10'},
         },
         questionType: "radio"
     },
     'placesGS': {
         questionType: "map",
+        mapQuestionDetail: "placesGSDetail",
+        mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesGSInstructions",
-        mapQuestionOrder: ["placeType", "placeFreq", "placeSex", "placeCount"],
+        mapQuestionOrder: ["placeTypeGS", "placeFreq", "placeSex", "placeCount"],
         mapRemovePinQuestion: "mapRemovePinQuestion",
         personPlaceRelation: "GROUP_SEX_IN",
         skipLogic: {question: "groupSex", value: "yes", equals: true}
+    },
+    'placesGSDetail': {
+        questionType: "instruction",
+        heading: {
+            english: "Group Sex",
+            spanish: "SP Group Sex"
+        },
+        body: {
+            english: [
+                'Use the search bar to search for a neighborhood, place name, or address',
+                'Then tap on the location of the place and a marker will appear on the map',
+                'We will ask a few questions about the place you just added',
+                'Repeat this for each place you had group sex or physical contact in during the past 4 weeks'
+            ],
+            spanish: [
+                'SP Use the search bar to search for a neighborhood, place name, or address',
+                'Then tap on the location of the place and a marker will appear on the map',
+                'We will ask a few questions about the place you just added',
+                'Repeat this for each place you had group sex or physical contact in during the past 4 weeks'
+            ],
+        }
+    },
+    'placesGSSafety': {
+        questionType: "instruction",
+        heading: {
+            english: "Group Sex",
+            spanish: "SP Group Sex"
+        },
+        body: {
+            english: [
+                "We will not save the exact location of the places you select, or any information that could possibly identify you.",
+                "We only save the census tract. Census tracts are areas which each contain 1000 to 8000 residents each. "
+            ],
+            spanish: [
+                "SP We will not save the exact location of the places you select, or any information that could possibly identify you.",
+                "We only save the census tract. Census tracts are areas which each contain 1000 to 8000 residents each. "
+            ],
+        }
     },
     'placesGSInstructions': {
         questionType: "instruction",
@@ -959,21 +1050,61 @@ export const questionnaire = {
         },
         body: {
             english: [
-                'In the past 4 weeks, where have you had group sex or physical contact in a group setting?',
-                'Indicate places by tapping on the map. We will ask a few questions about each place.'
+                'Show us where you had group sex or physical contact by tapping on the map.',
+                'We will ask a few questions about each place.'
             ],
             spanish: [
-                'SP In the past 4 weeks, where have you had group sex or physical contact in a group setting?',
-                'SP Indicate places by tapping on the map. We will ask a few questions about each place.'
+                'SP Show us where you had group sex or physical contact by tapping on the map.',
+                'We will ask a few questions about each place.'
             ],
         }
     },
     'placesHookup': {
         questionType: "map",
         mapQuestionInstruction: "placesHookupInstructions",
-        mapQuestionOrder: [],
+        mapQuestionSafety:'placesHookupSafety',
+        mapQuestionDetail: 'placesHookupDetail',
+        mapQuestionOrder: ['placeTypeHookup'],
         mapRemovePinQuestion: "mapRemovePinQuestion",
         personPlaceRelation: "HOOKUP_IN"
+    },
+    'placesHookupDetail': {
+        questionType: "instruction",
+        heading: {
+            english: "Group Sex",
+            spanish: "SP Group Sex"
+        },
+        body: {
+            english: [
+                'Use the search bar to search for a neighborhood, place name, or address',
+                'Then tap on the location of the place and a marker will appear on the map',
+                'We will ask a few questions about the place you just added',
+                'Repeat this for each place you had sexual contact (not in a group setting) in during the past 4 weeks'
+            ],
+            spanish: [
+                'SP Use the search bar to search for a neighborhood, place name, or address',
+                'Then tap on the location of the place and a marker will appear on the map',
+                'We will ask a few questions about the place you just added',
+                'Repeat this for each place you had sexual contact (not in a group) in during the past 4 weeks'
+            ],
+        }
+    },
+    'placesHookupSafety': {
+        questionType: "instruction",
+        heading: {
+            english: "Group Sex",
+            spanish: "SP Group Sex"
+        },
+        body: {
+            english: [
+                "We will not save the exact location of the places you select, or any information that could possibly identify you.",
+                "We only save the census tract. Census tracts are areas which each contain 1000 to 8000 residents each. "
+            ],
+            spanish: [
+                "SP We will not save the exact location of the places you select, or any information that could possibly identify you.",
+                "We only save the census tract. Census tracts are areas which each contain 1000 to 8000 residents each. "
+            ],
+        }
     },
     'placesHookupInstructions': {
         questionType: "instruction",
@@ -983,16 +1114,14 @@ export const questionnaire = {
         },
         body: {
             english: [
-                'In the past 4 weeks, where have you hooked up with an individual or couple (not in a group setting)?',
-                'Indicate places by tapping on the map. We will ask a few questions about each place.'
+                'Show us where you had sexual contact (not in a group setting) by tapping on the map.'
             ],
             spanish: [
-                'SP In the past 4 weeks, where have you hooked up with an individual or couple (not in a group setting)?',
-                'SP Indicate places by tapping on the map. We will ask a few questions about each place.'
+                'SP Show us where you had sexual contact (not in a group setting) by tapping on the map.'
             ],
         }
     },
-    'placeType': {
+    'placeTypeGS': {
         question: {
             english: "What kind of place is this?",
             spanish: "SP What kind of place is this?"
@@ -1026,6 +1155,279 @@ export const questionnaire = {
             }
         },
         questionType: "radio",
+        skipLogic: {question: "", value: "", equals: false},
+        displayLogic: {question: "", value: "", equals: false}
+    },
+    'placeTypeHookup': {
+        question: {
+            english: "What kind of place is this?",
+            spanish: "SP What kind of place is this?"
+        },
+        options: {
+            english: {
+                'dance_party': 'Dance party',
+                'sex_party': 'Sex Party',
+                'darkroom': 'Darkroom',
+                'sport_game': 'Sport Game',
+                'concert': 'Concert',
+                'theatre_show': 'Theatre/Show',
+                'private_residence': 'Private Residence',
+                'sex_club': 'Sex Club ',
+                'bathhouse': 'Bathhouse',
+                'park': 'Park',
+                'something_else': 'Something Else'
+            },
+            spanish: {
+                'dance_party': 'SP Dance party',
+                'sex_party': 'SP Sex Party',
+                'darkroom': 'SP Darkroom',
+                'sport_game': 'SP Sport Game',
+                'concert': 'SP Concert',
+                'theatre_show': 'SP Theatre/Show',
+                'private_residence': 'SP Private Residence',
+                'sex_club': 'SP Sex Club ',
+                'bathhouse': 'SP Bathhouse',
+                'park': 'SP Park',
+                'something_else': 'SP Something Else'
+            }
+        },
+        questionType: "radio",
+        skipLogic: {question: "", value: "", equals: false},
+        displayLogic: {question: "", value: "", equals: false}
+    },
+    'placesWork': {
+        questionType: "map",
+        mapQuestionDetail: "placesGSDetail",
+        mapQuestionSafety: "placesGSSafety",
+        mapQuestionInstruction: "placesWorkInstructions",
+        mapQuestionOrder: [],
+        mapRemovePinQuestion: "mapRemovePinQuestion",
+        personPlaceRelation: "GROUP_SEX_IN",
+        skipLogic: {question: "groupSex", value: "yes", equals: true}
+    },
+    'placesWorkInstructions': {
+        questionType: "instruction",
+        heading: {
+            english: "Hooking Up",
+            spanish: "Hooking Up"
+        },
+        body: {
+            english: [
+                'Show us where you work by tapping on the map.'
+            ],
+            spanish: [
+                'SP Show us where you work by tapping on the map.'
+            ],
+        }
+    },
+    'placesVax1': {
+        questionType: "map",
+        mapQuestionDetail: "placesGSDetail",
+        mapQuestionSafety: "placesGSSafety",
+        mapQuestionInstruction: "placesVax1Instructions",
+        mapQuestionOrder: ['mpxVax1Date'],
+        mapRemovePinQuestion: "mapRemovePinQuestion",
+        personPlaceRelation: "GROUP_SEX_IN",
+        skipLogic: {question: "mpxVax1", value: "yes", equals: true}
+    },
+    'placesVax1Instructions': {
+        questionType: "instruction",
+        heading: {
+            english: "Hooking Up",
+            spanish: "Hooking Up"
+        },
+        body: {
+            english: [
+                'Show us where you got your first MPOX vaccine by tapping on the map.'
+            ],
+            spanish: [
+                'SP Show us where you got your first MPOX vaccine by tapping on the map.'
+            ],
+        }
+    },
+    'placesVax2': {
+        questionType: "map",
+        mapQuestionDetail: "placesGSDetail",
+        mapQuestionSafety: "placesGSSafety",
+        mapQuestionInstruction: "placesVax2Instructions",
+        mapQuestionOrder: ['mpxVax2Date'],
+        mapRemovePinQuestion: "mapRemovePinQuestion",
+        personPlaceRelation: "GROUP_SEX_IN",
+        skipLogic: {question: "mpxVax2", value: "yes", equals: true}
+    },
+    'placesVax2Instructions': {
+        questionType: "instruction",
+        heading: {
+            english: "Hooking Up",
+            spanish: "Hooking Up"
+        },
+        body: {
+            english: [
+                'Show us where you got your second MPOX vaccine by tapping on the map.'
+            ],
+            spanish: [
+                'SP Show us where you got your second MPOX vaccine by tapping on the map.'
+            ],
+        }
+    },
+    'placesUsualCare': {
+        questionType: "map",
+        mapQuestionDetail: "placesGSDetail",
+        mapQuestionSafety: "placesGSSafety",
+        mapQuestionInstruction: "placesUsualCareInstructions",
+        mapQuestionOrder: [],
+        mapRemovePinQuestion: "mapRemovePinQuestion",
+        personPlaceRelation: "GROUP_SEX_IN",
+        skipLogic: {question: "groupSex", value: "yes", equals: true}
+    },
+    'placesUsualCareInstructions': {
+        questionType: "instruction",
+        heading: {
+            english: "Hooking Up",
+            spanish: "Hooking Up"
+        },
+        body: {
+            english: [
+                'Show us where you usually get your healthcare.'
+            ],
+            spanish: [
+                'SP Show us where you usually get your healthcare.'
+            ],
+        }
+    },
+    'placesOptimalCare': {
+        questionType: "map",
+        mapQuestionDetail: "placesGSDetail",
+        mapQuestionSafety: "placesGSSafety",
+        mapQuestionInstruction: "placesOptimalCareInstructions",
+        mapQuestionOrder: [],
+        mapRemovePinQuestion: "mapRemovePinQuestion",
+        personPlaceRelation: "GROUP_SEX_IN",
+        skipLogic: {question: "groupSex", value: "yes", equals: true}
+    },
+    'placesOptimalCareInstructions': {
+        questionType: "instruction",
+        heading: {
+            english: "Hooking Up",
+            spanish: "Hooking Up"
+        },
+        body: {
+            english: [
+                'Show us where you want to receive your healthcare.'
+            ],
+            spanish: [
+                'SP Show us where you want to receive your healthcare.'
+            ],
+        }
+    },
+    'placesMostTime': {
+        questionType: "map",
+        mapQuestionDetail: "placesMostTimeDetail",
+        mapQuestionSafety: "placesMostTimeSafety",
+        mapQuestionInstruction: "placesMostTimeInstructions",
+        mapQuestionOrder: ['placesMostTimeType', 'placesMostTimeTiming'],
+        mapRemovePinQuestion: "mapRemovePinQuestion",
+        personPlaceRelation: "GROUP_SEX_IN",
+        skipLogic: {question: "groupSex", value: "yes", equals: true}
+    },
+    'placesMostTimeDetail': {
+        questionType: "instruction",
+        heading: {
+            english: "Group Sex",
+            spanish: "SP Group Sex"
+        },
+        body: {
+            english: [
+                'Use the search bar to search for a neighborhood, place name, or address',
+                'Then tap on the location of the place and a marker will appear on the map',
+                'We will ask a few questions about the place you just added',
+                'Repeat this for each place you had sexual contact (not in a group setting) in during the past 4 weeks'
+            ],
+            spanish: [
+                'SP Use the search bar to search for a neighborhood, place name, or address',
+                'Then tap on the location of the place and a marker will appear on the map',
+                'We will ask a few questions about the place you just added',
+                'Repeat this for each place you had sexual contact (not in a group) in during the past 4 weeks'
+            ],
+        }
+    },
+    'placesMostTimeSafety': {
+        questionType: "instruction",
+        heading: {
+            english: "Group Sex",
+            spanish: "SP Group Sex"
+        },
+        body: {
+            english: [
+                "We will not save the exact location of the places you select, or any information that could possibly identify you.",
+                "We only save the census tract. Census tracts are areas which each contain 1000 to 8000 residents each. "
+            ],
+            spanish: [
+                "SP We will not save the exact location of the places you select, or any information that could possibly identify you.",
+                "We only save the census tract. Census tracts are areas which each contain 1000 to 8000 residents each. "
+            ],
+        }
+    },
+    'placesMostTimeInstructions': {
+        questionType: "instruction",
+        heading: {
+            english: "Most Time",
+            spanish: "Most Time"
+        },
+        body: {
+            english: [
+                'Show us the places where you spent most of your time over the past 4 weeks.'
+            ],
+            spanish: [
+                'SP Show us the places where you spent most of your time over the past 4 weeks.'
+            ],
+        }
+    },
+    'placesMostTimeType': {
+        question: {
+            english: "How do you spend time in this place?",
+            spanish: "SP How do you spend time in this place?"
+        },
+        options: {
+            english: {
+                'home_nbd': 'Hanging out at Home',
+                'social_nbd': 'Socializing',
+                'work_nbd': 'Working',
+                'hookup': 'Hooking Up',
+                'other': 'Something Else'
+            },
+            spanish: {
+                'home_nbd': 'SP Hanging out at Home',
+                'social_nbd': 'SP Socializing',
+                'work_nbd': 'SP Working',
+                'hookup': 'SP Hooking Up',
+                'other': 'SP Something Else'
+            },
+        },
+        questionType: "checkbox",
+        skipLogic: {question: "", value: "", equals: false},
+        displayLogic: {question: "", value: "", equals: false}
+    },
+    'placesMostTimeTiming': {
+        question: {
+            english: "When do you usually spend time at this place?",
+            spanish: "SP When do you usually spend time at this place?"
+        },
+        options: {
+            english: {
+                'week_day': 'Weekdays',
+                'week_night': 'Weeknights',
+                'weekend_day': 'Weekend days',
+                'weekend_night': 'Weekend nights'
+            },
+            spanish: {
+                'week_day': 'Sp Weekdays',
+                'week_night': 'Sp Weeknights',
+                'weekend_day': 'Sp Weekend days',
+                'weekend_night': 'Sp Weekend nights'
+            },
+        },
+        questionType: "checkbox",
         skipLogic: {question: "", value: "", equals: false},
         displayLogic: {question: "", value: "", equals: false}
     },

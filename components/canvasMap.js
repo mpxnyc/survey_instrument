@@ -1,7 +1,7 @@
 import React, {useEffect, useReducer, useState} from "react";
 import {GoogleMap, MarkerF, useLoadScript} from "@react-google-maps/api";
 import Box from "@mui/material/Box";
-import {Drawer} from "@mui/material";
+import {Card, Drawer, Fab} from "@mui/material";
 import CanvasQuestion from "./canvasQuestion";
 import {questionnaire} from "../const/questionnaire";
 import ControlNavigation from "./ControlNavigation";
@@ -10,9 +10,9 @@ import services from "../lib/services";
 import Search from "./MapInputSearchBar";
 import {createCheckBoxDataObject, createDataShell} from "../lib/utilityFunctions";
 
-
-
-
+import GppMaybeOutlinedIcon from '@mui/icons-material/GppMaybeOutlined';
+import QuestionMarkOutlinedIcon from '@mui/icons-material/QuestionMarkOutlined';
+import Button from "@mui/material/Button";
 
 export default function CanvasMap(props) {
     const {
@@ -108,7 +108,13 @@ export default function CanvasMap(props) {
 
     }
 
+const handleInfoButtonClick = () => {
+    setQuestionCurrentMap(questionnaire[currentQuestion].mapQuestionDetail)
+}
 
+const safetyButtonClick = () => {
+    setQuestionCurrentMap(questionnaire[currentQuestion].mapQuestionSafety)
+}
 
 
     const backButtonDisabled    = questionHistory.length === 0
@@ -116,19 +122,27 @@ export default function CanvasMap(props) {
 
     let controlNavigationButtons =
         <Box sx={{position: "fixed", bottom: 20, left: 10, right: 10, display: "flex", justifyContent: "center"}}>
-            <ControlNavigation
-                type={"question"}
-                data={data}
-                handleNextQuestion={handleNextQuestion}
-                handlePreviousQuestion={handlePreviousQuestion}
-                handleToggleLanguage={handleToggleLanguage}
-                currentQuestion={currentQuestion}
-                questionHistory={questionHistory}
-                variant={"contained"}
-                color={"secondary"}
-                backButtonDisabled     = {backButtonDisabled}
-                forwardButtonDisabled  = {forwardButtonDisabled}
-            />
+            <Button variant="contained" size={"small"} color={"primary"} onClick={handleInfoButtonClick}><QuestionMarkOutlinedIcon/></Button>
+
+            <Box sx={{ml: 2, mr: 2}}>
+                <ControlNavigation
+                    type={"question"}
+                    data={data}
+                    handleNextQuestion={handleNextQuestion}
+                    handlePreviousQuestion={handlePreviousQuestion}
+                    handleToggleLanguage={handleToggleLanguage}
+                    currentQuestion={currentQuestion}
+                    questionHistory={questionHistory}
+                    variant={"contained"}
+                    color={"secondary"}
+                    backButtonDisabled     = {backButtonDisabled}
+                    forwardButtonDisabled  = {forwardButtonDisabled}
+                    languageToggleHidden  = {true}
+                />
+            </Box>
+
+            <Button variant={"contained"} color={"primary"} onClick={safetyButtonClick}><GppMaybeOutlinedIcon></GppMaybeOutlinedIcon></Button>
+
         </Box>
 
 
@@ -158,7 +172,7 @@ export default function CanvasMap(props) {
 
     return (
 
-            <Drawer sx={{position: "fixed", bottom: 0, top: 0, left: 0, right: 0}} open={visible}>
+            <Drawer sx={{position: "fixed", bottom: 0, top: 0, left: 0, right: 0}} open={visible} variant={"contained"}>
                 { visible && <Box>
                     <GoogleMap
                         id="map"
@@ -194,6 +208,7 @@ export default function CanvasMap(props) {
                         }
 
                     </GoogleMap>
+
                     {controlNavigationButtons}
                 </Box>
                 }

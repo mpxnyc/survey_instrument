@@ -68,9 +68,11 @@ export default function Index() {
 
 
       try {
+          busySaving = true;
           const id = await services.assignID();
+          busySaving = false;
 
-          console.log("id", id)
+
           setSurveyData(
               (current) => {
                   const newData = current;
@@ -103,25 +105,24 @@ export default function Index() {
     return response
   }
 
-  const triggerConfirmCookie = async () => {
-    console.log("triggered confirm cookie")
-    await handleConfirmCookie()
-  }
+  // const triggerConfirmCookie = async () => {
+  //   console.log("triggered confirm cookie")
+  //   await handleConfirmCookie()
+  // }
 
   const handleUpdateSurveyData = (name, value) => {
-      console.log("ahndle update survey data", name, value)
+
 
     setSurveyData( (old) => {
 
       const newData = old;
-      newData[name] = value
+      newData[name] = value;
 
-      newData.userName && triggerSaveSurvey(newData)
+      questionCurrent !== "consent" && newData.userName && triggerSaveSurvey(newData)
 
       const newIndex = questionnaire.ordering.indexOf(name)
       const currentIndex = questionnaire.ordering.indexOf(newData.lastQuestion)
 
-        console.log("currentIndex newindex", currentIndex, newIndex)
 
       if (currentIndex < newIndex) newData.lastQuestion = name;
 
@@ -148,12 +149,12 @@ export default function Index() {
           return
       }
 
-    if (surveyData.cookiesUsername) {
-        // if we have a cookie with user name, confirm cookie
-      questionnaire.milestones.confirmCookie.includes(questionCurrent) && triggerConfirmCookie()
-    } else {
-      questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName && triggerAssignId()
-    }
+
+
+
+      //if we dont have a cookie, assign id when the time is right
+        !surveyData.cookiesUsername && questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName && triggerAssignId()
+
 
     if (questionnaire[questionCurrent].questionType === "checkbox") {
         // make sure that logical question  obtains 'false' instead of 'null' once user has seen it
@@ -223,32 +224,42 @@ export default function Index() {
     )
   }
 
-  const handleConfirmCookie = async () => {
-
-    const cookieUserName = surveyData[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName]
-
-    let publicId
-    let lastQuestion
-
-    if (cookieUserName) {
-      publicId = await triggerFetchPublicId({userName: cookieUserName})
-
-      lastQuestion = await triggerFetchLastQuestion({userName: cookieUserName, publicId: publicId})
-
-      const indexLastSaved = questionnaire.ordering.findIndex((item) => {return (item === lastQuestion)})
-      const indexCurrent   = questionnaire.ordering.findIndex((item) => {return (item === questionCurrent)})
-
-      indexLastSaved > indexCurrent && setQuestionCurrent(questionnaire.ordering[indexLastSaved + 1]);
-
-      setSurveyData(
-          (current) => {
-            current[config.systemGeneratedVariables.variableNameForSurveyDataUserName] = publicId
-            current[config.systemGeneratedVariables.variableNameForLastQuestion] = lastQuestion
-            return current
-          }
-      )
-    }
-  }
+  // const handleConfirmCookie = async () => {
+  //
+  //     console.log("confirming cookie")
+  //     const cookieUserName = surveyData[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName]
+  //
+  //     if (cookieUserName) {
+  //         const payload = {userName: cookieUserName}
+  //         payload[config.systemGeneratedVariables.variableNameForSurveyDataReferrerId] = surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerId] && surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerId]
+  //         payload[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage] = surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage] && surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage]
+  //         payload[config.systemGeneratedVariables.variableNameForSurveyDataReferralType] = surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferralType] && surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferralType]
+  //
+  //         console.log("surveyData before confirm cookie", surveyData)
+  //         console.log("payload before confim cookie", payload)
+  //
+  //         // const cookieResponse = await services.submitCookie(payload)
+  //         // console.log("cookieResponse", cookieResponse)
+  //
+  //     //publicId = await triggerFetchPublicId({userName: cookieUserName})
+  //
+  //     //lastQuestion = await triggerFetchLastQuestion({userName: cookieUserName, publicId: publicId})
+  //
+  //     //const indexLastSaved = questionnaire.ordering.findIndex((item) => {return (item === lastQuestion)})
+  //     //const indexCurrent   = questionnaire.ordering.findIndex((item) => {return (item === questionCurrent)})
+  //
+  //     //indexLastSaved > indexCurrent && setQuestionCurrent(questionnaire.ordering[indexLastSaved + 1]);
+  //
+  //
+  //     // setSurveyData(
+  //     //     (current) => {
+  //     //       current[config.systemGeneratedVariables.variableNameForSurveyDataUserName] = publicId
+  //     //       current[config.systemGeneratedVariables.variableNameForLastQuestion] = lastQuestion
+  //     //       return current
+  //     //     }
+  //     // )
+  //   }
+  // }
 
   const handleConfirmRemovePin = () => {
 
@@ -320,64 +331,78 @@ export default function Index() {
   )
 
 
-  useEffect(
-      () => {
-        const referrerLanguageParameterValue = router.query[config.referralSettings.referrerLanguage.settingName];
-        const referralTypeParameterValue = router.query[config.referralSettings.referralType.settingName];
-        const referralIdParameterValue = router.query[config.referralSettings.referrerIdName]
-        const viralQuestionIdParameterValue = router.query[config.referralSettings.virusGameIdName]
+    async function triggerSubmitCookie(data) {
+      console.log("submit cookie data", data)
+        busySaving = true;
+        const cookieResponse = await services.submitCookie(data)
+
+        console.log("submit cookie data response", await cookieResponse.data)
+        busySaving = false;
+
+    }
+
+    useEffect(
+       () => {
+          const referrerLanguageParameterValue = router.query[config.referralSettings.referrerLanguage.settingName];
+          const referralTypeParameterValue = router.query[config.referralSettings.referralType.settingName];
+          const referralIdParameterValue = router.query[config.referralSettings.referrerIdName]
+          const viralQuestionIdParameterValue = router.query[config.referralSettings.virusGameIdName]
+          const cookiesUserName = cookies && cookies.userName
 
 
-        const referralTypeDictionary = Object.entries(config.referralSettings.referralType.values).reduce(
-            (current, next) => {
-              const newState = {...current, [next[1]]: next[0]}
-              return newState
-            }, {}
-        )
+          const referralTypeDictionary = Object.entries(config.referralSettings.referralType.values).reduce(
+              (current, next) => {
+                  const newState = {...current, [next[1]]: next[0]}
+                  return newState
+              }, {}
+          )
 
-        const referralLanguageDictionary = Object.entries(config.referralSettings.referrerLanguage.values).reduce(
-            (current, next) => {
-              const newState = {...current, [next[1]]: next[0]}
-              return newState
-            }, {}
-        )
+          const referralLanguageDictionary = Object.entries(config.referralSettings.referrerLanguage.values).reduce(
+              (current, next) => {
+                  const newState = {...current, [next[1]]: next[0]}
+                  return newState
+              }, {}
+          )
 
-        const initialData = {
-          [config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage]: referralLanguageDictionary[referrerLanguageParameterValue],
-          [config.systemGeneratedVariables.variableNameForSurveyDataReferralType]: referralTypeDictionary[referralTypeParameterValue],
-          [config.systemGeneratedVariables.variableNameForSurveyDataReferrerId]: referralIdParameterValue,
-          [config.systemGeneratedVariables.variableNameForSurveyDataVirusReceivedId]: viralQuestionIdParameterValue
-        }
+          const initialData = {
+              [config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage]: referralLanguageDictionary[referrerLanguageParameterValue],
+              [config.systemGeneratedVariables.variableNameForSurveyDataReferralType]: referralTypeDictionary[referralTypeParameterValue],
+              [config.systemGeneratedVariables.variableNameForSurveyDataReferrerId]: referralIdParameterValue,
+              [config.systemGeneratedVariables.variableNameForSurveyDataVirusReceivedId]: viralQuestionIdParameterValue,
+              [config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName]: cookiesUserName
+          }
 
-        const initialLanguage = initialData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage]
+          const initialLanguage = initialData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage]
 
-        setSurveyData(
-            (current) => {
-              return ({...current, ...initialData})
-            }
-        )
+          console.log("initial data", initialData)
 
-        setLanguage(
-            (current) => {
-              return (initialLanguage ? initialLanguage : current)
-            }
-        )
+           cookiesUserName && triggerSubmitCookie(initialData)
+
+          setSurveyData(
+              (current) => {
+                  return ({...current, ...initialData})
+              }
+          )
+
+          setLanguage(
+              (current) => {
+                  return (initialLanguage ? initialLanguage : current)
+              }
+          )
 
       },
       [router.query]
   )
 
-  useEffect(
-      () => {
-
-        console.log("cookies", cookies && cookies)
-        cookies && handleUpdateSurveyData("cookiesUsername", cookies.userName)
-          handleUpdateSurveyData(config.systemGeneratedVariables.variableNameForLastQuestion, questionnaire.ordering[0])
-
-
-      },
-      [unchangingVariable]
-  )
+  // useEffect(
+  //     () => {
+  //         cookies && handleUpdateSurveyData("cookiesUsername", cookies.userName)
+  //         handleUpdateSurveyData(config.systemGeneratedVariables.variableNameForLastQuestion, questionnaire.ordering[0])
+  //
+  //
+  //     },
+  //     [unchangingVariable]
+  // )
 
   useEffect(
       () => {
@@ -389,7 +414,12 @@ export default function Index() {
       }, [surveyData.receivedVirus, surveyData.publicId, surveyData.referrerPublicId]
   )
 
-
+// useEffect(
+//     () => {
+//         // if we have a cookie with user name, confirm cookie
+//         surveyData.cookiesUsername && !surveyData.publicId && triggerConfirmCookie()
+//     }, [surveyData.cookiesUsername]
+// )
 
 
 

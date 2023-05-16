@@ -156,8 +156,8 @@ export default function Canvas(props) {
                             key={item + 'Instruction'}
                             data={markers[currentMarker]}
                             handleUpdateData={handleUpdateMarker}
-                            currentQuestion={questionnaire[item].mapQuestionInstruction}
-                            visible={questionCurrentMap === questionnaire[item].mapQuestionInstruction}
+                            currentQuestion={questionCurrentMap}
+                            visible={[questionnaire[item].mapQuestionInstruction, questionnaire[item].mapQuestionDetail, questionnaire[item].mapQuestionSafety].includes(questionCurrentMap)}
                             language={language}
                             handleNextQuestion={handleNextQuestionMap}
                             handlePreviousQuestion={handlePreviousQuestionMap}

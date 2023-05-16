@@ -7,7 +7,7 @@ export const config = {
     colorBackground: "white",
     colorText: "#EA773D",
     cookieDuration : {
-        testing: 1,
+        testing: 60*10,
         production: 60*60*24*29*6
     },
     defaultLanguage: "english",
