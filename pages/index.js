@@ -408,15 +408,6 @@ export default function Index() {
       [router.query]
   )
 
-  // useEffect(
-  //     () => {
-  //         cookies && handleUpdateSurveyData("cookiesUsername", cookies.userName)
-  //         handleUpdateSurveyData(config.systemGeneratedVariables.variableNameForLastQuestion, questionnaire.ordering[0])
-  //
-  //
-  //     },
-  //     [unchangingVariable]
-  // )
 
   useEffect(
       () => {
@@ -428,12 +419,7 @@ export default function Index() {
       }, [surveyData.receivedVirus, surveyData.publicId, surveyData.referrerPublicId]
   )
 
-// useEffect(
-//     () => {
-//         // if we have a cookie with user name, confirm cookie
-//         surveyData.cookiesUsername && !surveyData.publicId && triggerConfirmCookie()
-//     }, [surveyData.cookiesUsername]
-// )
+
 
 
 

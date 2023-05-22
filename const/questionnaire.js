@@ -58,9 +58,13 @@ const symptomsList = {
 
 export const questionnaire = {
     'ordering': [
+        'welcome',
         'prior',
+        'giveUserName',
+        'cantFindUserName',
         'age',
         'consentStudy',
+        'assignedUserName',
         'home',
         'race',
         'groupSex',
@@ -168,6 +172,18 @@ export const questionnaire = {
         },
         questionType: "radio",
         ineligibleCondition: '_under_18'
+    },
+    'cantFindUserName': {
+        question: {
+            english: "We can't find the secret code you entered.",
+            spanish: "SP We can't find the secret code you entered."
+        },
+        options: {
+            english: {'retry': 'Retry entering secret code', 'forgot': 'I forgot my secret code'},
+            spanish: {'retry': 'SP Retry entering secret code', 'forgot': 'Sp I forgot my secret code'},
+        },
+        questionType: "radio",
+        skipLogic: {question: "prior", value: "no", equals: false},
     },
     'consentGame': {
         heading: {
@@ -331,7 +347,7 @@ export const questionnaire = {
         skipLogic: {question: "", value: "", equals: false},
         displayLogic: {question: "", value: "", equals: false}
     },
-    'getUserName': {
+    'assignedUserName': {
         question: {
             english: "We will provide you with a unique code. This code will help us identify you as a survey participant. If you receive a message to take this survey after today, you might be asked to enter it.",
             spanish: "SP We will provide you with a unique code. This code will help us identify you as a survey participant. If you receive a message to take this survey after today, you might be asked to enter it."
@@ -354,8 +370,7 @@ export const questionnaire = {
             spanish: {}
         },
         questionType: "plaintext",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "prior", value: "yes", equals: true}
     },
     'groupSex': {
         question: {
@@ -1559,8 +1574,7 @@ export const questionnaire = {
         },
         options: yesNoResponse,
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "welcome", value: "no", equals: true}
     },
     'race': {
         question: {
@@ -1681,5 +1695,20 @@ export const questionnaire = {
             spanish: ""
     },
     questionType: "sharedialog"
-}
+},
+    'welcome': {
+        heading: {
+            english: "Welcome to MPX NY!",
+            spanish: "SP Welcome to MPX NY!"
+        },
+        question: {
+            english: "It looks like you participated already. Is this your username?",
+            spanish: "SP It looks like you participated already. Is this your username?"
+        },
+        options: {
+            english: {'yes': 'Yes', 'no': 'No', },
+            spanish: {'yes': 'Yes', 'no': 'No', },
+        },
+        questionType: "radio"
+    },
 }
