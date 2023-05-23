@@ -165,9 +165,11 @@ export default function Index() {
 
 
 
+      //if we do have a cookie, subit the cookie when the time is right. Or also if user gives us username
+      questionnaire.milestones.retrieveId.includes(questionCurrent) && surveyData[questionCurrent] !== "no" && triggerSubmitCookie(surveyData);
 
       //if we dont have a cookie, assign id when the time is right
-        !surveyData.cookiesUsername && questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName && triggerAssignId()
+      questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName && triggerAssignId()
 
 
     if (questionnaire[questionCurrent].questionType === "checkbox") {
@@ -346,11 +348,36 @@ export default function Index() {
 
 
     async function triggerSubmitCookie(data) {
+
       console.log("submit cookie data", data)
         busySaving = true;
+
+      if (questionCurrent !== "welcome") data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName] = data[questionCurrent]
+
         const cookieResponse = await services.submitCookie(data)
 
-        console.log("submit cookie data response", await cookieResponse.data)
+        const {public_id: publicId, lastQuestion} = cookieResponse.data.result
+
+        console.log("publicId", publicId)
+        console.log("lastQuestion", lastQuestion)
+
+        const focusQuestion = lastQuestion === "" ? "consentStudy" : lastQuestion
+
+        handleUpdateSurveyData("userName", data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName])
+        handleUpdateSurveyData("publicId", publicId)
+        handleUpdateSurveyData("lastQuestion", focusQuestion)
+
+
+
+        setQuestionCurrent(
+            (oldCurrent) => {
+                setQuestionHistory([]);
+                const availableQuestions = getAvailableQuestions(data, focusQuestion, [], questionnaire.ordering)
+                setQuestionFuture(availableQuestions)
+                return focusQuestion
+            }
+        )
+
         busySaving = false;
 
     }
@@ -389,8 +416,6 @@ export default function Index() {
           const initialLanguage = initialData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage]
 
           console.log("initial data", initialData)
-
-           cookiesUserName && triggerSubmitCookie(initialData)
 
           setSurveyData(
               (current) => {

@@ -212,9 +212,19 @@ export default function Canvas(props) {
 
 
 
-    const questionHeader = questionType === "map" ?
-        (questionCurrentMap && questionnaire[questionCurrentMap] && questionnaire[questionCurrentMap].question && questionnaire[questionCurrentMap].question[language]) :
-        (questionCurrent    && questionnaire[questionCurrent]    && questionnaire[questionCurrent].question    && questionnaire[questionCurrent].question[language])
+    let questionHeader
+
+    switch (questionType) {
+        case 'map':
+            questionHeader = questionCurrentMap && questionnaire[questionCurrentMap] && questionnaire[questionCurrentMap].question && questionnaire[questionCurrentMap].question[language]
+            break;
+        case 'radio_with_username_display':
+            questionHeader = ""
+            break;
+        default:
+            questionHeader = questionCurrent    && questionnaire[questionCurrent]    && questionnaire[questionCurrent].question    && questionnaire[questionCurrent].question[language]
+
+    }
 
     const backButtonDisabled    = questionType === "map" ? questionHistoryMap.length === 0 : questionHistory.length === 0
     const forwardButtonDisabled = questionType === "map" ? false : questionFuture.length === 0

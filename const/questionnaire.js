@@ -111,7 +111,7 @@ export const questionnaire = {
     ],
     'milestones': {
         assignId: ["consentStudy"],
-        retrieveId: ['giveUserName'],
+        retrieveId: ['welcome', 'giveUserName'],
         surveyComplete: 'thankYou',
         surveyIneligible: 'ineligible'
     },
@@ -1702,13 +1702,13 @@ export const questionnaire = {
             spanish: "SP Welcome to MPX NY!"
         },
         question: {
-            english: "It looks like you participated already. Is this your username?",
-            spanish: "SP It looks like you participated already. Is this your username?"
+            english: "It looks like you participated already. Is this your secret code?",
+            spanish: "SP It looks like you participated already. Is this your secret code?"
         },
         options: {
             english: {'yes': 'Yes', 'no': 'No', },
             spanish: {'yes': 'Yes', 'no': 'No', },
         },
-        questionType: "radio"
+        questionType: "radio_with_username_display"
     },
 }
