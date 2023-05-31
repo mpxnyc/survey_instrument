@@ -4,7 +4,9 @@ import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
 import {useRouter} from "next/router";
 import Peaches from '../public/peaches.svg'
-import Beach from '../public/beach.png'
+import Hearts from '../public/Asset 2.svg'
+import MpxIcon from '../public/Asset 6.png'
+
 
 import {questionnaire} from "../const/questionnaire";
 import {config} from "../const/config";
@@ -13,12 +15,15 @@ import Canvas from "../components/canvas";
 import CanvasMap from "../components/canvasMap";
 import CanvasViralGame from "../components/canvasViralGame";
 
-import {createDataShell, getAvailableQuestions} from "../lib/utilityFunctions";
+import {arrayRange, createDataShell, getAvailableQuestions} from "../lib/utilityFunctions";
 import services from "../lib/services";
 import Image from "next/image";
 import {InputCalendarEntry} from "../components/InputCalendarEntry";
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import RandomIcon, {Droplets, Eggplant, Peach, Unicorn} from "../components/ControlGraphicsIcons";
+import {Grid} from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 
 
@@ -447,19 +452,29 @@ export default function Index() {
 
 
 
-
+const icon = <Droplets selected size={40}/>
 
   return (
 
-      <Box maxWidth maxHeight sx={{backgroundColor: "white", height: "100%", width: "100%", position: "absolute", overflow: "clip"}} >
+      <Box maxWidth maxHeight sx={{backgroundColor: "#FF99C5", height: "100%", width: "100%", position: "absolute", overflow: "clip"}} >
+
+
+
+          <Grid container direction={"row"} sx={{display: "flex", alignContent: "center", alignItems: "center", justifyContent: "center", justifyItems: "center", justifySelf: "center", alignSelf: "center"}}>
+              {arrayRange(1,500,1).map(item => <Grid sm={0.1} item maxWidth sx={{display: "flex", margin: 5, alignContent: "center", alignItems: "center", justifyContent: "center", justifyItems: "center", justifySelf: "center", alignSelf: "center"}}>{icon}</Grid>)}
+          </Grid>
+
+
 
           <Box
               height={"100%"}
               width={"100%"}
 
-          sx={{opacity: 0.5, objectFit: "cover"}}>
-              <Image src={Beach}/>
+          sx={{opacity: 1, objectFit: "fill", justifyContent: "center", display: "flex"}}>
+              <Image src={Hearts}/>
           </Box>
+
+
 
 
 
@@ -526,3 +541,5 @@ export default function Index() {
 
   );
 }
+
+

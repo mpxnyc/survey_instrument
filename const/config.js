@@ -4,8 +4,10 @@ import {mapStyles} from "./mapStyles";
 export const config = {
     testing: true,
     saveThrottleDuration: 1000*10,
-    colorBackground: "#5D207A",
-    colorText: "#FF99C5",
+    colorBackground: "#C5EFFF",
+    colorText: "#000000",
+    colorButtons: "#41BFFF",
+    colorBorder: "#FF99C5",
     cookieDuration : {
         testing: 60*10,
         production: 60*60*24*29*6

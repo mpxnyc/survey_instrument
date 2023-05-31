@@ -4,7 +4,7 @@ import CanvasQuestion from "./canvasQuestion";
 import {getAvailableQuestions} from "../lib/utilityFunctions";
 import ControlNavigation from "./ControlNavigation";
 import {getQuestionFormat} from "../lib/questionFormats";
-import {CardMedia, Dialog, FormLabel, Stack} from "@mui/material";
+import {Card, CardMedia, Dialog, FormLabel, Paper, Stack} from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -13,6 +13,7 @@ import theme from "../const/theme";
 import Image from "next/image";
 import Unicorn from "../const/graphics/MPX_unicorn.svg";
 import {config} from "../const/config";
+import RandomIcon, {Droplets, Peach} from "./ControlGraphicsIcons";
 
 
 export default function Canvas(props) {
@@ -237,13 +238,18 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
             open           = {dialogOpen}
             elevation      = {10}
             hideBackdrop   = {true}
-            PaperProps={{sx: {backgroundColor: "transparent", border: 3, borderColor: colorText, borderRadius: 5} }}
+            PaperProps={{sx: {backgroundColor: "transparent", border: 1, borderColor: config.colorText, borderRadius: 5} }}
             onClose={handleCloseDialog}
 
         >
+
+
+
             <Box
             sx={{backgroundColor: config.colorBackground}}
             >
+
+
                 <Box
                     elevation={0}
                     justifyItems="center"

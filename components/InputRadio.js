@@ -6,6 +6,8 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import theme from "../const/theme";
 import Box from "@mui/material/Box";
+import {config} from "../const/config";
+import RandomIcon, {Peach} from "./ControlGraphicsIcons";
 
 
 export default function InputRadio(props) {
@@ -65,17 +67,19 @@ const SelectionItemRadio = (props) => {
         <Card
 
             color={colorText}
-            elevation={0}
+            elevation={selected ? 3 : 0}
             sx={
                 {
                     margin: 0,
-                    backgroundColor: selected ? colorText : colorBackground,
+                    backgroundColor: selected ? config.colorButtons : colorBackground,
                     width: 50,
                     height: 50,
                     alignContent: "center",
                     alignItems: "center",
                     padding: 4,
-                    alignSelf: "center"
+                    alignSelf: "center",
+                    color: "#000000",
+                    border: selected ? 2 : 1
                 }
             }
         >
@@ -85,15 +89,8 @@ const SelectionItemRadio = (props) => {
                 alignSelf={"center"}
 
             >
-                <Box
-                    height={"100%"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                    alignSelf={"center"}
-                    sx={{display: "flex", position: "absolute", top: 0, left: 0, bottom: 0, right: 0, opacity: selected ? 0.2 : 0.2, textAlign: "center"}}
-                >
 
-                </Box>
+
 
                 <Box
                     justifyContent={"center"}
@@ -104,7 +101,7 @@ const SelectionItemRadio = (props) => {
                 >
                     <Typography
                         align={"center"}
-                        color= {selected ? colorBackground : colorText}
+                        color= {selected ? colorText : colorText}
                         variant={"body2"}
 
                     >
