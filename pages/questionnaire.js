@@ -16,7 +16,7 @@ export default function Questionnaire() {
         }
     )
 
-    return <Box sx={{backgroundColor: "grey"}}>{questions}</Box>
+    return <Box sx={{backgroundColor: "#7F3F98"}}>{questions}</Box>
 }
 
 
@@ -24,15 +24,15 @@ export default function Questionnaire() {
 function QuestionMap(props) {
     const {questionName} = props;
 
-    const mapQuestionInstruction   = <QuestionPair questionName={questionnaire[questionName].mapQuestionDetail}/>
+    const mapQuestionInstruction   = <QuestionPair questionName={questionnaire[questionName].mapQuestionInstruction}/>
     const mapQuestionSafety        = <QuestionPair questionName={questionnaire[questionName].mapQuestionSafety}/>
     const mapRemovePinQuestion     = <QuestionPair questionName={questionnaire[questionName].mapRemovePinQuestion}/>
     const mapQuestionDetail        = <QuestionPair questionName={questionnaire[questionName].mapQuestionDetail}/>
 
     const personPlaceRelation      =
         <Box>
-            <Typography variant={"h5"}>{questionName}</Typography>
-            <Typography variant={"h1"}>{questionnaire[questionName].personPlaceRelation}</Typography>
+            <Typography variant={"h5"} color={"white"}>{questionName}</Typography>
+            <Typography variant={"h1"} color={"white"}>{questionnaire[questionName].personPlaceRelation}</Typography>
         </Box>
 
 
