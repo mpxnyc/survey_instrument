@@ -78,7 +78,7 @@ export const mapStyles = [
                 "visibility": "on"
             },
             {
-                "color": "#e74e0e"
+                "color": "#F73C95"
             }
         ]
     },
@@ -117,7 +117,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#ef7a31"
+                "color": "#F73C95"
             },
             {
                 "weight": "5.00"
@@ -156,7 +156,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#ef7a31"
+                "color": "#F73C95"
             }
         ]
     },
@@ -180,7 +180,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#ef7a31"
+                "color": "#F73C95"
             }
         ]
     },
@@ -225,7 +225,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#ef7a31"
+                "color": "#F73C95"
             }
         ]
     },
