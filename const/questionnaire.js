@@ -192,8 +192,8 @@ export const questionnaire = {
             spanish: "SP We can't find the code you entered."
         },
         options: {
-            english: {'retry': 'Retry entering secret code', 'forgot': 'I forgot my secret code'},
-            spanish: {'retry': 'SP Retry entering secret code', 'forgot': 'Sp I forgot my secret code'},
+            english: {'retry': 'Retry secret code', 'forgot': 'Forgot secret code'},
+            spanish: {'retry': 'SP Retry secret code', 'forgot': 'SP Forgot secret code'},
         },
         questionType: "radio",
         skipLogic: {question: "prior", value: "no", equals: false},
@@ -264,7 +264,7 @@ export const questionnaire = {
         },
         options: {
             english: {'none': 'None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Over 10'},
-            spanish: {'none': 'None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Over 10'}
+            spanish: {'none': 'Ninguna', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Más de 10'}
         },
         questionType: "radio"
     },
