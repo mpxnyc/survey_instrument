@@ -1149,7 +1149,7 @@ export const questionnaire = {
             english: [
                 "Use the search bar to search for a neighborhood, place name, or address.",
                 "You can drag the map and zoom in and out",
-                "Tap on the location of your home and a marker will show the location on the map"
+                "Tap on the location and a marker will show the location on the map"
             ],
             spanish: [
                 "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
@@ -1197,7 +1197,7 @@ export const questionnaire = {
             english: [
                 "Use the search bar to search for a neighborhood, place name, or address.",
                 "You can drag the map and zoom in and out",
-                "Tap on the location of your home and a marker will show the location on the map"
+                "Tap on the location and a marker will show the location on the map"
             ],
             spanish: [
                 "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
@@ -1245,7 +1245,7 @@ export const questionnaire = {
             english: [
                 "Use the search bar to search for a neighborhood, place name, or address.",
                 "You can drag the map and zoom in and out",
-                "Tap on the location of your home and a marker will show the location on the map"
+                "Tap on the location and a marker will show the location on the map"
             ],
             spanish: [
                 "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
@@ -1294,7 +1294,7 @@ export const questionnaire = {
             english: [
                 "Use the search bar to search for a neighborhood, place name, or address.",
                 "You can drag the map and zoom in and out",
-                "Tap on the location of your home and a marker will show the location on the map"
+                "Tap on the location and a marker will show the location on the map"
             ],
             spanish: [
                 "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
@@ -1324,7 +1324,7 @@ export const questionnaire = {
                 'Use the search bar to search for a neighborhood, place name, or address',
                 'Then tap on the location of the place and a marker will appear on the map',
                 'We will ask a few questions about the place you just added',
-                'Repeat this for each place you had sexual contact (not in a group setting) in during the past 4 weeks'
+                'Repeat this for each place you spent most time in during the past 4 weeks'
             ],
             spanish: [
                 'Utiliza la barra de navegación para buscar un vecindario, nombre de lugar o dirección.',
