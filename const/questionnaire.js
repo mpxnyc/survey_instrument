@@ -160,8 +160,8 @@ export const questionnaire = {
     },
     'age': {
         question: {
-            english: "First we have to check: How old are you?",
-            spanish: "Primero temenos que checar: ¿Qué edad tienes?"
+            english: "How old are you?",
+            spanish: "¿Qué edad tienes?"
         },
         options: {
             english: {
@@ -188,8 +188,8 @@ export const questionnaire = {
     },
     'cantFindUserName': {
         question: {
-            english: "We can't find the secret code you entered.",
-            spanish: "SP We can't find the secret code you entered."
+            english: "We can't find the code you entered.",
+            spanish: "SP We can't find the code you entered."
         },
         options: {
             english: {'retry': 'Retry entering secret code', 'forgot': 'I forgot my secret code'},
@@ -577,8 +577,8 @@ export const questionnaire = {
         options: {
             english: {
                 rows: {
-                    'oral_give': 'Getting Oral Sex',
-                    'oral_receive': 'Giving Oral Sex',
+                    'oral_give': 'Giving Oral Sex',
+                    'oral_receive': 'Getting Oral Sex',
                     'topping': 'Topping',
                     'bottoming': 'Bottoming',
                     'using_condoms': 'Using Condoms',
@@ -586,9 +586,9 @@ export const questionnaire = {
 
                 },
                 columns: {
-                    'decreased': 'More',
+                    'decreased': 'Less',
                     'no_change': 'Same',
-                    'increased': 'Less'
+                    'increased': 'More'
                 }
             },
             spanish: {
@@ -617,8 +617,8 @@ export const questionnaire = {
         options: {
             english: {
                 rows: {
-                    'oral_give': 'Getting Oral Sex',
-                    'oral_receive': 'Giving Oral Sex',
+                    'oral_give': 'Giving Oral Sex',
+                    'oral_receive': 'Getting Oral Sex',
                     'topping': 'Topping',
                     'bottoming': 'Bottoming',
                     'using_condoms': 'Using Condoms',
@@ -626,9 +626,9 @@ export const questionnaire = {
 
                 },
                 columns: {
-                    'decreased': 'More',
+                    'decreased': 'Less',
                     'no_change': 'Same',
-                    'increased': 'Less'
+                    'increased': 'More'
                 }
             },
             spanish: {
@@ -657,8 +657,8 @@ export const questionnaire = {
         options: {
             english: {
                 rows: {
-                    'oral_give': 'Getting Oral Sex',
-                    'oral_receive': 'Giving Oral Sex',
+                    'oral_give': 'Giving Oral Sex',
+                    'oral_receive': 'Getting Oral Sex',
                     'topping': 'Topping',
                     'bottoming': 'Bottoming',
                     'using_condoms': 'Using Condoms',
@@ -666,9 +666,9 @@ export const questionnaire = {
 
                 },
                 columns: {
-                    'decreased': 'More',
+                    'decreased': 'Less',
                     'no_change': 'Same',
-                    'increased': 'Less'
+                    'increased': 'More'
                 }
             },
             spanish: {
@@ -698,8 +698,8 @@ export const questionnaire = {
         options: {
             english: {
                 rows: {
-                    'oral_give': 'Getting Oral Sex',
-                    'oral_receive': 'Giving Oral Sex',
+                    'oral_give': 'Giving Oral Sex',
+                    'oral_receive': 'Getting Oral Sex',
                     'topping': 'Topping',
                     'bottoming': 'Bottoming',
                     'using_condoms': 'Using Condoms',
@@ -707,9 +707,9 @@ export const questionnaire = {
 
                 },
                 columns: {
-                    'decreased': 'More',
+                    'decreased': 'Less',
                     'no_change': 'Same',
-                    'increased': 'Less'
+                    'increased': 'More'
                 }
             },
             spanish: {
@@ -739,8 +739,8 @@ export const questionnaire = {
         options: {
             english: {
                 rows: {
-                    'oral_give': 'Getting Oral Sex',
-                    'oral_receive': 'Giving Oral Sex',
+                    'oral_give': 'Giving Oral Sex',
+                    'oral_receive': 'Getting Oral Sex',
                     'topping': 'Topping',
                     'bottoming': 'Bottoming',
                     'using_condoms': 'Using Condoms',
@@ -748,9 +748,9 @@ export const questionnaire = {
 
                 },
                 columns: {
-                    'decreased': 'More',
+                    'decreased': 'Less',
                     'no_change': 'Same',
-                    'increased': 'Less'
+                    'increased': 'More'
                 }
             },
             spanish: {
@@ -1138,7 +1138,7 @@ export const questionnaire = {
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesGSInstructions",
         mapQuestionOrder: ["placeTypeGS", "placeFreq", "placeSex", "placeCount"],
-        mapRemovePinQuestion: "mapRemovePinQuestion",
+        mapRemovePinQuestion: "placesGSMapRemovePinQuestion",
         personPlaceRelation: "GROUP_SEX_IN",
         skipLogic: {question: "groupSex", value: "yes", equals: true}
     },
@@ -1197,13 +1197,20 @@ export const questionnaire = {
             ],
         }
     },
+    'placesGSMapRemovePinQuestion': {
+        questionType: "confirm",
+        body: {
+            english: ["Would you like to remove this place?"],
+            spanish: ["SP Would you like to remove this place?"]
+        }
+    },
     'placesHookup': {
         questionType: "map",
         mapQuestionInstruction: "placesHookupInstructions",
         mapQuestionSafety:'placesHookupSafety',
         mapQuestionDetail: 'placesHookupDetail',
         mapQuestionOrder: ['placeTypeHookup'],
-        mapRemovePinQuestion: "mapRemovePinQuestion",
+        mapRemovePinQuestion: "placesHookupMapRemovePinQuestion",
         personPlaceRelation: "HOOKUP_IN"
     },
     'placesHookupDetail': {
@@ -1257,6 +1264,13 @@ export const questionnaire = {
             spanish: [
                 'Muéstranos dónde tuviste contactos sexuales (no en grupos) tocando y señalando en el mapa.'
             ],
+        }
+    },
+    'placesHookupMapRemovePinQuestion': {
+        questionType: "confirm",
+        body: {
+            english: ["Would you like to remove this place?"],
+            spanish: ["SP Would you like to remove this place?"]
         }
     },
     'placeTypeGS': {
@@ -1340,8 +1354,8 @@ export const questionnaire = {
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesVax1Instructions",
         mapQuestionOrder: ['mpxVax1Date'],
-        mapRemovePinQuestion: "mapRemovePinQuestion",
-        personPlaceRelation: "GROUP_SEX_IN",
+        mapRemovePinQuestion: "placesVax1MapRemovePinQuestion",
+        personPlaceRelation: "VAX1_IN",
         skipLogic: {question: "mpxVax1", value: "yes", equals: true}
     },
     'placesVax1Instructions': {
@@ -1359,14 +1373,21 @@ export const questionnaire = {
             ],
         }
     },
+    'placesVax1MapRemovePinQuestion': {
+        questionType: "confirm",
+        body: {
+            english: ["Would you like to remove this place?"],
+            spanish: ["SP Would you like to remove this place?"]
+        }
+    },
     'placesVax2': {
         questionType: "map",
         mapQuestionDetail: "placesGSDetail",
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesVax2Instructions",
         mapQuestionOrder: ['mpxVax2Date'],
-        mapRemovePinQuestion: "mapRemovePinQuestion",
-        personPlaceRelation: "GROUP_SEX_IN",
+        mapRemovePinQuestion: "placesVax2MapRemovePinQuestion",
+        personPlaceRelation: "VAX2_IN",
         skipLogic: {question: "mpxVax2", value: "yes", equals: true}
     },
     'placesVax2Instructions': {
@@ -1384,13 +1405,20 @@ export const questionnaire = {
             ],
         }
     },
+    'placesVax2MapRemovePinQuestion': {
+        questionType: "confirm",
+        body: {
+            english: ["Would you like to remove this place?"],
+            spanish: ["SP Would you like to remove this place?"]
+        }
+    },
     'placesUsualCare': {
         questionType: "map",
         mapQuestionDetail: "placesGSDetail",
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesUsualCareInstructions",
         mapQuestionOrder: [],
-        mapRemovePinQuestion: "mapRemovePinQuestion",
+        mapRemovePinQuestion: "placesUsualCareMapRemovePinQuestion",
         personPlaceRelation: "USUAL_CARE_IN",
         skipLogic: {question: "groupSex", value: "yes", equals: true}
     },
@@ -1409,14 +1437,21 @@ export const questionnaire = {
             ],
         }
     },
+    'placesUsualCareMapRemovePinQuestion': {
+        questionType: "confirm",
+        body: {
+            english: ["Would you like to remove this place?"],
+            spanish: ["SP Would you like to remove this place?"]
+        }
+    },
     'placesOptimalCare': {
         questionType: "map",
         mapQuestionDetail: "placesGSDetail",
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesOptimalCareInstructions",
         mapQuestionOrder: [],
-        mapRemovePinQuestion: "mapRemovePinQuestion",
-        personPlaceRelation: "IDEAL_CARE_IN",
+        mapRemovePinQuestion: "placesOptimalCareMapRemovePinQuestion",
+        personPlaceRelation: "OPTIMAL_CARE_IN",
         skipLogic: {question: "groupSex", value: "yes", equals: true}
     },
     'placesOptimalCareInstructions': {
@@ -1434,13 +1469,20 @@ export const questionnaire = {
             ],
         }
     },
+    'placesOptimalCareMapRemovePinQuestion': {
+        questionType: "confirm",
+        body: {
+            english: ["Would you like to remove this place?"],
+            spanish: ["SP Would you like to remove this place?"]
+        }
+    },
     'placesMostTime': {
         questionType: "map",
         mapQuestionDetail: "placesMostTimeDetail",
         mapQuestionSafety: "placesMostTimeSafety",
         mapQuestionInstruction: "placesMostTimeInstructions",
         mapQuestionOrder: ['placesMostTimeType', 'placesMostTimeTiming'],
-        mapRemovePinQuestion: "mapRemovePinQuestion",
+        mapRemovePinQuestion: "placesMostTimeMapRemovePinQuestion",
         personPlaceRelation: "SPEND_MOST_TIME_IN",
         skipLogic: {question: "groupSex", value: "yes", equals: true}
     },
@@ -1544,6 +1586,13 @@ export const questionnaire = {
         questionType: "checkbox",
         skipLogic: {question: "", value: "", equals: false},
         displayLogic: {question: "", value: "", equals: false}
+    },
+    'placesMostTimeMapRemovePinQuestion': {
+        questionType: "confirm",
+        body: {
+            english: ["Would you like to remove this place?"],
+            spanish: ["SP Would you like to remove this place?"]
+        }
     },
     'prior': {
         question: {
@@ -1686,7 +1735,7 @@ export const questionnaire = {
         },
         options: {
             english: {'yes': 'Yes', 'no': 'No', },
-            spanish: {'yes': 'Yes', 'no': 'No', },
+            spanish: {'yes': 'Sí', 'no': 'No', },
         },
         questionType: "radio_with_username_display"
     },
