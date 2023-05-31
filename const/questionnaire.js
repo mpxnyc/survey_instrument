@@ -56,6 +56,44 @@ const symptomsList = {
     }
 }
 
+const riskReductionList =  {
+    english: {
+        rows: {
+            'oral_give': 'Giving Oral Sex',
+                'oral_receive': 'Getting Oral Sex',
+                'topping': 'Topping',
+                'bottoming': 'Bottoming',
+                'using_condoms': 'Using Condoms',
+            'group_sex': 'Having group sex',
+            'new_partners': 'Having sex with new partners',
+                'any': 'Overall amount of Sex'
+
+        },
+        columns: {
+            'decreased': 'Less',
+                'no_change': 'Same',
+                'increased': 'More'
+        }
+    },
+    spanish: {
+        rows: {
+            'oral_give': ' Dando sexo oral',
+                'oral_receive': ' Recibiendo sexo oral',
+                'topping': ' Siendo activo',
+                'bottoming': ' Siendo pasivo',
+                'using_condoms': ' Usando condones',
+            'group_sex': 'SP Having group sex',
+            'new_partners': 'SP Having sex with new partners',
+                'any': ' La cantidad de sexo en general '
+        },
+        columns: {
+            'decreased': 'Menos',
+                'no_change': 'Igual',
+                'increased': 'Más'
+        }
+    },
+}
+
 export const questionnaire = {
     'ordering': [
         'welcome',
@@ -614,39 +652,7 @@ export const questionnaire = {
             english: "How is your current sex life different than it was in 2022?",
             spanish: "¿Cómo es tu vida sexual diferente a como era en 2022?"
         },
-        options: {
-            english: {
-                rows: {
-                    'oral_give': 'Giving Oral Sex',
-                    'oral_receive': 'Getting Oral Sex',
-                    'topping': 'Topping',
-                    'bottoming': 'Bottoming',
-                    'using_condoms': 'Using Condoms',
-                    'any': 'Overall amount of Sex'
-
-                },
-                columns: {
-                    'decreased': 'Less',
-                    'no_change': 'Same',
-                    'increased': 'More'
-                }
-            },
-            spanish: {
-                rows: {
-                    'oral_give': ' Dando sexo oral',
-                    'oral_receive': ' Recibiendo sexo oral',
-                    'topping': ' Siendo activo',
-                    'bottoming': ' Siendo pasivo',
-                    'using_condoms': ' Usando condones',
-                    'any': ' La cantidad de sexo en general'
-                },
-                columns: {
-                    'decreased': 'Menos',
-                    'no_change': 'Igual',
-                    'increased': 'Más'
-                }
-            },
-        },
+        options: riskReductionList,
         questionType: "radiogrid"
     },
     'mpxRiskChangePreVax1': {
@@ -654,39 +660,7 @@ export const questionnaire = {
             english: "How did your sex life change after you learned about MPOX but before you got the first dose of MPOX vaccine?",
             spanish: "¿Cómo cambió tu vida sexual después de que aprendiste sobre viruela símica (MPOX) pero antes de que tuvieras tu primera dosis de la vacuna de viruela símica (MPOX)?"
         },
-        options: {
-            english: {
-                rows: {
-                    'oral_give': 'Giving Oral Sex',
-                    'oral_receive': 'Getting Oral Sex',
-                    'topping': 'Topping',
-                    'bottoming': 'Bottoming',
-                    'using_condoms': 'Using Condoms',
-                    'any': 'Overall amount of Sex'
-
-                },
-                columns: {
-                    'decreased': 'Less',
-                    'no_change': 'Same',
-                    'increased': 'More'
-                }
-            },
-            spanish: {
-                rows: {
-                    'oral_give': ' Dando sexo oral',
-                    'oral_receive': ' Recibiendo sexo oral',
-                    'topping': ' Siendo activo',
-                    'bottoming': ' Siendo pasivo',
-                    'using_condoms': ' Usando condones',
-                    'any': ' La cantidad de sexo en general'
-                },
-                columns: {
-                    'decreased': 'Menos',
-                    'no_change': 'Igual',
-                    'increased': 'Más'
-                }
-            },
-        },
+        options: riskReductionList,
         questionType: "radiogrid",
         skipLogic: {question: "mpxVax1", value: "yes", equals: true}
     },
@@ -695,39 +669,7 @@ export const questionnaire = {
             english: "How did your sex life change after your first dose and before the second dose of MPOX vaccine?",
             spanish: "¿Cómo cambió tu vida sexual después de la primera dosis y antes de la segunda dosis de la vacuna de viruela símica (MPOX)? "
         },
-        options: {
-            english: {
-                rows: {
-                    'oral_give': 'Giving Oral Sex',
-                    'oral_receive': 'Getting Oral Sex',
-                    'topping': 'Topping',
-                    'bottoming': 'Bottoming',
-                    'using_condoms': 'Using Condoms',
-                    'any': 'Overall amount of Sex'
-
-                },
-                columns: {
-                    'decreased': 'Less',
-                    'no_change': 'Same',
-                    'increased': 'More'
-                }
-            },
-            spanish: {
-                rows: {
-                    'oral_give': ' Dando sexo oral',
-                    'oral_receive': ' Recibiendo sexo oral',
-                    'topping': ' Siendo activo',
-                    'bottoming': ' Siendo pasivo',
-                    'using_condoms': ' Usando condones',
-                    'any': ' La cantidad de sexo en general '
-                },
-                columns: {
-                    'decreased': 'Menos',
-                    'no_change': 'Igual',
-                    'increased': 'Más'
-                }
-            },
-        },
+        options: riskReductionList,
         questionType: "radiogrid",
         skipLogic: {question: "mpxVax2", value: "yes", equals: true}
     },
@@ -736,40 +678,7 @@ export const questionnaire = {
             english: "In 2022, how did you change how you have sex after getting both doses of the MPOX vaccine?",
             spanish: "En el 2022, ¿cómo cambiaste la manera en la que tenías sexo despuês de recibir las dos dosis de la vacuna de viruela símica (MPOX)?"
         },
-        options: {
-            english: {
-                rows: {
-                    'oral_give': 'Giving Oral Sex',
-                    'oral_receive': 'Getting Oral Sex',
-                    'topping': 'Topping',
-                    'bottoming': 'Bottoming',
-                    'using_condoms': 'Using Condoms',
-                    'any': 'Overall amount of Sex'
-
-                },
-                columns: {
-                    'decreased': 'Less',
-                    'no_change': 'Same',
-                    'increased': 'More'
-                }
-            },
-            spanish: {
-                rows: {
-                    'oral_give': ' Dando sexo oral',
-                    'oral_receive': ' Recibiendo sexo oral',
-                    'topping': ' Siendo activo',
-                    'bottoming': ' Siendo pasivo',
-                    'using_condoms': ' Usando condones',
-                    'any': ' La cantidad de sexo en general '
-
-                },
-                columns: {
-                    'decreased': 'Menos',
-                    'no_change': 'Igual',
-                    'increased': 'Más'
-                }
-            },
-        },
+        options: riskReductionList,
         questionType: "radiogrid",
         skipLogic: {question: "mpxVax2", value: "yes", equals: true}
     },
