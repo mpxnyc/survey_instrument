@@ -67,7 +67,7 @@ const SelectionItemRadio = (props) => {
         <Card
 
             color={colorText}
-            elevation={selected ? 20 : 0}
+            elevation={selected ? 10 : 0}
             sx={
                 {
                     margin: 0,
