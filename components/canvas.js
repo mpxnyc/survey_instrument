@@ -243,7 +243,7 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
 
         >
 
-
+<Card sx={{backgroundColor: "red"}}><Typography color="white" weight="bold" align={"center"}>TESTING ONLY - DATA WILL BE DISCARDED</Typography></Card>
 
             <Box
             sx={{backgroundColor: config.colorBackground}}
