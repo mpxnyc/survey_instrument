@@ -53,11 +53,10 @@ function QuestionMap(props) {
         <Card sm={10} sx={{backgroundColor: config.colorText}} >
             {personPlaceRelation}
             {mapQuestionInstruction}
-            {mapQuestionSafety}
-            {mapQuestionOrder}
-            {mapRemovePinQuestion}
             {mapQuestionDetail}
-
+            {mapQuestionSafety}
+            {mapRemovePinQuestion}
+            {mapQuestionOrder}
         </Card>
     )
 
