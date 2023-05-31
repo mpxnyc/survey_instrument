@@ -374,8 +374,8 @@ export const questionnaire = {
     },
     'giveUserName': {
         question: {
-            english: "Please enter your code ",
-            spanish: "Por favor escribe tu código"
+            english: "Please enter your code.",
+            spanish: "Por favor escribe tu código."
         },
         options: {
             english: {},
@@ -1363,7 +1363,7 @@ export const questionnaire = {
                 'latinx': 'Latino/a/x',
                 'asian': 'Asian',
                 'pacific_islander': 'Pacific Islander',
-                'other': 'other'
+                'other': 'Other'
             },
             spanish: {
                 'white': 'Blanca',
@@ -1371,7 +1371,7 @@ export const questionnaire = {
                 'latinx': 'Latino/a/x',
                 'asian': 'Asiática',
                 'pacific_islander': 'Isleño del Pacífico',
-                'other': 'otra'
+                'other': 'Otra'
             }
         },
         questionType: "checkbox",
