@@ -956,11 +956,11 @@ export const questionnaire = {
         },
         body: {
             english: [
-                'Show us where you had group sex or physical contact by tapping on the map.',
+                'Please show us where you have had group sex or physical contact over the past 4 weeks?',
                 'We will ask a few questions about each place.'
             ],
             spanish: [
-                'Muéstranos dónde tuviste sexo grupal o contacto físico señalando en el mapa.',
+                'Muéstranos dónde has tenido sexo en grupo o contacto físico durante las últimas 4 semanas.',
                 'Te vamos a hacer algunas preguntas sobre cada lugar.'
             ],
         }
