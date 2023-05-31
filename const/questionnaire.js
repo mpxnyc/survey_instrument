@@ -1474,11 +1474,11 @@ export const questionnaire = {
     'welcome': {
         heading: {
             english: "Welcome to MPX NY!",
-            spanish: "SP Welcome to MPX NY!"
+            spanish: "¡Bienvenido a MPX NY!"
         },
         question: {
-            english: "It looks like you participated already. Is this your secret code?",
-            spanish: "SP It looks like you participated already. Is this your secret code?"
+            english: "It looks like you participated already. Is this your code?",
+            spanish: "Parece que ya participaste. ¿Es este tu código?"
         },
         options: {
             english: {'yes': 'Yes', 'no': 'No', },
