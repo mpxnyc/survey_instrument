@@ -55,7 +55,7 @@ export default function ControlNavigation(props) {
                 </ButtonGroup>
             break;
         case "question":
-            buttonsNavigate = <ButtonGroup variant={variant} aria-label="outlined button group">
+            buttonsNavigate = <ButtonGroup variant={variant} aria-label="outlined button group" sx={{backgroundColor: "transparent"}}>
                 <Button variant={variant}   onClick={handlePreviousQuestion}  disabled={backButtonDisabled}><SkipPreviousIcon/></Button>
                 <Button variant={variant}   onClick={handleNextQuestion}      disabled={forwardButtonDisabled}><SkipNextIcon/></Button>
             </ButtonGroup>
@@ -71,9 +71,9 @@ export default function ControlNavigation(props) {
             </Box>
             break;
         default :
-            buttonsNavigate = <ButtonGroup variant={variant} color={color} aria-label="outlined button group">
-                <Button variant={variant} color={color} onClick={handlePreviousQuestion}  disabled={backButtonDisabled}><SkipPreviousIcon/></Button>
-                <Button variant={variant} color={color} onClick={handleNextQuestion}      disabled={forwardButtonDisabled}><SkipNextIcon/></Button>
+            buttonsNavigate = <ButtonGroup variant={variant} aria-label="outlined button group" >
+                <Button  color={color} onClick={handlePreviousQuestion}  disabled={backButtonDisabled}><SkipPreviousIcon/></Button>
+                <Button  color={color} onClick={handleNextQuestion}      disabled={forwardButtonDisabled}><SkipNextIcon/></Button>
             </ButtonGroup>
     }
 
@@ -84,6 +84,7 @@ export default function ControlNavigation(props) {
             direction="column"
             justifyContent="center"
             alignItems="center"
+            sx={{backgroundColor: "transparent"}}
         >
 
             {buttonsNavigate}
