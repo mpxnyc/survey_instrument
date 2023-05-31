@@ -58,9 +58,13 @@ const symptomsList = {
 
 export const questionnaire = {
     'ordering': [
+        'welcome',
         'prior',
+        'giveUserName',
+        'cantFindUserName',
         'age',
         'consentStudy',
+        'assignedUserName',
         'home',
         'race',
         'groupSex',
@@ -110,6 +114,19 @@ export const questionnaire = {
         retrieveId: ['giveUserName'],
         surveyComplete: 'thankYou',
         surveyIneligible: 'ineligible'
+    },
+    'assignedUserName': {
+        question: {
+            english: "We will provide you with a unique code. This code will help us identify you as a survey participant. If you receive a message to take this survey after today, you might be asked to enter it.",
+            spanish: "SP We will provide you with a unique code. This code will help us identify you as a survey participant. If you receive a message to take this survey after today, you might be asked to enter it."
+        },
+        options: {
+            english: {},
+            spanish: {}
+        },
+        questionType: "plaintext",
+        skipLogic: {question: "", value: "", equals: false},
+        displayLogic: {question: "", value: "", equals: false}
     },
     'buttons': {
         'take_survey': {
@@ -169,7 +186,18 @@ export const questionnaire = {
         questionType: "radio",
         ineligibleCondition: '_under_18'
     },
-
+    'cantFindUserName': {
+        question: {
+            english: "We can't find the secret code you entered.",
+            spanish: "SP We can't find the secret code you entered."
+        },
+        options: {
+            english: {'retry': 'Retry entering secret code', 'forgot': 'I forgot my secret code'},
+            spanish: {'retry': 'SP Retry entering secret code', 'forgot': 'Sp I forgot my secret code'},
+        },
+        questionType: "radio",
+        skipLogic: {question: "prior", value: "no", equals: false},
+    },
     'consentStudy': {
         heading: {
             english: "Informed Consent MPX NYC",
@@ -209,7 +237,7 @@ export const questionnaire = {
     },
     'contactEmail': {
         question: {
-            english: "What is your email address?",
+            english: "What is your email?",
             spanish: "¿Cuál es tu email?"
         },
         options: {
@@ -217,7 +245,7 @@ export const questionnaire = {
             spanish: {"_": "email"}
         },
         questionType: "plaintext",
-        skipLogic: {question: "contactMe", value: "yes", equals: false}
+        skipLogic: {question: "contactMe", value: "yes", equals: true}
     },
     'contactMe': {
         question: {
@@ -308,19 +336,6 @@ export const questionnaire = {
             }
         },
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
-    },
-    'getUserName': {
-        question: {
-            english: "We will provide you with a unique code. This code will help us identify you as a survey participant. If you receive a message to take this survey after today, you might be asked to enter it.",
-            spanish: "Te vamos a dar un código único. Este código nos ayudará a identificarte como participante de la encuesta. Si recibes un mensaje para contestar esta encuesta después de hoy, tal vez se te pedirá que pongas el código."
-        },
-        options: {
-            english: {},
-            spanish: {}
-        },
-        questionType: "plaintext",
         skipLogic: {question: "", value: "", equals: false},
         displayLogic: {question: "", value: "", equals: false}
     },
@@ -1659,6 +1674,21 @@ export const questionnaire = {
             spanish: ""
         },
         questionType: "sharedialog"
-    }
+    },
+    'welcome': {
+        heading: {
+            english: "Welcome to MPX NY!",
+            spanish: "SP Welcome to MPX NY!"
+        },
+        question: {
+            english: "It looks like you participated already. Is this your secret code?",
+            spanish: "SP It looks like you participated already. Is this your secret code?"
+        },
+        options: {
+            english: {'yes': 'Yes', 'no': 'No', },
+            spanish: {'yes': 'Yes', 'no': 'No', },
+        },
+        questionType: "radio_with_username_display"
+    },
 }
 
