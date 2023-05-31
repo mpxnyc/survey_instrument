@@ -1112,7 +1112,7 @@ export const questionnaire = {
     },
     'placesVax1': {
         questionType: "map",
-        mapQuestionDetail: "placesGSDetail",
+        mapQuestionDetail: 'placesVax1Detail',
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesVax1Instructions",
         mapQuestionOrder: ['mpxVax1Date'],
@@ -1139,9 +1139,28 @@ export const questionnaire = {
         questionType: "confirm",
         body: removePinQuestionBody
     },
+    'placesVax1Detail': {
+        questionType: "instruction",
+        heading: {
+            english: "",
+            spanish: ""
+        },
+        body: {
+            english: [
+                "Use the search bar to search for a neighborhood, place name, or address.",
+                "You can drag the map and zoom in and out",
+                "Tap on the location of your home and a marker will show the location on the map"
+            ],
+            spanish: [
+                "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
+                "Puedes arrastrar el mapa y hacerle zoom hacia adentro o afuera",
+                "Señala la ubicación de tu casa y aparecerá un marcador en esa ubicación dentro del mapa."
+            ],
+        }
+    },
     'placesVax2': {
         questionType: "map",
-        mapQuestionDetail: "placesGSDetail",
+        mapQuestionDetail: "placesVax2Detail",
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesVax2Instructions",
         mapQuestionOrder: ['mpxVax2Date'],
@@ -1168,9 +1187,28 @@ export const questionnaire = {
         questionType: "confirm",
         body: removePinQuestionBody
     },
+    'placesVax2Detail': {
+        questionType: "instruction",
+        heading: {
+            english: "",
+            spanish: ""
+        },
+        body: {
+            english: [
+                "Use the search bar to search for a neighborhood, place name, or address.",
+                "You can drag the map and zoom in and out",
+                "Tap on the location of your home and a marker will show the location on the map"
+            ],
+            spanish: [
+                "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
+                "Puedes arrastrar el mapa y hacerle zoom hacia adentro o afuera",
+                "Señala la ubicación de tu casa y aparecerá un marcador en esa ubicación dentro del mapa."
+            ],
+        }
+    },
     'placesUsualCare': {
         questionType: "map",
-        mapQuestionDetail: "placesGSDetail",
+        mapQuestionDetail: "placesUsualCareDetail",
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesUsualCareInstructions",
         mapQuestionOrder: [],
@@ -1197,9 +1235,29 @@ export const questionnaire = {
         questionType: "confirm",
         body: removePinQuestionBody
     },
+    'placesUsualCareDetail': {
+        questionType: "instruction",
+        heading: {
+            english: "",
+            spanish: ""
+        },
+        body: {
+            english: [
+                "Use the search bar to search for a neighborhood, place name, or address.",
+                "You can drag the map and zoom in and out",
+                "Tap on the location of your home and a marker will show the location on the map"
+            ],
+            spanish: [
+                "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
+                "Puedes arrastrar el mapa y hacerle zoom hacia adentro o afuera",
+                "Señala la ubicación de tu casa y aparecerá un marcador en esa ubicación dentro del mapa."
+            ],
+        }
+    },
+
     'placesOptimalCare': {
         questionType: "map",
-        mapQuestionDetail: "placesGSDetail",
+        mapQuestionDetail: "placesOptimalCareDetail",
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesOptimalCareInstructions",
         mapQuestionOrder: [],
@@ -1225,6 +1283,25 @@ export const questionnaire = {
     'placesOptimalCareMapRemovePinQuestion': {
         questionType: "confirm",
         body: removePinQuestionBody
+    },
+    'placesOptimalCareDetail': {
+        questionType: "instruction",
+        heading: {
+            english: "",
+            spanish: ""
+        },
+        body: {
+            english: [
+                "Use the search bar to search for a neighborhood, place name, or address.",
+                "You can drag the map and zoom in and out",
+                "Tap on the location of your home and a marker will show the location on the map"
+            ],
+            spanish: [
+                "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
+                "Puedes arrastrar el mapa y hacerle zoom hacia adentro o afuera",
+                "Señala la ubicación de tu casa y aparecerá un marcador en esa ubicación dentro del mapa."
+            ],
+        }
     },
     'placesMostTime': {
         questionType: "map",
@@ -1341,6 +1418,7 @@ export const questionnaire = {
         questionType: "confirm",
         body: removePinQuestionBody
     },
+
     'prior': {
         question: {
             english: "Have you taken the MPX NYC survey this year (2023)?",
