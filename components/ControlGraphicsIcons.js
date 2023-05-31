@@ -143,8 +143,8 @@ export default function RandomIcon(props) {
 
     const {selected, size} = props;
 
-    const iconsSelected   = [<Eggplant key={1} selected={true} size={size}/>,   <Bear key={2} selected={true} size={size}/>,  <Devil key={3} selected={true} size={size}/>,   <Heart key={4} selected={true} size={size}/>,   <Peach key={5} selected={true} size={size}/>,   <Tulip key={6} selected={true} size={size}/>,   <Taco key={7} selected={true} size={size}/>]
-    const iconsUnSelected = [<Eggplant key={1} selected={false} size={size}/>,  <Bear key={2} selected={false} size={size}/>, <Devil key={3} selected={false} size={size}/>,  <Heart key={4} selected={false} size={size}/>,  <Peach key={5} selected={false} size={size}/>,  <Tulip key={6} selected={false} size={size}/>,  <Taco key={7} selected={false} size={size}/>]
+    const iconsSelected   = [<Eggplant key={1} selected={true} size={size}/>,   <Bear key={2} selected={true} size={size}/>,  <Devil key={3} selected={true} size={size}/>,     <Taco key={7} selected={true} size={size}/>]
+    const iconsUnSelected = [<Eggplant key={1} selected={false} size={size}/>,  <Bear key={2} selected={false} size={size}/>, <Devil key={3} selected={false} size={size}/>,  <Taco key={7} selected={false} size={size}/>]
 
 
     const [chosenIconIndex, setChosenIconIndex] = useState(Math.floor(Math.random() * iconsSelected.length))

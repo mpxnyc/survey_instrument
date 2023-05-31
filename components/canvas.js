@@ -4,7 +4,7 @@ import CanvasQuestion from "./canvasQuestion";
 import {getAvailableQuestions} from "../lib/utilityFunctions";
 import ControlNavigation from "./ControlNavigation";
 import {getQuestionFormat} from "../lib/questionFormats";
-import {CardMedia, Dialog, FormLabel, Stack} from "@mui/material";
+import {Card, CardMedia, Dialog, FormLabel, Paper, Stack} from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -13,6 +13,7 @@ import theme from "../const/theme";
 import Image from "next/image";
 import Unicorn from "../const/graphics/MPX_unicorn.svg";
 import {config} from "../const/config";
+import RandomIcon, {Droplets, Peach} from "./ControlGraphicsIcons";
 
 
 export default function Canvas(props) {
@@ -212,9 +213,19 @@ export default function Canvas(props) {
 
 
 
-    const questionHeader = questionType === "map" ?
-        (questionCurrentMap && questionnaire[questionCurrentMap] && questionnaire[questionCurrentMap].question && questionnaire[questionCurrentMap].question[language]) :
-        (questionCurrent    && questionnaire[questionCurrent]    && questionnaire[questionCurrent].question    && questionnaire[questionCurrent].question[language])
+    let questionHeader
+
+    switch (questionType) {
+        case 'map':
+            questionHeader = questionCurrentMap && questionnaire[questionCurrentMap] && questionnaire[questionCurrentMap].question && questionnaire[questionCurrentMap].question[language]
+            break;
+        case 'radio_with_username_display':
+            questionHeader = ""
+            break;
+        default:
+            questionHeader = questionCurrent    && questionnaire[questionCurrent]    && questionnaire[questionCurrent].question    && questionnaire[questionCurrent].question[language]
+
+    }
 
     const backButtonDisabled    = questionType === "map" ? questionHistoryMap.length === 0 : questionHistory.length === 0
     const forwardButtonDisabled = questionType === "map" ? false : questionFuture.length === 0
@@ -227,13 +238,18 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
             open           = {dialogOpen}
             elevation      = {10}
             hideBackdrop   = {true}
-            PaperProps={{sx: {backgroundColor: "transparent", border: 3, borderColor: colorText, borderRadius: 5} }}
+            PaperProps={{sx: {backgroundColor: "transparent", border: 1, borderColor: config.colorText, borderRadius: 5} }}
             onClose={handleCloseDialog}
 
         >
+
+
+
             <Box
             sx={{backgroundColor: config.colorBackground}}
             >
+
+
                 <Box
                     elevation={0}
                     justifyItems="center"

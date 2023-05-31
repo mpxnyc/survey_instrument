@@ -23,6 +23,7 @@ export default async function handler(req,resp) {
 
     } catch (e) {
         //console.log(e)
+        resp.status(400).json({result: "could not find cookie"})
     }
 
 }

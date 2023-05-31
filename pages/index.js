@@ -4,7 +4,9 @@ import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
 import {useRouter} from "next/router";
 import Peaches from '../public/peaches.svg'
-import Beach from '../public/beach.png'
+import Hearts from '../public/Asset 2.svg'
+import MpxIcon from '../public/Asset 6.png'
+
 
 import {questionnaire} from "../const/questionnaire";
 import {config} from "../const/config";
@@ -13,12 +15,15 @@ import Canvas from "../components/canvas";
 import CanvasMap from "../components/canvasMap";
 import CanvasViralGame from "../components/canvasViralGame";
 
-import {createDataShell, getAvailableQuestions} from "../lib/utilityFunctions";
+import {arrayRange, createDataShell, getAvailableQuestions} from "../lib/utilityFunctions";
 import services from "../lib/services";
 import Image from "next/image";
 import {InputCalendarEntry} from "../components/InputCalendarEntry";
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import RandomIcon, {Droplets, Eggplant, Peach, Unicorn} from "../components/ControlGraphicsIcons";
+import {Grid} from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 
 
@@ -165,9 +170,11 @@ export default function Index() {
 
 
 
+      //if we do have a cookie, subit the cookie when the time is right. Or also if user gives us username
+      questionnaire.milestones.retrieveId.includes(questionCurrent) && surveyData[questionCurrent] !== "no" && triggerSubmitCookie(surveyData);
 
       //if we dont have a cookie, assign id when the time is right
-        !surveyData.cookiesUsername && questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName && triggerAssignId()
+      questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName && triggerAssignId()
 
 
     if (questionnaire[questionCurrent].questionType === "checkbox") {
@@ -346,11 +353,36 @@ export default function Index() {
 
 
     async function triggerSubmitCookie(data) {
+
       console.log("submit cookie data", data)
         busySaving = true;
+
+      if (questionCurrent !== "welcome") data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName] = data[questionCurrent]
+
         const cookieResponse = await services.submitCookie(data)
 
-        console.log("submit cookie data response", await cookieResponse.data)
+        const {public_id: publicId, lastQuestion} = cookieResponse.data.result
+
+        console.log("publicId", publicId)
+        console.log("lastQuestion", lastQuestion)
+
+        const focusQuestion = lastQuestion === "" ? "consentStudy" : lastQuestion
+
+        handleUpdateSurveyData("userName", data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName])
+        handleUpdateSurveyData("publicId", publicId)
+        handleUpdateSurveyData("lastQuestion", focusQuestion)
+
+
+
+        setQuestionCurrent(
+            (oldCurrent) => {
+                setQuestionHistory([]);
+                const availableQuestions = getAvailableQuestions(data, focusQuestion, [], questionnaire.ordering)
+                setQuestionFuture(availableQuestions)
+                return focusQuestion
+            }
+        )
+
         busySaving = false;
 
     }
@@ -390,8 +422,6 @@ export default function Index() {
 
           console.log("initial data", initialData)
 
-           cookiesUserName && triggerSubmitCookie(initialData)
-
           setSurveyData(
               (current) => {
                   return ({...current, ...initialData})
@@ -422,19 +452,29 @@ export default function Index() {
 
 
 
-
+const icon = <Droplets selected size={40}/>
 
   return (
 
-      <Box maxWidth maxHeight sx={{backgroundColor: "white", height: "100%", width: "100%", position: "absolute", overflow: "clip"}} >
+      <Box maxWidth maxHeight sx={{backgroundColor: "#FF99C5", height: "100%", width: "100%", position: "absolute", overflow: "clip"}} >
+
+
+
+          <Grid container direction={"row"} sx={{display: "flex", alignContent: "center", alignItems: "center", justifyContent: "center", justifyItems: "center", justifySelf: "center", alignSelf: "center"}}>
+              {arrayRange(1,500,1).map(item => <Grid sm={0.1} item maxWidth sx={{display: "flex", margin: 5, alignContent: "center", alignItems: "center", justifyContent: "center", justifyItems: "center", justifySelf: "center", alignSelf: "center"}}>{icon}</Grid>)}
+          </Grid>
+
+
 
           <Box
               height={"100%"}
               width={"100%"}
 
-          sx={{opacity: 0.5, objectFit: "cover"}}>
-              <Image src={Beach}/>
+          sx={{opacity: 1, objectFit: "fill", justifyContent: "center", display: "flex"}}>
+              <Image src={Hearts}/>
           </Box>
+
+
 
 
 
@@ -501,3 +541,5 @@ export default function Index() {
 
   );
 }
+
+
