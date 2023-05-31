@@ -480,8 +480,8 @@ export const questionnaire = {
     'homeDetail': {
         questionType: "instruction",
         heading: {
-            english: "Group Sex",
-            spanish: "Sexo grupal"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
@@ -499,8 +499,8 @@ export const questionnaire = {
     'homeSafety': {
         questionType: "instruction",
         heading: {
-            english: "Group Sex",
-            spanish: "Sexo grupal"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
@@ -913,8 +913,8 @@ export const questionnaire = {
     'placesGSDetail': {
         questionType: "instruction",
         heading: {
-            english: "Group Sex",
-            spanish: "Sexo grupal"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
@@ -934,8 +934,8 @@ export const questionnaire = {
     'placesGSSafety': {
         questionType: "instruction",
         heading: {
-            english: "Group Sex",
-            spanish: "Sexo grupal"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
@@ -951,8 +951,8 @@ export const questionnaire = {
     'placesGSInstructions': {
         questionType: "instruction",
         heading: {
-            english: "Group Sex",
-            spanish: "Group Sex"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
@@ -981,8 +981,8 @@ export const questionnaire = {
     'placesHookupDetail': {
         questionType: "instruction",
         heading: {
-            english: "Group Sex",
-            spanish: "Group Sex"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
@@ -1002,8 +1002,8 @@ export const questionnaire = {
     'placesHookupSafety': {
         questionType: "instruction",
         heading: {
-            english: "Group Sex",
-            spanish: "Sexo grupal"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
@@ -1239,8 +1239,8 @@ export const questionnaire = {
     'placesMostTimeDetail': {
         questionType: "instruction",
         heading: {
-            english: "Group Sex",
-            spanish: "Sexo grupal"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
@@ -1260,8 +1260,8 @@ export const questionnaire = {
     'placesMostTimeSafety': {
         questionType: "instruction",
         heading: {
-            english: "Group Sex",
-            spanish: "Sexo grupal"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
