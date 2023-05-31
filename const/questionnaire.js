@@ -82,8 +82,8 @@ const riskReductionList =  {
                 'topping': ' Siendo activo',
                 'bottoming': ' Siendo pasivo',
                 'using_condoms': ' Usando condones',
-            'group_sex': 'SP Having group sex',
-            'new_partners': 'SP Having sex with new partners',
+            'group_sex': 'Tener sexo en grupo',
+            'new_partners': 'Tener sexo con nuevas parejas',
                 'any': ' La cantidad de sexo en general '
         },
         columns: {
@@ -92,6 +92,11 @@ const riskReductionList =  {
                 'increased': 'Más'
         }
     },
+}
+
+const removePinQuestionBody = {
+    english: ["Would you like to remove this place?"],
+    spanish: ["¿Quieres eliminar este lugar?"]
 }
 
 export const questionnaire = {
@@ -156,7 +161,7 @@ export const questionnaire = {
     'assignedUserName': {
         question: {
             english: "We will provide you with a unique code. This code will help us identify you as a survey participant. If you receive a message to take this survey after today, you might be asked to enter it.",
-            spanish: "SP We will provide you with a unique code. This code will help us identify you as a survey participant. If you receive a message to take this survey after today, you might be asked to enter it."
+            spanish: "Le proporcionaremos un código único. Este código nos ayudará a identificarlo como participante de la encuesta. Si recibe un mensaje para realizar esta encuesta después de hoy, es posible que se le solicite que la ingrese."
         },
         options: {
             english: {},
@@ -227,7 +232,7 @@ export const questionnaire = {
     'cantFindUserName': {
         question: {
             english: "We can't find the code you entered.",
-            spanish: "SP We can't find the code you entered."
+            spanish: "No podemos encontrar el código que ingresaste."
         },
         options: {
             english: {'retry': 'Retry secret code', 'forgot': 'Forgot secret code'},
@@ -334,16 +339,6 @@ export const questionnaire = {
         question: {
             english: "In the past 4 weeks, did you test positive for COVID-19?",
             spanish: "En las últimas 4 semanas, ¿tuviste una prueba positiva de COVID-19?"
-        },
-        options: yesNoResponse,
-        questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
-    },
-    'exclusiveUser': {
-        question: {
-            english: "For the next two months, will you be the only person who uses the device you are taking the survey on?",
-            spanish: "En los próximos dos meses, ¿serás la única persona que utilizará el dispositivo electrónico desde el cual estás respondiendo a esta encuesta? "
         },
         options: yesNoResponse,
         questionType: "radio",
@@ -479,7 +474,7 @@ export const questionnaire = {
         mapQuestionDetail: "homeDetail",
         mapQuestionSafety: "homeSafety",
         mapQuestionOrder: [],
-        mapRemovePinQuestion: "mapRemovePinQuestion",
+        mapRemovePinQuestion: "homeMapRemovePinQuestion",
         personPlaceRelation: "LIVES_IN"
     },
     'homeDetail': {
@@ -567,12 +562,9 @@ export const questionnaire = {
             spanish: ["Desafortunadamente no eres elegible para esta encuesta."]
         }
     },
-    "mapRemovePinQuestion": {
+    "homeMapRemovePinQuestion": {
         questionType: "confirm",
-        body: {
-            english: ["Would you like to remove this place?"],
-            spanish: ["SP Would you like to remove this place?"]
-        }
+        body: removePinQuestionBody
     },
     'mpxAnotherQuestion': {
         question: {
@@ -827,139 +819,6 @@ export const questionnaire = {
         questionType: "date",
         skipLogic: {question: "mpxVax2", value: "yes", equals: true}
     },
-    'nudesGameExplain': {
-        questionType: "longtext",
-        heading: {
-            english: "Funky Box",
-            spanish: "La Caja Funky"
-        },
-        subtitle: {
-            english: "A Game by MPX NYC",
-            spanish: "Un Juego por MPX NYC"
-        },
-        body: {
-            english:
-                [
-                    "Hi There!",
-                    "You have probably reached this site because a friend sent you a link about a game.",
-                    "The game is called Funky Box, and it was designed to help us learn more about that other pox that's been going around.",
-                    "All you have to do, for the science, is answer 1 question, and then guess how your friend would answer that same question.",
-                    "You get a prompt to challenge a friend, and you can use that to share with people you have hooked up with and queer and trans friends.",
-                    "Your friend will only see your answer once they provide their answer."
-                ],
-            spanish:
-                [
-                    "¡Hola!",
-                    "Probablemente has encontrado este sitio porque un amigo te mando un link para un juego. ",
-                    "Este juego se llama la Caja Funky, y está diseñado para ayudarnos a entender cómo es que la viruela símica se ha esparcido.",
-                    "Todo lo que tienes que hacer, por la ciencia, es contestar 1 pregunta, y luego adivinar cómo es que tu amigo contestaría a la misma pregunta.",
-                    "Después se te da un mensaje para que invites a un amigo, que puedes usar para compartir con gente con la que has tenido sexo y con amigos queer y trans.",
-                    "Tu amigo sólo verá tu respuesta cuando ellos hayan dado su respuesta."
-                ],
-        }
-
-    },
-    'nudesSendMe': {
-        question: {
-            english: "Under what circumstance would you send nudes of yourself to someone?",
-            spanish: "¿En qué circunstancias mandarías fotos de desnudos tuyas a otra persona?"
-        },
-        options: {
-            english: {
-                'any': 'At any time for any reason!',
-                'ask': 'If they ask',
-                'nda': 'If we have an NDA',
-                'horny': 'If I am horny',
-                'hot': 'If they are extremely hot',
-                'seal': 'If it will seal the deal with a potential hookup',
-                'partner': 'Only if we are partners with each other',
-                'regulars': 'Only if we are regulars',
-                'love': 'Only if we love each other'
-            },
-            spanish: {
-                'any': '¡En cualquier momento por cualquier razón!',
-                'ask': 'Si alguien pregunta',
-                'nda': 'Si temenos un acuerdo de confidencialidad',
-                'horny': 'Si estoy caliente',
-                'hot': 'Si la otra persona es muy sexy',
-                'seal': 'Si eso ayuda a cerrar un acuerdo para tener sexo casual',
-                'partner': 'Sólo con una persona que sea mi pareja',
-                'regulars': 'Sólo con personas con la que tengo sexo de manera regular',
-                'love': 'Sólo si nos amamos'
-            }
-        },
-        questionType: 'checkbox'
-    },
-    'nudesSendFriend': {
-        question: {
-            english: "Under what circumstance would your friend send nudes to somebody else?",
-            spanish: "¿En qué circunstancias tu amigo mandaría fotos de desnudos suyas a otras personas?"
-        },
-        options: {
-            english: {
-                'any': 'At any time for any reason!',
-                'ask': 'If they ask',
-                'nda': 'If they have an NDA',
-                'horny': 'If my friend is horny',
-                'hot': 'If my friends thinks the person is extremely hot',
-                'seal': 'If it will seal the deal between my friend and a potential hookup',
-                'partner': 'If they are partners with each other',
-                'regulars': 'If they are regulars',
-                'love': 'If they love each other'
-            },
-            spanish: {
-                'any': ' ¡En cualquier momento por cualquier razón!',
-                'ask': ' Si le preguntan',
-                'nda': ' Si tienen un acuerdo de confidencialidad',
-                'horny': ' Si mi amigo está caliente',
-                'hot': ' Si mi amigo piensa que la otra persona es muy sexy',
-                'seal': ' Si eso ayuda a cerrar un acuerdo para que mi amigo tenga sexo con otra persona',
-                'partner': ' Sólo con una persona que sea su pareja',
-                'regulars': ' Sólo con personas con las que tiene sexo de manera regular',
-                'love': ' Sólo con una persona que ama'
-            },
-        },
-        questionType: "checkbox",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
-    },
-    'nudeShareSurvey':     {
-        sharePromptHeading: {
-            english: "Now the fun part",
-            spanish: "Ahora la parte divertida"
-        },
-        sharePromptBody: {
-            english: "Ok, so now that your guess is in, you have to share the survey with your friend or hookup and make sure they answer the questions. You won't see each other's answers until you both respond. Remember: It's for science.",
-            spanish: "Ok, ahora que pusiste lo que piensas que tu amigo pondría, tienes que compartir la encuesta con tu amigo o pareja sexual y asegurarte que contesten las preguntas. No verán las respuestas de cada uno hasta que no contesten los dos. Recuerda: Esto es por la ciencia."
-        },
-        shareMessage: {
-            english: "Hey - for science, I need to know under what circumstance you would share nudes. Take this survey quick:",
-            spanish: "Hey – por la ciencia, necesito saber bajo que circunstancias compartirías fotos de desnudos. Toma esta encuesta rápidamente:"
-        },
-        questionType: "sharedialog"
-    },
-    'nudesThankYou': {
-        questionType: "funkypoxdone",
-        heading: {
-            english: "While you're here...",
-            spanish: "Mientras estás aquí..."
-        },
-        body: {
-            english:
-                [
-                    "Thank you for playing funkybox with us!",
-                    "Come back to this page and we will show your friends' answers. Because this is an anonymous survey, you will have to remember which friend is which! We will just give them cute names.",
-                    "In the meantime, please take the MPX NYC Survey. It was made by us for us. The information we collect here has already been used to make positive change in LGBT health.",
-                ],
-            spanish:
-                [
-                    "¡Gracias por jugar la Caja Funky con nosotros!",
-                    "Regresa a esta página y te vamos a mostrar las respuestas de tus amigos. Dado que esta es una encuesta anónima, ¡tendrás que recordar qué amigo es! Sólo les pondremos nombres tiernos.",
-                    "Mientras tanto, por favor contesta la encuesta MPX NYC. Esta encuesta fue hecha por nosotros. La información que recolectamos aquí ya ha sido usada para mejorar la salud LGBT. ",
-                ],
-        }
-
-    },
     'placeCount': {
         question: {
             english: "How many people were hooking up at this place?",
@@ -1108,10 +967,7 @@ export const questionnaire = {
     },
     'placesGSMapRemovePinQuestion': {
         questionType: "confirm",
-        body: {
-            english: ["Would you like to remove this place?"],
-            spanish: ["SP Would you like to remove this place?"]
-        }
+        body: removePinQuestionBody
     },
     'placesHookup': {
         questionType: "map",
@@ -1177,10 +1033,7 @@ export const questionnaire = {
     },
     'placesHookupMapRemovePinQuestion': {
         questionType: "confirm",
-        body: {
-            english: ["Would you like to remove this place?"],
-            spanish: ["SP Would you like to remove this place?"]
-        }
+        body: removePinQuestionBody
     },
     'placeTypeGS': {
         question: {
@@ -1284,10 +1137,7 @@ export const questionnaire = {
     },
     'placesVax1MapRemovePinQuestion': {
         questionType: "confirm",
-        body: {
-            english: ["Would you like to remove this place?"],
-            spanish: ["SP Would you like to remove this place?"]
-        }
+        body: removePinQuestionBody
     },
     'placesVax2': {
         questionType: "map",
@@ -1316,10 +1166,7 @@ export const questionnaire = {
     },
     'placesVax2MapRemovePinQuestion': {
         questionType: "confirm",
-        body: {
-            english: ["Would you like to remove this place?"],
-            spanish: ["SP Would you like to remove this place?"]
-        }
+        body: removePinQuestionBody
     },
     'placesUsualCare': {
         questionType: "map",
@@ -1348,10 +1195,7 @@ export const questionnaire = {
     },
     'placesUsualCareMapRemovePinQuestion': {
         questionType: "confirm",
-        body: {
-            english: ["Would you like to remove this place?"],
-            spanish: ["SP Would you like to remove this place?"]
-        }
+        body: removePinQuestionBody
     },
     'placesOptimalCare': {
         questionType: "map",
@@ -1380,10 +1224,7 @@ export const questionnaire = {
     },
     'placesOptimalCareMapRemovePinQuestion': {
         questionType: "confirm",
-        body: {
-            english: ["Would you like to remove this place?"],
-            spanish: ["SP Would you like to remove this place?"]
-        }
+        body: removePinQuestionBody
     },
     'placesMostTime': {
         questionType: "map",
@@ -1498,10 +1339,7 @@ export const questionnaire = {
     },
     'placesMostTimeMapRemovePinQuestion': {
         questionType: "confirm",
-        body: {
-            english: ["Would you like to remove this place?"],
-            spanish: ["SP Would you like to remove this place?"]
-        }
+        body: removePinQuestionBody
     },
     'prior': {
         question: {

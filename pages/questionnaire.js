@@ -7,6 +7,8 @@ import {config} from "../const/config";
 
 export default function Questionnaire() {
 
+    const missingQuestions = Object.keys(questionnaire).filter((item) => !questionnaire.ordering.includes(item))
+
     const questions = questionnaire.ordering.map(
         (item) => {
             return (
@@ -16,7 +18,11 @@ export default function Questionnaire() {
         }
     )
 
-    return <Box sx={{backgroundColor: "#7F3F98"}}>{questions}</Box>
+
+
+    return <Box sx={{backgroundColor: "#7F3F98"}}>
+        {questions}
+    </Box>
 }
 
 
