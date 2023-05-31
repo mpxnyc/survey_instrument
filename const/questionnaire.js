@@ -1123,8 +1123,8 @@ export const questionnaire = {
     'placesVax1Instructions': {
         questionType: "instruction",
         heading: {
-            english: "Hooking Up",
-            spanish: "Teniendo sexo casual"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
@@ -1152,8 +1152,8 @@ export const questionnaire = {
     'placesVax2Instructions': {
         questionType: "instruction",
         heading: {
-            english: "Hooking Up",
-            spanish: "Teniendo sexo casual"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
@@ -1181,8 +1181,8 @@ export const questionnaire = {
     'placesUsualCareInstructions': {
         questionType: "instruction",
         heading: {
-            english: "Hooking Up",
-            spanish: "Teniendo sexo casual"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
@@ -1210,8 +1210,8 @@ export const questionnaire = {
     'placesOptimalCareInstructions': {
         questionType: "instruction",
         heading: {
-            english: "Hooking Up",
-            spanish: "Teniendo sexo casual"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
