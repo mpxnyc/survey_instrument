@@ -1019,8 +1019,8 @@ export const questionnaire = {
     'placesHookupInstructions': {
         questionType: "instruction",
         heading: {
-            english: "Hooking Up",
-            spanish: "Teniendo sexo casual"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
