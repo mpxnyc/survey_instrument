@@ -235,8 +235,8 @@ export const questionnaire = {
             spanish: "No podemos encontrar el código que ingresaste."
         },
         options: {
-            english: {'retry': 'Retry secret code', 'forgot': 'Forgot secret code'},
-            spanish: {'retry': 'SP Retry secret code', 'forgot': 'SP Forgot secret code'},
+            english: {'retry': 'Retry code', 'forgot': 'Forgot code'},
+            spanish: {'retry': 'Código de reintento', 'forgot': 'Olvidé el código'},
         },
         questionType: "radio",
         skipLogic: {question: "prior", value: "no", equals: false},
@@ -604,39 +604,7 @@ export const questionnaire = {
             english: "How did your sex life change when you first learned about MPOX?",
             spanish: "¿Cómo cambió tu vida sexual después de que supiste que tenías viruela símica (MPOX)? "
         },
-        options: {
-            english: {
-                rows: {
-                    'oral_give': 'Giving Oral Sex',
-                    'oral_receive': 'Getting Oral Sex',
-                    'topping': 'Topping',
-                    'bottoming': 'Bottoming',
-                    'using_condoms': 'Using Condoms',
-                    'any': 'Overall amount of Sex'
-
-                },
-                columns: {
-                    'decreased': 'Less',
-                    'no_change': 'Same',
-                    'increased': 'More'
-                }
-            },
-            spanish: {
-                rows: {
-                    'oral_give': ' Dando sexo oral',
-                    'oral_receive': ' Recibiendo sexo oral',
-                    'topping': ' Siendo activo',
-                    'bottoming': ' Siendo pasivo',
-                    'using_condoms': ' Usando condones',
-                    'any': ' La cantidad de sexo en general '
-                },
-                columns: {
-                    'decreased': 'Menos',
-                    'no_change': 'Igual',
-                    'increased': 'Más'
-                }
-            },
-        },
+        options: riskReductionList,
         questionType: "radiogrid"
     },
     'mpxRiskChange2023': {
