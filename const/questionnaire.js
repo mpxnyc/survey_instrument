@@ -1354,8 +1354,8 @@ export const questionnaire = {
     'placesMostTimeInstructions': {
         questionType: "instruction",
         heading: {
-            english: "Most Time",
-            spanish: "Most Time"
+            english: "",
+            spanish: ""
         },
         body: {
             english: [
