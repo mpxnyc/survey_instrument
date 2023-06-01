@@ -143,7 +143,6 @@ export default function Index() {
 
   const handleNextQuestion = () => {
 
-
       if (surveyData[questionCurrent] && (surveyData[questionCurrent] === questionnaire[questionCurrent].exitCondition)) {
 
           setQuestionCurrent(
@@ -167,8 +166,6 @@ export default function Index() {
 
           return
       }
-
-
 
       //if we do have a cookie, subit the cookie when the time is right. Or also if user gives us username
       questionnaire.milestones.retrieveId.includes(questionCurrent) && surveyData[questionCurrent] !== "no" && triggerSubmitCookie(surveyData);

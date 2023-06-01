@@ -154,7 +154,7 @@ export const questionnaire = {
     ],
     'milestones': {
         assignId: ["consentStudy"],
-        retrieveId: ['giveUserName'],
+        retrieveId: ['welcome'],
         surveyComplete: 'thankYou',
         surveyIneligible: 'ineligible'
     },
@@ -382,7 +382,7 @@ export const questionnaire = {
             spanish: {}
         },
         questionType: "plaintext",
-        skipLogic: {question: "", value: "", equals: false},
+        skipLogic: {question: "prior", value: "yes", equals: true},
         displayLogic: {question: "", value: "", equals: false}
     },
     'groupSex': {
@@ -1222,7 +1222,6 @@ export const questionnaire = {
             ],
         }
     },
-
     'placesOptimalCare': {
         questionType: "map",
         mapQuestionDetail: "placesOptimalCareDetail",
@@ -1386,7 +1385,6 @@ export const questionnaire = {
         questionType: "confirm",
         body: removePinQuestionBody
     },
-
     'prior': {
         question: {
             english: "Have you taken the MPX NYC survey this year (2023)?",
