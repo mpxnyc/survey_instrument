@@ -452,11 +452,11 @@ export default function Index() {
 
 
 
-const icon = <Droplets selected size={40}/>
+const icon = <Peach selected size={40}/>
 
   return (
 
-      <Box maxWidth maxHeight sx={{backgroundColor: "#FF99C5", height: "100%", width: "100%", position: "absolute", overflow: "clip"}} >
+      <Box maxWidth maxHeight sx={{backgroundColor: "#ffeda0", height: "100%", width: "100%", position: "absolute", overflow: "clip"}} >
 
 
 

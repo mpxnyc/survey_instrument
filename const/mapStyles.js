@@ -9,7 +9,7 @@ export const mapStyles = [
                 "saturation": 36
             },
             {
-                "color": "#333333"
+                "color": "#000000"
             },
             {
                 "lightness": 40
@@ -78,7 +78,7 @@ export const mapStyles = [
                 "visibility": "on"
             },
             {
-                "color": "#F73C95"
+                "color": "#000000"
             }
         ]
     },
@@ -102,7 +102,7 @@ export const mapStyles = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#C5EFFF"
+                "color": "#FFCD2E"
             },
             {
                 "lightness": 20
@@ -117,7 +117,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#F73C95"
+                "color": "#000000"
             },
             {
                 "weight": "5.00"
@@ -156,7 +156,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#F73C95"
+                "color": "#000000"
             }
         ]
     },
@@ -180,7 +180,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#F73C95"
+                "color": "#000000"
             }
         ]
     },
@@ -192,7 +192,7 @@ export const mapStyles = [
                 "visibility": "off"
             },
             {
-                "color": "#ff0000"
+                "color": "#ffffff"
             }
         ]
     },
@@ -225,7 +225,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#F73C95"
+                "color": "#5D207A"
             }
         ]
     },
@@ -288,7 +288,7 @@ export const mapStyles = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": "#FFAA7B"
             },
             {
                 "lightness": 16
@@ -300,7 +300,7 @@ export const mapStyles = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": "#FFAA7B"
             },
             {
                 "lightness": 19
@@ -312,7 +312,7 @@ export const mapStyles = [
         "elementType": "labels",
         "stylers": [
             {
-                "color": "#ff0000"
+                "color": "#000000"
             },
             {
                 "visibility": "off"
@@ -324,7 +324,7 @@ export const mapStyles = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#FF99C5"
+                "color": "#ffffff"
             },
             {
                 "lightness": 17

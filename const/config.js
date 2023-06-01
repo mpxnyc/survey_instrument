@@ -2,7 +2,7 @@ import {mapStyles} from "./mapStyles";
 
 
 export const config = {
-    testing: true,
+    testing: false,
     saveThrottleDuration: 1000*10,
     colorBackground: "#C5EFFF",
     colorText: "#000000",
