@@ -10,12 +10,22 @@ import {config} from "../const/config";
 export default function OutputUserNameDisplay(props) {
     const {data, handleUpdateData, questionName, language, colorBackground, colorText}= props;
 
-    return (
-        <Card sx={{backgroundColor: colorText, margin: 3}}>
-            <Typography variant={"h4"} align={"center"} color={colorBackground}>
-                {data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName]}
-            </Typography>
+    const noNewUserName = !data[config.systemGeneratedVariables.variableNameForSurveyDataUserName] || data[config.systemGeneratedVariables.variableNameForSurveyDataUserName] === ""
 
-        </Card>
+    return (
+        <Box>
+            <Typography variant={"body1"} align={"center"} color={colorText}>{questionnaire[questionName].question[language]}</Typography>
+            <Card sx={{backgroundColor: colorText, margin: 3}}>
+                <Typography variant={"h4"} align={"center"} color={colorBackground}>
+
+                    { noNewUserName ?
+                        data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName] :
+                        data[config.systemGeneratedVariables.variableNameForSurveyDataUserName]
+                        }
+                </Typography>
+
+            </Card>
+        </Box>
+
     );
 }

@@ -167,7 +167,7 @@ export const questionnaire = {
             english: {},
             spanish: {}
         },
-        questionType: "plaintext",
+        questionType: "radio_with_username_display",
         skipLogic: {question: "", value: "", equals: false},
         displayLogic: {question: "", value: "", equals: false}
     },

@@ -15,12 +15,12 @@ export default async function handler(req,resp) {
 
     try {
         data = await axios.post(endpoint, {}, config);
-        resp.status(200).json(data.data).end()
+        resp.status(200).json(data.data)
 
     } catch (e) {
         console.log("assign id failed")
         console.log(e)
-        resp.status(400).end()
+        resp.status(400)
 
     }
 
