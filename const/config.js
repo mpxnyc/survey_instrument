@@ -70,7 +70,8 @@ export const config = {
         variableNameForSurveyDataCensusTract: "censusTract",
         variableNameForLastQuestion: "lastQuestion",
         variableNameForSurveyDataVirusReceivedId: "receivedVirus",
-        variableNameForSurveyDataVirusCreatedId: "createdVirus"
+        variableNameForSurveyDataVirusCreatedId: "createdVirus",
+        variableNameForSurveyDataSessionId: "sessionId"
     },
     sensitiveSystemGeneratedVariables: [
         "variableNameForSurveyDataReferralType",

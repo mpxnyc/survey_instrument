@@ -358,16 +358,20 @@ export default function Index() {
 
         const cookieResponse = await services.submitCookie(data)
 
-        const {public_id: publicId, lastQuestion} = cookieResponse.data.result
+        console.log("coockie response", cookieResponse)
+
+        const {public_id: publicId, lastQuestion, sessionId} = cookieResponse.data.result
 
         console.log("publicId", publicId)
         console.log("lastQuestion", lastQuestion)
+        console.log("sessionId", sessionId)
 
         const focusQuestion = lastQuestion === "" ? "consentStudy" : lastQuestion
 
         handleUpdateSurveyData("userName", data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName])
         handleUpdateSurveyData("publicId", publicId)
         handleUpdateSurveyData("lastQuestion", focusQuestion)
+        handleUpdateSurveyData("sessionId", sessionId)
 
 
 
@@ -412,7 +416,8 @@ export default function Index() {
               [config.systemGeneratedVariables.variableNameForSurveyDataReferralType]: referralTypeDictionary[referralTypeParameterValue],
               [config.systemGeneratedVariables.variableNameForSurveyDataReferrerId]: referralIdParameterValue,
               [config.systemGeneratedVariables.variableNameForSurveyDataVirusReceivedId]: viralQuestionIdParameterValue,
-              [config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName]: cookiesUserName
+              [config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName]: cookiesUserName,
+              [config.systemGeneratedVariables.variableNameForSurveyDataSessionId]: 1
           }
 
           const initialLanguage = initialData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage]
