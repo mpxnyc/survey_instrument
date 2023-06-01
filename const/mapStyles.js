@@ -9,7 +9,7 @@ export const mapStyles = [
                 "saturation": 36
             },
             {
-                "color": "#000000"
+                "color": "#844D28"
             },
             {
                 "lightness": 40
@@ -24,7 +24,7 @@ export const mapStyles = [
                 "visibility": "on"
             },
             {
-                "color": "#ffffff"
+                "color": "#ffeda0"
             },
             {
                 "lightness": 16
@@ -78,7 +78,7 @@ export const mapStyles = [
                 "visibility": "on"
             },
             {
-                "color": "#000000"
+                "color": "#844D28"
             }
         ]
     },
@@ -90,7 +90,7 @@ export const mapStyles = [
                 "visibility": "on"
             },
             {
-                "color": "#ffffff"
+                "color": "#ffeda0"
             },
             {
                 "weight": "5.00"
@@ -117,7 +117,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#000000"
+                "color": "#844D28"
             },
             {
                 "weight": "5.00"
@@ -132,7 +132,7 @@ export const mapStyles = [
                 "visibility": "on"
             },
             {
-                "color": "#ffffff"
+                "color": "#ffeda0"
             },
             {
                 "weight": "5.00"
@@ -156,7 +156,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#000000"
+                "color": "#844D28"
             }
         ]
     },
@@ -180,7 +180,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#000000"
+                "color": "#844D28"
             }
         ]
     },
@@ -216,7 +216,7 @@ export const mapStyles = [
                 "visibility": "off"
             },
             {
-                "color": "#ff0000"
+                "color": "#ffeda0"
             }
         ]
     },
@@ -225,7 +225,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#5D207A"
+                "color": "#844D28"
             }
         ]
     },
@@ -234,7 +234,7 @@ export const mapStyles = [
         "elementType": "labels.text.stroke",
         "stylers": [
             {
-                "color": "#fbfbfb"
+                "color": "#ffeda0"
             },
             {
                 "visibility": "on"
@@ -261,7 +261,7 @@ export const mapStyles = [
         "elementType": "geometry.stroke",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": "#ffeda0"
             },
             {
                 "lightness": 29
@@ -288,7 +288,7 @@ export const mapStyles = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#FFAA7B"
+                "color": "#ffeda0"
             },
             {
                 "lightness": 16
@@ -300,7 +300,7 @@ export const mapStyles = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#FFAA7B"
+                "color": "#ffeda0"
             },
             {
                 "lightness": 19
@@ -324,7 +324,7 @@ export const mapStyles = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": "#ffeda0"
             },
             {
                 "lightness": 17
@@ -336,7 +336,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#000000"
+                "color": "#844D28"
             }
         ]
     }
