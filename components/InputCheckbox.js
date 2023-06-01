@@ -46,8 +46,7 @@ export default function InputCheckbox(props) {
                 {Object.entries(questionnaire[questionName].options[language]).map(
                     (item) => {
 
-                        console.log("name:", item[0])
-                        console.log("checked:", value[item[0]])
+
 
                     return (
                         <FormControlLabel

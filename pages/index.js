@@ -65,7 +65,6 @@ export default function Index() {
           console.log("busySaving", busySaving)
           const result = await services.saveSurvey(data);
           busySaving = false
-          console.log("finishedSaving", busySaving, result)
       }
 
 
@@ -134,7 +133,7 @@ export default function Index() {
 
       if (currentIndex < newIndex) newData.lastQuestion = name;
 
-      console.log("Updated SurveyData", surveyData)
+      console.log("update data in Index/handleUpdateData", newData)
       return newData;
     })
 
@@ -351,20 +350,16 @@ export default function Index() {
 
     async function triggerSubmitCookie(data) {
 
-      console.log("submit cookie data", data)
         busySaving = true;
 
       if (questionCurrent !== "welcome") data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName] = data[questionCurrent]
 
         const cookieResponse = await services.submitCookie(data)
 
-        console.log("coockie response", cookieResponse)
 
         const {public_id: publicId, lastQuestion, sessionId} = cookieResponse.data.result
 
-        console.log("publicId", publicId)
-        console.log("lastQuestion", lastQuestion)
-        console.log("sessionId", sessionId)
+
 
         const focusQuestion = lastQuestion === "" ? "consentStudy" : lastQuestion
 
@@ -426,8 +421,6 @@ export default function Index() {
 
           const initialLanguage = initialData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage]
 
-          console.log("initial data", initialData)
-
           setSurveyData(
               (current) => {
                   return ({...current, ...initialData})
@@ -467,7 +460,7 @@ const icon = <Droplets selected size={40}/>
 
 
           <Grid container direction={"row"} sx={{display: "flex", alignContent: "center", alignItems: "center", justifyContent: "center", justifyItems: "center", justifySelf: "center", alignSelf: "center"}}>
-              {arrayRange(1,500,1).map(item => <Grid sm={0.1} item maxWidth sx={{display: "flex", margin: 5, alignContent: "center", alignItems: "center", justifyContent: "center", justifyItems: "center", justifySelf: "center", alignSelf: "center"}}>{icon}</Grid>)}
+              {arrayRange(1,500,1).map((item, index) => <Grid key={index} sm={0.1} item maxWidth sx={{display: "flex", margin: 5, alignContent: "center", alignItems: "center", justifyContent: "center", justifyItems: "center", justifySelf: "center", alignSelf: "center"}}>{icon}</Grid>)}
           </Grid>
 
 
