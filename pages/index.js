@@ -379,8 +379,10 @@ export default function Index() {
             (oldCurrent) => {
                 setQuestionHistory([]);
                 const availableQuestions = getAvailableQuestions(data, focusQuestion, [], questionnaire.ordering)
+                const displayQuestion = availableQuestions.shift()
+
                 setQuestionFuture(availableQuestions)
-                return focusQuestion
+                return displayQuestion
             }
         )
 
