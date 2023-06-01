@@ -382,6 +382,8 @@ export default function Index() {
                 const displayQuestion = availableQuestions.shift()
 
                 setQuestionFuture(availableQuestions)
+                questionnaire[displayQuestion] && questionnaire[displayQuestion].questionType && questionnaire[displayQuestion].questionType === "map" && setQuestionCurrentMap(questionnaire[displayQuestion].mapQuestionInstruction)
+
                 return displayQuestion
             }
         )
