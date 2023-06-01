@@ -8,6 +8,7 @@ export const config = {
     colorText: "#000000",
     colorButtons: "#41BFFF",
     colorBorder: "#FF99C5",
+    colorWallpaper: "#FF99C5",
     cookieDuration : {
         testing: 60*10,
         production: 60*60*24*29*6

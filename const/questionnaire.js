@@ -78,12 +78,12 @@ const riskReductionList =  {
     spanish: {
         rows: {
             'oral_give': ' Dando sexo oral',
-                'oral_receive': ' Recibiendo sexo oral',
-                'topping': ' Siendo activo',
-                'bottoming': ' Siendo pasivo',
-                'using_condoms': ' Usando condones',
-            'group_sex': 'Tener sexo en grupo',
-            'new_partners': 'Tener sexo con nuevas parejas',
+            'oral_receive': ' Recibiendo sexo oral',
+            'topping': ' Siendo activo',
+            'bottoming': ' Siendo pasivo',
+            'using_condoms': ' Usando condones',
+            'group_sex': 'Teniendo sexo grupal',
+            'new_partners': 'Teniendo sexo con nuevas parejas',
                 'any': ' La cantidad de sexo en general '
         },
         columns: {
@@ -161,7 +161,7 @@ export const questionnaire = {
     'assignedUserName': {
         question: {
             english: "We will provide you with a unique code. This code will help us identify you as a survey participant. If you receive a message to take this survey after today, you might be asked to enter it.",
-            spanish: "Le proporcionaremos un código único. Este código nos ayudará a identificarlo como participante de la encuesta. Si recibe un mensaje para realizar esta encuesta después de hoy, es posible que se le solicite que la ingrese."
+            spanish: "Te proporcionaremos un código único. Este código nos ayudará a identificarte como participante de la encuesta. Si recibes un mensaje para realizar esta encuesta después de hoy, es posible que tengas que ingresar el código."
         },
         options: {
             english: {},
@@ -236,7 +236,7 @@ export const questionnaire = {
         },
         options: {
             english: {'retry': 'Retry code', 'forgot': 'Forgot code'},
-            spanish: {'retry': 'Código de reintento', 'forgot': 'Olvidé el código'},
+            spanish: {'retry': 'Reintentar el código', 'forgot': 'Olvidé el código'},
         },
         questionType: "radio",
         skipLogic: {question: "prior", value: "no", equals: false},
@@ -253,7 +253,7 @@ export const questionnaire = {
         body: {
             english: [
                 "You are being asked to take part in a survey called MPX NYC. This survey is part of the Rapid Epidemiologic Study of Prevalence, Networks, and Demographics of MPOX Infection  (RESPND-MI).",
-                "This research is conducted to learn about MPOX and HIV among gay, bisexual, other men who have sex with men, and transgender people in New York City. Specifically, the RESPND-MI study team is interested in learning about the social and sexual networks that connect individuals in the New York City. You are being asked to participate in this research because you are over the age of 18 and have either been referred to the survey by someone you know or by an advertisement.",
+                "This research is conducted to learn about monkeypox (MPOX) and HIV among gay, bisexual, other men who have sex with men, and transgender people in New York City. Specifically, the RESPND-MI study team is interested in learning about the social and sexual networks that connect individuals in the New York City. You are being asked to participate in this research because you are over the age of 18 and have either been referred to the survey by someone you know or by an advertisement.",
                 "Your participation in this study is voluntary and you may withdraw your participation at any time for any reason. ",
                 "If you take part in this study, you will be asked to answer several questions about your health and sexual behavior and asked to invite friends and past sexual partners to take the survey. The survey will take fewer than five minutes to answer. To facilitate participation, the survey instrument will save a browser cookie containing an anonymous identifier that will be automatically generated. This cookie cannot be used to track your activity on other websites, will contain no personal information, and will expire 6 months after it is saved.",
                 "The possible risks of participating in this study include breach of confidentiality while filling in your response. We recommend taking the survey in a private setting.",
@@ -264,11 +264,11 @@ export const questionnaire = {
             ],
             spanish: [
                 "Te estamos preguntado si quieres contestar una encuesta llamada MPX NYC. Esta encuesta es parte del Estudio Epidemiológico Rápido sobre la Prevalencia, Redes y Demografía de la Infección por Viruela Símica (RESPND-MI).",
-                "Esta investigación se está haciendo para aprender sobre la infección de viruela símica (MPOX) y VIH entre hombres gays, bisexuales y otros hombres que tienen sexo con hombres, y personas transgénero en la Ciudad de Nueva York. Específicamente, el equipo del studio RESPND-MI está interesado en aprender sobre las redes sociales y sexuales que conectan a individuos en la Ciudad de Nueva York. Te estamos pidiendo participar en esta investigación porque tienes 18 años o más, y te ha referido a la encuesta alguien que conoces o por un anuncio.",
-                "Tu participación en este studio es voluntaria y puedes dejar de participar en cualquier momento por cualquier razón." ,
-                "Si tomas parte de este studio, te vamos a hacer varias preguntas sobre tu salud y comportamientos sexuales y vamos a pedir que invites a amigos y parejas sexuales pasadas a que también formen parte de la encuesta. La encuesta te va a tomar menos de cinco minutos. Para facilitar tu participación, la encuesta guardará un cookie del navegador que contiene una identificación anónima que se generará automáticamente. Esta cookie no puede ser usada para rastrear tu actividad en otras páginas web, no contendrá información personal y va a expirar 6 meses después de que haya sido guardada." ,
+                "Esta investigación se está haciendo para aprender sobre la infección de viruela símica (MPOX) y VIH entre hombres gays, bisexuales y otros hombres que tienen sexo con hombres, y personas transgénero en la Ciudad de Nueva York. Específicamente, el equipo del estudio RESPND-MI está interesado en aprender sobre las redes sociales y sexuales que conectan a individuos en la Ciudad de Nueva York. Te estamos pidiendo participar en esta investigación porque tienes 18 años o más, y te ha referido a la encuesta alguien que conoces o un anuncio.",
+                "Tu participación en este estudio es voluntaria y puedes dejar de participar en cualquier momento por cualquier razón.",
+                "Si tomas parte de este estudio, te vamos a hacer varias preguntas sobre tu salud y comportamientos sexuales y vamos a pedir que invites a amigos y parejas sexuales pasadas a que también formen parte de la encuesta. La encuesta te va a tomar menos de cinco minutos. Para facilitar tu participación, la encuesta guardará un cookie del navegador que contiene una identificación anónima que se generará automáticamente. Esta cookie no puede ser usada para rastrear tu actividad en otras páginas web, no contendrá información personal y va a expirar 6 meses después de que haya sido guardada.",
                 "Los posibles riesgos de participar en este studio incluyen una violación de la confidencialidad mientras escribes tus respuestas. Te recomendamos contestar la encuesta en un lugar privado.",
-                "No te podemos prometer ningún beneficio a ti o a otros por formar parte de esta investigación. Sin embargo, posibles beneficios incluyen conocimiento sobre cómo combatir el brote de viruela símica. Para maximizar el beneficio potencial de tu participación en este studio, la información recolectada estará disponible para que investigadores la soliciten en futuros estudios de investigación.",
+                "No te podemos prometer ningún beneficio a ti o a otros por formar parte de esta investigación. Sin embargo, posibles beneficios incluyen conocimiento sobre cómo combatir el brote de viruela símica. Para maximizar el beneficio potencial de tu participación en este estudio, la información recolectada estará disponible para que investigadores la soliciten en futuros estudios de investigación.",
                 "Al apretar el botón de \"->\", estarás dando tu consentimiento para participar en este studio. Puedes declinar participar en cualquier parte del estudio por cualquier razón y finalizar tu participación en cualquier momento.",
                 "Si tienes preguntas sobre este estudio, puedes contactar a Keletso Makofane en el 347-688-4203.",
                 "Gracias de nuevo por tu tiempo y participación."
@@ -292,7 +292,7 @@ export const questionnaire = {
     },
     'contactMe': {
         question: {
-            english: "Would you like to be contacted by the study team for additional questions about MPX? Your contact details will not be linked to your survey responses.",
+            english: "Would you like to be contacted by the study team for additional questions about monkeypox (MPOX)? Your contact details will not be linked to your survey responses.",
             spanish: "¿Te gustaría ser contactado por el equipo de investigación para preguntas adicionales sobre viruela símica (MPOX)? Tu información de contacto no podrá ser vinculada con tus respuestas a la encuesta."
         },
         options: yesNoResponse,
@@ -307,7 +307,7 @@ export const questionnaire = {
         },
         options: {
             english: {'none': 'None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Over 10'},
-            spanish: {'none': 'Ninguna', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Más de 10'}
+            spanish: {'none': 'Ninguno', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Más de 10'}
         },
         questionType: "radio"
     },
@@ -318,7 +318,7 @@ export const questionnaire = {
         },
         options: {
             english: {'none': 'None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Over 10'},
-            spanish: {'none': 'Ninguna', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_o más': 'Más de 10'}
+            spanish: {'none': 'Ninguna', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Más de 10'}
         },
         questionType: "radio",
         skipLogic: {question: "groupSex", value: "yes", equals: true}
@@ -330,7 +330,7 @@ export const questionnaire = {
         },
         options: {
             english: {'none': 'None', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Over 10'},
-            spanish: {'none': 'Ninguna', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_o más': 'Más de 10'}
+            spanish: {'none': 'Ninguna', '_1_2': '1-2', '_3_5': '3-5', '_6_10': '6-10', '10_plus': 'Más de 10'}
         },
         questionType: "radio",
         skipLogic: {question: "groupSex", value: "no", equals: true}
@@ -491,7 +491,7 @@ export const questionnaire = {
             ],
             spanish: [
                 "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
-                "Puedes arrastrar el mapa y hacerle zoom hacia adentro o afuera",
+                "Puedes arrastrar el mapa y hacer zoom hacia adentro o afuera.",
                 "Señala la ubicación de tu casa y aparecerá un marcador en esa ubicación dentro del mapa."
             ],
         }
@@ -533,7 +533,7 @@ export const questionnaire = {
             english: [
                 'To learn how to stop new diseases quickly, we are building a community map of queer and trans people in New York City. This is a giant network connecting friends and hookups.',
                 'Contribute to this effort by sharing the survey with up to 10 friends or hookups (sexual partners) you have communicated with in the past 4 weeks using the button below.',
-                'Each additional person you successfully link will help us to understand how to spread important information quickly when a new infection like MPOX starts.',
+                'Each additional person you successfully link will help us to understand how to spread important information quickly when a new infection like monkeypox (MPOX) starts.',
                 'For those who successfully connect friends, we will provide a free anonymized report summarizing study results for your friend circle.',
                 'Click here to share this survey with queer and trans friends you have communicated with in the past 4 weeks.'
             ].slice(0,2),
@@ -568,7 +568,7 @@ export const questionnaire = {
     },
     'mpxAnotherQuestion': {
         question: {
-            english: "Is there anything else you think is important for us to understand about MPOX?",
+            english: "Is there anything else you think is important for us to understand about monkeypox (MPOX)?",
             spanish: "¿Hay algo que crees que sea importante que nosotros entendamos sobre la viruela símica (MPOX)?"
         },
         options: {
@@ -582,7 +582,7 @@ export const questionnaire = {
     'mpxCare': {
         question: {
             english: "Did you receive care by a medical provider for your symptoms?",
-            spanish: "¿Recibiste cuidado médico de un profesional de la salud en torno a tus símtomas? "
+            spanish: "¿Recibiste cuidado médico de un profesional de la salud en torno a tus síntomas?"
         },
         options: yesNoResponse,
         questionType: "radio",
@@ -591,8 +591,8 @@ export const questionnaire = {
     },
     'mpxDiagnosis': {
         question: {
-            english: "Were you diagnosed with MPOX by a medical provider? ",
-            spanish: "¿Fuiste diagnosticado con viruela símica por un profesional de la salud?"
+            english: "Were you diagnosed with monkeypox (MPOX) by a medical provider? ",
+            spanish: "¿Fuiste diagnosticado con viruela símica (MPOX) por un profesional de la salud?"
         },
         options: yesNoResponse,
         questionType: "radio",
@@ -601,7 +601,7 @@ export const questionnaire = {
     },
     'mpxRiskChangeNoVax': {
         question: {
-            english: "How did your sex life change when you first learned about MPOX?",
+            english: "How did your sex life change when you first learned about monkeypox (MPOX)?",
             spanish: "¿Cómo cambió tu vida sexual después de que supiste que tenías viruela símica (MPOX)? "
         },
         options: riskReductionList,
@@ -617,7 +617,7 @@ export const questionnaire = {
     },
     'mpxRiskChangePreVax1': {
         question: {
-            english: "How did your sex life change after you learned about MPOX but before you got the first dose of MPOX vaccine?",
+            english: "How did your sex life change after you learned about monkyepox (MPOX) but before you got the first dose of MPOX vaccine?",
             spanish: "¿Cómo cambió tu vida sexual después de que aprendiste sobre viruela símica (MPOX) pero antes de que tuvieras tu primera dosis de la vacuna de viruela símica (MPOX)?"
         },
         options: riskReductionList,
@@ -626,7 +626,7 @@ export const questionnaire = {
     },
     'mpxRiskChangePreVax2': {
         question: {
-            english: "How did your sex life change after your first dose and before the second dose of MPOX vaccine?",
+            english: "How did your sex life change after your first dose and before the second dose of monkeypox (MPOX) vaccine?",
             spanish: "¿Cómo cambió tu vida sexual después de la primera dosis y antes de la segunda dosis de la vacuna de viruela símica (MPOX)? "
         },
         options: riskReductionList,
@@ -635,7 +635,7 @@ export const questionnaire = {
     },
     'mpxRiskChangePostVax2': {
         question: {
-            english: "In 2022, how did you change how you have sex after getting both doses of the MPOX vaccine?",
+            english: "In 2022, how did you change how you have sex after getting both doses of the monkeypox (MPOX) vaccine?",
             spanish: "En el 2022, ¿cómo cambiaste la manera en la que tenías sexo despuês de recibir las dos dosis de la vacuna de viruela símica (MPOX)?"
         },
         options: riskReductionList,
@@ -644,7 +644,7 @@ export const questionnaire = {
     },
     'mpxRiskOtherText': {
         question: {
-            english: "Is there anything else you want to tell us about managing the risk of MPOX or other sexually transmitted infections?",
+            english: "Is there anything else you want to tell us about managing the risk of monkeypox (MPOX) or other sexually transmitted infections?",
             spanish: "¿Hay algo más que nos quieras decir sobre cómo manejar el riesgo de viruela símica (MPOX)o de otras infecciones de transmisión sexual?"
         },
         options: {
@@ -657,7 +657,7 @@ export const questionnaire = {
     },
     'mpxRiskReduce': {
         question: {
-            english: "In 2022, did you change your sexual behavior to reduce the chances of getting MPOX?",
+            english: "In 2022, did you change your sexual behavior to reduce the chances of getting monkeypox (MPOX)?",
             spanish: "En el 2022, ¿cambiaste tu comportamiento para reducir la probabilidad de que te diera viruela símica (MPOX)? "
         },
         options: yesNoResponse,
@@ -714,7 +714,7 @@ export const questionnaire = {
     },
     'mpxTest': {
         question: {
-            english: "In the past 4 weeks, did you receive testing for MPOX?",
+            english: "In the past 4 weeks, did you receive testing for monkeypox (MPOX)?",
             spanish: "¿En las últimas 4 semanas te hiciste una prueba de viruela símica (MPOX)?"
         },
         options: yesNoResponse,
@@ -724,7 +724,7 @@ export const questionnaire = {
     },
     'mpxVax1': {
         question: {
-            english: "Have you received at least 1 dose of the MPOX vaccine? ",
+            english: "Have you received at least 1 dose of the monkyepox (MPOX) vaccine? ",
             spanish: "¿Has recibido al menos 1 dosis de la vacuna de viruela símica (MPOX)? "
         },
         options: {
@@ -745,7 +745,7 @@ export const questionnaire = {
     },
     'mpxVax1Date': {
         question: {
-            english: "When were you first vaccinated against MPOX? (If you don't remember, give us your best guess)",
+            english: "When were you first vaccinated against monkyepox (MPOX)? (If you don't remember, give us your best guess)",
             spanish: "¿Cuándo fue que te vacunaste por primera vez en contra de la viruela símica (MPOX)? (Si no te acuerdas, danos tu mejor estimación) "
         },
         options: {
@@ -757,7 +757,7 @@ export const questionnaire = {
     },
     'mpxVax2': {
         question: {
-            english: "Have you received a second dose of the MPOX vaccine? ",
+            english: "Have you received a second dose of the monkeypox (MPOX) vaccine? ",
             spanish: "¿Has recibido una segunda dosis de la vacuna de viruela símica (MPOX)? "
         },
         options: {
@@ -777,7 +777,7 @@ export const questionnaire = {
     },
     'mpxVax2Date': {
         question: {
-            english: "When did you get your second dose of MPOX vaccine? (If you don't remember, give us your best guess)",
+            english: "When did you get your second dose of monkeypox (MPOX) vaccine? (If you don't remember, give us your best guess)",
             spanish: "¿Cuándo recibiste la segunda dosis de la vacuna de viruela símica (MPOX)? (Si no te acuerdas, realiza tu mejor estimación)"
         },
         options: {
@@ -928,7 +928,7 @@ export const questionnaire = {
                 'We will ask a few questions about each place.'
             ],
             spanish: [
-                'Muéstranos dónde has tenido sexo en grupo o contacto físico durante las últimas 4 semanas.',
+                'Muéstranos dónde has tenido sexo grupal o contacto físico durante las 4 semanas pasadas.',
                 'Te vamos a hacer algunas preguntas sobre cada lugar.'
             ],
         }
@@ -1096,10 +1096,10 @@ export const questionnaire = {
         },
         body: {
             english: [
-                'Show us where you got your first MPOX vaccine by tapping on the map.'
+                'Show us where you got your first monkeypox (MPOX) vaccine by tapping on the map.'
             ],
             spanish: [
-                'Muéstranos dónde tuviste tu primera vacuna de viruela símica(MPOX) tocando y señalando en el mapa.'
+                'Muéstranos dónde tuviste tu primera vacuna de viruela símica (MPOX) tocando y señalando en el mapa.'
             ],
         }
     },
@@ -1121,7 +1121,7 @@ export const questionnaire = {
             ],
             spanish: [
                 "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
-                "Puedes arrastrar el mapa y hacerle zoom hacia adentro o afuera",
+                "Puedes arrastrar el mapa y hacer zoom hacia adentro o afuera.",
                 "Señala la ubicación de tu casa y aparecerá un marcador en esa ubicación dentro del mapa."
             ],
         }
@@ -1144,10 +1144,10 @@ export const questionnaire = {
         },
         body: {
             english: [
-                'Show us where you got your second MPOX vaccine by tapping on the map.'
+                'Show us where you got your second monkeypox (MPOX) vaccine by tapping on the map.'
             ],
             spanish: [
-                'Muéstranos dónde tuviste tu segunda vacuna de viruela símica(MPOX) tocando y señalando en el mapa.'
+                'Muéstranos dónde tuviste tu segunda vacuna de viruela símica (MPOX) tocando y señalando en el mapa.'
             ],
         }
     },
@@ -1169,7 +1169,7 @@ export const questionnaire = {
             ],
             spanish: [
                 "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
-                "Puedes arrastrar el mapa y hacerle zoom hacia adentro o afuera",
+                "Puedes arrastrar el mapa y hacer zoom hacia adentro o afuera.",
                 "Señala la ubicación de tu casa y aparecerá un marcador en esa ubicación dentro del mapa."
             ],
         }
@@ -1217,7 +1217,7 @@ export const questionnaire = {
             ],
             spanish: [
                 "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
-                "Puedes arrastrar el mapa y hacerle zoom hacia adentro o afuera",
+                "Puedes arrastrar el mapa y hacer zoom hacia adentro o afuera.",
                 "Señala la ubicación de tu casa y aparecerá un marcador en esa ubicación dentro del mapa."
             ],
         }
@@ -1266,7 +1266,7 @@ export const questionnaire = {
             ],
             spanish: [
                 "Usa la barra de navegación para encontrar tu vecindario, el nombre de un lugar o tu dirección.",
-                "Puedes arrastrar el mapa y hacerle zoom hacia adentro o afuera",
+                "Puedes arrastrar el mapa y hacer zoom hacia adentro o afuera.",
                 "Señala la ubicación de tu casa y aparecerá un marcador en esa ubicación dentro del mapa."
             ],
         }
@@ -1390,7 +1390,7 @@ export const questionnaire = {
     'prior': {
         question: {
             english: "Have you taken the MPX NYC survey this year (2023)?",
-            spanish: "¿Habías tomado la encuesta MPX NYC este año (2023)?"
+            spanish: "¿Has tomado la encuesta MPX NYC este año (2023)?"
         },
         options: yesNoResponse,
         questionType: "radio",
@@ -1524,7 +1524,7 @@ export const questionnaire = {
         },
         question: {
             english: "It looks like you participated already. Is this your code?",
-            spanish: "Parece que ya participaste. ¿Es este tu código?"
+            spanish: "Parece que ya participaste. ¿Este es tu código?"
         },
         options: {
             english: {'yes': 'Yes', 'no': 'No', },
