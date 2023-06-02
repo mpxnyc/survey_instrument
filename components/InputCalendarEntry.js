@@ -6,6 +6,7 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import dayjs from "dayjs";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {LocalizationProvider} from "@mui/x-date-pickers";
+import DatePicker from 'react-date-picker'
 
 
 
@@ -14,7 +15,7 @@ export const InputCalendarEntry = (props) => {
     const [value, setValue] = useState(data[questionName]);
 
     const handleOnChange = (event) => {
-        const date = `${event[`$D`]}-${event[`$M`] + 1}-${event[`$y`]}`
+        const date = dayjs(`${event[`$D`]}-${event[`$M`] + 1}-${event[`$y`]}`)
         setValue(
             () => {
                 handleUpdateData(questionName, date)
