@@ -93,7 +93,7 @@ function QuestionCard(props) {
     const skipDependency     = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.question;
     const skipConnective     = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.equals;
     const skipValue          = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.value;
-    const skipSentence       = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && `Displayed only if '${skipDependency}' is ${skipConnective ? 'equal to' : 'unequal to'} '${skipValue}'`
+    const skipSentence       = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && `Displayed only if '${skipDependency}' is ${skipConnective ? 'equal to' : 'unequal to'} '${skipValue}' or ''`
 
     const skipLogicDisplay   =
         <Card elevation={0} sx={{display: "flex", backgroundColor: "red", alignContent: "center", justifyContent: "center"}}>

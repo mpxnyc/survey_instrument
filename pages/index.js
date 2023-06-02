@@ -102,20 +102,9 @@ export default function Index() {
 
   };
 
-  const triggerFetchLastQuestion = async (data) => {
-    const response = await services.getLastQuestion(data);
-    return response
-  };
 
-  const triggerFetchPublicId = async (data) => {
-    const response = await services.getPublicId(data);
-    return response
-  }
 
-  // const triggerConfirmCookie = async () => {
-  //   console.log("triggered confirm cookie")
-  //   await handleConfirmCookie()
-  // }
+
 
   const handleUpdateSurveyData = (name, value) => {
 
@@ -241,42 +230,6 @@ export default function Index() {
     )
   }
 
-  // const handleConfirmCookie = async () => {
-  //
-  //     console.log("confirming cookie")
-  //     const cookieUserName = surveyData[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName]
-  //
-  //     if (cookieUserName) {
-  //         const payload = {userName: cookieUserName}
-  //         payload[config.systemGeneratedVariables.variableNameForSurveyDataReferrerId] = surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerId] && surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerId]
-  //         payload[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage] = surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage] && surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage]
-  //         payload[config.systemGeneratedVariables.variableNameForSurveyDataReferralType] = surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferralType] && surveyData[config.systemGeneratedVariables.variableNameForSurveyDataReferralType]
-  //
-  //         console.log("surveyData before confirm cookie", surveyData)
-  //         console.log("payload before confim cookie", payload)
-  //
-  //         // const cookieResponse = await services.submitCookie(payload)
-  //         // console.log("cookieResponse", cookieResponse)
-  //
-  //     //publicId = await triggerFetchPublicId({userName: cookieUserName})
-  //
-  //     //lastQuestion = await triggerFetchLastQuestion({userName: cookieUserName, publicId: publicId})
-  //
-  //     //const indexLastSaved = questionnaire.ordering.findIndex((item) => {return (item === lastQuestion)})
-  //     //const indexCurrent   = questionnaire.ordering.findIndex((item) => {return (item === questionCurrent)})
-  //
-  //     //indexLastSaved > indexCurrent && setQuestionCurrent(questionnaire.ordering[indexLastSaved + 1]);
-  //
-  //
-  //     // setSurveyData(
-  //     //     (current) => {
-  //     //       current[config.systemGeneratedVariables.variableNameForSurveyDataUserName] = publicId
-  //     //       current[config.systemGeneratedVariables.variableNameForLastQuestion] = lastQuestion
-  //     //       return current
-  //     //     }
-  //     // )
-  //   }
-  // }
 
   const handleConfirmRemovePin = () => {
 
