@@ -470,6 +470,7 @@ export const questionnaire = {
     },
     'home': {
         questionType: "map",
+        uniquePlace: true,
         mapQuestionInstruction: "homeInstructions",
         mapQuestionDetail: "homeDetail",
         mapQuestionSafety: "homeSafety",
@@ -870,6 +871,7 @@ export const questionnaire = {
     },
     'placesGS': {
         questionType: "map",
+        uniquePlace: false,
         mapQuestionDetail: "placesGSDetail",
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesGSInstructions",
@@ -939,6 +941,7 @@ export const questionnaire = {
     },
     'placesHookup': {
         questionType: "map",
+        uniquePlace: false,
         mapQuestionInstruction: "placesHookupInstructions",
         mapQuestionSafety:'placesHookupSafety',
         mapQuestionDetail: 'placesHookupDetail',
@@ -1080,6 +1083,7 @@ export const questionnaire = {
     },
     'placesVax1': {
         questionType: "map",
+        uniquePlace: true,
         mapQuestionDetail: 'placesVax1Detail',
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesVax1Instructions",
@@ -1128,6 +1132,7 @@ export const questionnaire = {
     },
     'placesVax2': {
         questionType: "map",
+        uniquePlace: true,
         mapQuestionDetail: "placesVax2Detail",
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesVax2Instructions",
@@ -1176,6 +1181,7 @@ export const questionnaire = {
     },
     'placesUsualCare': {
         questionType: "map",
+        uniquePlace: true,
         mapQuestionDetail: "placesUsualCareDetail",
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesUsualCareInstructions",
@@ -1224,6 +1230,7 @@ export const questionnaire = {
     },
     'placesOptimalCare': {
         questionType: "map",
+        uniquePlace: true,
         mapQuestionDetail: "placesOptimalCareDetail",
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesOptimalCareInstructions",
@@ -1272,6 +1279,7 @@ export const questionnaire = {
     },
     'placesMostTime': {
         questionType: "map",
+        uniquePlace: false,
         mapQuestionDetail: "placesMostTimeDetail",
         mapQuestionSafety: "placesMostTimeSafety",
         mapQuestionInstruction: "placesMostTimeInstructions",

@@ -85,8 +85,8 @@ export default function CanvasMap(props) {
 
                 let result;
 
-                if (currentQuestion === "home") {
-                    const updatedOldMarkers = Object.entries(old).filter((item) => {return (item[1].variable !== "home")})
+                if (questionnaire[currentQuestion].uniquePlace) {
+                    const updatedOldMarkers = Object.entries(old).filter((item) => {return (item[1].variable !== currentQuestion)})
                     result = {...updatedOldMarkers, [placeId]: newMarker}
                 } else {
                     result = {...old, [placeId]: newMarker}
