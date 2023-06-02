@@ -7,8 +7,6 @@ import {config} from "../const/config";
 
 export default function Questionnaire() {
 
-    const missingQuestions = Object.keys(questionnaire).filter((item) => !questionnaire.ordering.includes(item))
-
     const questions = questionnaire.ordering.map(
         (item) => {
             return (
@@ -88,10 +86,21 @@ function QuestionCard(props) {
     const question     = <Typography variant={"body1"} gutterBottom>{questionUnit && questionUnit.question && questionUnit.question[language]}</Typography>
 
     const optionsArray = questionUnit.options && questionUnit.options[language] && (questionUnit.options[language].rows ?
-
         [...Object.entries(questionUnit.options[language].rows), ...Object.entries(questionUnit.options[language].columns)] :
-
         Object.entries(questionUnit.options[language]))
+
+
+    const skipDependency     = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.question;
+    const skipConnective     = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.equals;
+    const skipValue          = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.value;
+    const skipSentence       = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && `Displayed only if '${skipDependency}' is ${skipConnective ? 'equal to' : 'unequal to'} '${skipValue}'`
+
+    const skipLogicDisplay   =
+        <Card elevation={0} sx={{display: "flex", backgroundColor: "red", alignContent: "center", justifyContent: "center"}}>
+            <Typography align="center" variant={"caption"} color={"white"}>
+                {questionnaire[questionName].skipLogic && skipSentence}
+            </Typography>
+        </Card>
 
 
     const options = optionsArray && optionsArray.map((item, index) => {
@@ -126,6 +135,7 @@ function QuestionCard(props) {
             {body}
             {question}
             <Box sx={{padding: 2}}>{options}</Box>
+            {skipLogicDisplay}
         </Card>
     )
 }
