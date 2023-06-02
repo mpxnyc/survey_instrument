@@ -547,8 +547,14 @@ export const questionnaire = {
             ].slice(0,2),
         },
         shareMessage: {
-            english: "",
-            spanish: ""
+            english: [
+                "Hey there! I participated in a study to help us fight monkeypox in our community. Learning how people hook up in New York City will help our community to stop more people from getting infected, so please take the survey!",
+                "Here is your personal link (please don’t share it with anyone!): "
+                ],
+            spanish: [
+                "Hey there! I participated in a study to help us fight monkeypox in our community. Learning how people hook up in New York City will help our community to stop more people from getting infected, so please take the survey!",
+                "Here is your personal link (please don’t share it with anyone!): "
+            ],
         },
         questionType: "sharedialog"
     },
