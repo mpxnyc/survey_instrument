@@ -57,6 +57,20 @@ export const config = {
                 spanish: "2bo9as80"
             }
         },
+        referralChannel: {
+            settingName: "c",
+            values: {
+                partner_toolkit: 'pt',
+                google_search: 'gs',
+                twitter:	'tw',
+                instagram:	'ig',
+                grindr:	'gr',
+                ferry: 	'fr',
+                earned_media: 	'em',
+                cameo_promotion:	'cm',
+                link_nyc:	'lnyc'
+            }
+        },
         virusGameIdName: "t"
     },
     systemGeneratedVariables: {
@@ -71,7 +85,8 @@ export const config = {
         variableNameForLastQuestion: "lastQuestion",
         variableNameForSurveyDataVirusReceivedId: "receivedVirus",
         variableNameForSurveyDataVirusCreatedId: "createdVirus",
-        variableNameForSurveyDataSessionId: "sessionId"
+        variableNameForSurveyDataSessionId: "sessionId",
+        variableNameForSurveyDataChannel: "channel"
     },
     sensitiveSystemGeneratedVariables: [
         "variableNameForSurveyDataReferralType",

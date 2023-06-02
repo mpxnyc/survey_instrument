@@ -391,8 +391,9 @@ export default function Index() {
        () => {
           const referrerLanguageParameterValue = router.query[config.referralSettings.referrerLanguage.settingName];
           const referralTypeParameterValue = router.query[config.referralSettings.referralType.settingName];
-          const referralIdParameterValue = router.query[config.referralSettings.referrerIdName]
-          const viralQuestionIdParameterValue = router.query[config.referralSettings.virusGameIdName]
+          const referralIdParameterValue = router.query[config.referralSettings.referrerIdName];
+          const viralQuestionIdParameterValue = router.query[config.referralSettings.virusGameIdName];
+          const referralChannelParameterValue  = router.query[config.referralSettings.referralChannel.settingName];
           const cookiesUserName = cookies && cookies.userName
 
 
@@ -416,7 +417,8 @@ export default function Index() {
               [config.systemGeneratedVariables.variableNameForSurveyDataReferrerId]: referralIdParameterValue,
               [config.systemGeneratedVariables.variableNameForSurveyDataVirusReceivedId]: viralQuestionIdParameterValue,
               [config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName]: cookiesUserName,
-              [config.systemGeneratedVariables.variableNameForSurveyDataSessionId]: 1
+              [config.systemGeneratedVariables.variableNameForSurveyDataSessionId]: 1,
+              [config.systemGeneratedVariables.variableNameForSurveyDataChannel]: referralChannelParameterValue
           }
 
           const initialLanguage = initialData[config.systemGeneratedVariables.variableNameForSurveyDataReferrerLanguage]
