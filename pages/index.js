@@ -62,7 +62,6 @@ export default function Index() {
           return;
       } else {
           busySaving = true
-          console.log("busySaving", busySaving)
           const result = await services.saveSurvey(data);
           busySaving = false
       }
@@ -71,7 +70,6 @@ export default function Index() {
   };
 
   const triggerAssignId = async () => {
-    console.log("Assign ID Triggered")
 
 
       try {
@@ -93,7 +91,6 @@ export default function Index() {
                   return newData;
               })
 
-          console.log("set cookie")
 
       } catch(e) {
         console.log("Assign ID Failed")
@@ -130,6 +127,7 @@ export default function Index() {
   };
 
   const handleNextQuestion = () => {
+      console.log("next question click")
 
       if (surveyData[questionCurrent] && (surveyData[questionCurrent] === questionnaire[questionCurrent].exitCondition)) {
 
@@ -154,6 +152,12 @@ export default function Index() {
 
           return
       }
+
+
+      //Forced Response
+      if (surveyData[questionCurrent] === "" && questionnaire[questionCurrent].forcedResponse) throw new Error("Please Respond")
+      if (Object.keys(surveyData[questionCurrent]).length === 0 && questionnaire[questionCurrent].questionType === "map" && questionnaire[questionCurrent].forcedResponse) throw new Error("Please Respond")
+
 
 
 
