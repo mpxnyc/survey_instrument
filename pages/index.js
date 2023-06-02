@@ -155,6 +155,8 @@ export default function Index() {
           return
       }
 
+
+
       //if we do have a cookie, subit the cookie when the time is right. Or also if user gives us username
       questionnaire.milestones.retrieveId.includes(questionCurrent) && surveyData[questionCurrent] === "yes" && triggerSubmitCookie(surveyData);
 
