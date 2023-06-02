@@ -10,7 +10,7 @@ import {config} from "../const/config";
 export default function OutputUserNameDisplay(props) {
     const {data, handleUpdateData, questionName, language, colorBackground, colorText}= props;
 
-    const noNewUserName = !data[config.systemGeneratedVariables.variableNameForSurveyDataUserName] || data[config.systemGeneratedVariables.variableNameForSurveyDataUserName] === ""
+    const confirm = questionnaire[questionName].questionType === "user_name_confirm"
 
     return (
         <Box>
@@ -18,7 +18,7 @@ export default function OutputUserNameDisplay(props) {
             <Card sx={{backgroundColor: colorText, margin: 3}}>
                 <Typography variant={"h4"} align={"center"} color={colorBackground}>
 
-                    { noNewUserName ?
+                    { confirm ?
                         data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName] :
                         data[config.systemGeneratedVariables.variableNameForSurveyDataUserName]
                         }

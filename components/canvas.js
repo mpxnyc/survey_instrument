@@ -219,7 +219,10 @@ export default function Canvas(props) {
         case 'map':
             questionHeader = questionCurrentMap && questionnaire[questionCurrentMap] && questionnaire[questionCurrentMap].question && questionnaire[questionCurrentMap].question[language]
             break;
-        case 'radio_with_username_display':
+        case 'user_name_confirm':
+            questionHeader = ""
+            break;
+        case 'user_name_assign':
             questionHeader = ""
             break;
         default:

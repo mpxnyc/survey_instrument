@@ -167,7 +167,7 @@ export const questionnaire = {
             english: {},
             spanish: {}
         },
-        questionType: "radio_with_username_display",
+        questionType: "user_name_assign",
         skipLogic: {question: "", value: "", equals: false},
         displayLogic: {question: "", value: "", equals: false}
     },
@@ -1536,7 +1536,7 @@ export const questionnaire = {
             english: {'yes': 'Yes', 'no': 'No', },
             spanish: {'yes': 'Sí', 'no': 'No', },
         },
-        questionType: "radio_with_username_display"
+        questionType: "user_name_confirm"
     },
 }
 
