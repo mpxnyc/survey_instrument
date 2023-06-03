@@ -3,9 +3,7 @@ import Box from '@mui/material/Box';
 import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
 import {useRouter} from "next/router";
-import Peaches from '../public/peaches.svg'
-import Hearts from '../public/Asset 2.svg'
-import MpxIcon from '../public/Asset 6.png'
+
 
 
 import {questionnaire} from "../const/questionnaire";
@@ -15,15 +13,14 @@ import Canvas from "../components/canvas";
 import CanvasMap from "../components/canvasMap";
 import CanvasViralGame from "../components/canvasViralGame";
 
-import {arrayRange, createDataShell, getAvailableQuestions} from "../lib/utilityFunctions";
+import { createDataShell, getAvailableQuestions} from "../lib/utilityFunctions";
 import services from "../lib/services";
-import Image from "next/image";
-import {InputCalendarEntry} from "../components/InputCalendarEntry";
-import {LocalizationProvider} from "@mui/x-date-pickers";
-import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
-import RandomIcon, {Droplets, Eggplant, Peach, Unicorn} from "../components/ControlGraphicsIcons";
-import {Grid} from "@mui/material";
+import {Backdrop, CircularProgress, Dialog, Grid} from "@mui/material";
 import Typography from "@mui/material/Typography";
+import {Wallpaper} from "../components/OutputWallpaper";
+import {WaitSignal} from "../components/OutputWaitSignal";
+import {Error} from "../components/OutputError";
+import {IDUnassigned, NoResponse} from "../lib/errors";
 
 
 
@@ -52,31 +49,46 @@ export default function Index() {
 
   const [currentVirus, setCurrentVirus] = useState({});
 
-    let busySaving = false
+  const [waiting, setWaiting] = useState(false)
+    const [errorState, setErrorState] = useState()
+
+    let busySaving = false;
+
+
+    const handleStopWaiting = (cookieResponse) => {
+        setWaiting(false);
+    }
 
   const triggerSaveSurvey = async (data) => {
-    console.log("Save Triggered")
 
-      if (busySaving) {
-          console.log("still busy saving")
-          return;
-      } else {
-          busySaving = true
-          const result = await services.saveSurvey(data);
-          busySaving = false
-      }
+        try {
+            console.log("Save Triggered")
 
+            if (busySaving) {
+                console.log("still busy saving")
+                return;
+            } else {
+                busySaving = true
+                const result = await services.saveSurvey(data);
+                busySaving = false
+            }
+        } catch(e) {
+            handleStopWaiting()
+            setErrorState(e)
+        }
 
   };
 
   const triggerAssignId = async () => {
 
 
+
       try {
+
+
           busySaving = true;
           const id = await services.assignID();
           busySaving = false;
-
 
           setSurveyData(
               (current) => {
@@ -92,16 +104,63 @@ export default function Index() {
               })
 
 
+
       } catch(e) {
-        console.log("Assign ID Failed")
           console.log(e)
+          setErrorState(e)
       }
 
   };
 
+  async function triggerSubmitCookie(data) {
+
+      try {
+          busySaving = true;
+          setWaiting(true)
+
+          if (questionCurrent !== "welcome") data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName] = data[questionCurrent]
+
+          const cookieResponse = await services.submitCookie(data)
+
+          const {public_id: publicId, lastQuestion, sessionId} = cookieResponse.data.result
 
 
 
+          const focusQuestion = lastQuestion === "" ? "consentStudy" : lastQuestion
+
+          handleUpdateSurveyData("userName", data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName])
+          handleUpdateSurveyData("publicId", publicId)
+          handleUpdateSurveyData("lastQuestion", focusQuestion)
+          handleUpdateSurveyData("sessionId", sessionId)
+
+
+
+          setQuestionCurrent(
+              (oldCurrent) => {
+                  setQuestionHistory([]);
+                  const availableQuestions = getAvailableQuestions(data, focusQuestion, [], questionnaire.ordering)
+                  const displayQuestion = availableQuestions.shift()
+
+                  setQuestionFuture(availableQuestions)
+                  questionnaire[displayQuestion] && questionnaire[displayQuestion].questionType && questionnaire[displayQuestion].questionType === "map" && setQuestionCurrentMap(questionnaire[displayQuestion].mapQuestionInstruction)
+
+                  return displayQuestion
+              }
+          )
+
+
+
+          busySaving = false;
+          handleStopWaiting(await cookieResponse);
+
+      } catch(e) {
+          handleStopWaiting()
+          setErrorState(e)
+      }
+
+
+
+    };
 
   const handleUpdateSurveyData = (name, value) => {
 
@@ -127,88 +186,93 @@ export default function Index() {
   };
 
   const handleNextQuestion = () => {
-      console.log("next question click")
 
-      if (surveyData[questionCurrent] && (surveyData[questionCurrent] === questionnaire[questionCurrent].exitCondition)) {
+
+      try {
+          if (surveyData[questionCurrent] && (surveyData[questionCurrent] === questionnaire[questionCurrent].exitCondition)) {
+
+              setQuestionCurrent(
+                  () => {
+                      setQuestionFuture([])
+                      return questionnaire.milestones.surveyComplete
+                  }
+              )
+
+              return
+          }
+
+          if (surveyData[questionCurrent] && (surveyData[questionCurrent] === questionnaire[questionCurrent].ineligibleCondition)) {
+
+              setQuestionCurrent(
+                  () => {
+                      setQuestionFuture([])
+                      return questionnaire.milestones.surveyIneligible
+                  }
+              )
+
+              return
+          }
+
+
+          //Forced Response
+          if (surveyData[questionCurrent] === "" && questionnaire[questionCurrent].forcedResponse) throw new NoResponse()
+          if (Object.keys(surveyData[questionCurrent]).length === 0 && questionnaire[questionCurrent].questionType === "map" && questionnaire[questionCurrent].forcedResponse) throw new NoResponse()
+
+
+          //if we do have a cookie, subit the cookie when the time is right. Or also if user gives us username
+          questionnaire.milestones.retrieveId.includes(questionCurrent) && surveyData[questionCurrent] === "yes" && triggerSubmitCookie(surveyData);
+
+          //if we dont have a cookie, assign id when the time is right
+          questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName && triggerAssignId()
+
+
+          if (questionnaire[questionCurrent].questionType === "checkbox") {
+              // make sure that logical question  obtains 'false' instead of 'null' once user has seen it
+
+              setSurveyData(
+                  (current) => {
+                      const innerVariableNames = Object.keys(current[questionCurrent])
+                      innerVariableNames.map(
+                          (item) => {
+                              current[questionCurrent][item] = !current[questionCurrent][item] ? false : current[questionCurrent][item];
+                          }
+                      )
+
+                      return current
+                  }
+              )
+          }
+
+          const availableQuestions = getAvailableQuestions(surveyData, questionCurrent, questionHistory, questionnaire.ordering);
 
           setQuestionCurrent(
-              () => {
-                  setQuestionFuture([])
-                  return questionnaire.milestones.surveyComplete
+              (oldCurrent) => {
+
+
+                  const newCurrent = availableQuestions.shift();
+
+                  setQuestionHistory((past) => {
+                      past.push(oldCurrent)
+                      setQuestionFuture(availableQuestions);
+                      questionnaire[newCurrent] && questionnaire[newCurrent].questionType && questionnaire[newCurrent].questionType === "map" && setQuestionCurrentMap(questionnaire[newCurrent].mapQuestionInstruction)
+                      return past
+                  })
+
+                  return newCurrent
               }
           )
-
-          return
-      }
-
-      if (surveyData[questionCurrent] && (surveyData[questionCurrent] === questionnaire[questionCurrent].ineligibleCondition)) {
-
-          setQuestionCurrent(
-              () => {
-                  setQuestionFuture([])
-                  return questionnaire.milestones.surveyIneligible
-              }
-          )
-
-          return
+      } catch(e) {
+          console.log(e)
+          setErrorState(e)
       }
 
 
-      //Forced Response
-      if (surveyData[questionCurrent] === "" && questionnaire[questionCurrent].forcedResponse) throw new Error("Please Respond")
-      if (Object.keys(surveyData[questionCurrent]).length === 0 && questionnaire[questionCurrent].questionType === "map" && questionnaire[questionCurrent].forcedResponse) throw new Error("Please Respond")
-
-
-
-
-      //if we do have a cookie, subit the cookie when the time is right. Or also if user gives us username
-      questionnaire.milestones.retrieveId.includes(questionCurrent) && surveyData[questionCurrent] === "yes" && triggerSubmitCookie(surveyData);
-
-      //if we dont have a cookie, assign id when the time is right
-      questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName && triggerAssignId()
-
-
-    if (questionnaire[questionCurrent].questionType === "checkbox") {
-        // make sure that logical question  obtains 'false' instead of 'null' once user has seen it
-
-        setSurveyData(
-            (current) => {
-                const innerVariableNames = Object.keys(current[questionCurrent])
-                innerVariableNames.map(
-                    (item) => {
-                        current[questionCurrent][item] = !current[questionCurrent][item] ? false : current[questionCurrent][item];
-                    }
-                )
-
-                return current
-            }
-        )
-    }
-
-    const availableQuestions = getAvailableQuestions(surveyData, questionCurrent, questionHistory, questionnaire.ordering);
-
-    setQuestionCurrent(
-        (oldCurrent) => {
-
-
-          const newCurrent = availableQuestions.shift();
-
-          setQuestionHistory((past) => {
-            past.push(oldCurrent)
-            setQuestionFuture(availableQuestions);
-            questionnaire[newCurrent] && questionnaire[newCurrent].questionType && questionnaire[newCurrent].questionType === "map" && setQuestionCurrentMap(questionnaire[newCurrent].mapQuestionInstruction)
-            return past
-          })
-
-          return newCurrent
-        }
-    )
 
   };
 
   const handlePreviousQuestion = async () => {
 
-    const availableQuestions = getAvailableQuestions(surveyData, questionCurrent, questionHistory, questionnaire.ordering);
+      const availableQuestions = getAvailableQuestions(surveyData, questionCurrent, questionHistory, questionnaire.ordering);
 
     setQuestionHistory(
         (past) => {
@@ -236,7 +300,6 @@ export default function Index() {
     )
   }
 
-
   const handleConfirmRemovePin = () => {
 
 
@@ -262,41 +325,6 @@ export default function Index() {
       setQuestionCurrentMap("");
   }
 
-  const handleFetchVirus = async () => {
-    console.log("fetch virus triggered")
-    try {
-
-      const virus = {
-        virusPublicId: surveyData.receivedVirus,
-        publicId: surveyData.publicId,
-        referrerPublicId: surveyData.referrerPublicId
-      }
-
-
-
-      const response = await services.fetchVirus(virus)
-
-
-
-      const responseObject = response.result.records[0]
-      const virusText = responseObject._fields[responseObject._fieldLookup["virusText"]]
-      const virusOriginTime = responseObject._fields[responseObject._fieldLookup["virusOriginTime"]]
-
-      const result = {
-        virusText: virusText,
-        virusPublicId: virus.virusPublicId,
-        virusOriginTime: virusOriginTime
-      }
-
-
-      setCurrentVirus(result);
-
-
-    } catch(e) {
-      console.log(e)
-
-    }
-  }
 
 
   useEffect(
@@ -307,44 +335,6 @@ export default function Index() {
   )
 
 
-    async function triggerSubmitCookie(data) {
-
-        busySaving = true;
-
-      if (questionCurrent !== "welcome") data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName] = data[questionCurrent]
-
-        const cookieResponse = await services.submitCookie(data)
-
-
-        const {public_id: publicId, lastQuestion, sessionId} = cookieResponse.data.result
-
-
-
-        const focusQuestion = lastQuestion === "" ? "consentStudy" : lastQuestion
-
-        handleUpdateSurveyData("userName", data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName])
-        handleUpdateSurveyData("publicId", publicId)
-        handleUpdateSurveyData("lastQuestion", focusQuestion)
-        handleUpdateSurveyData("sessionId", sessionId)
-
-
-
-        setQuestionCurrent(
-            (oldCurrent) => {
-                setQuestionHistory([]);
-                const availableQuestions = getAvailableQuestions(data, focusQuestion, [], questionnaire.ordering)
-                const displayQuestion = availableQuestions.shift()
-
-                setQuestionFuture(availableQuestions)
-                questionnaire[displayQuestion] && questionnaire[displayQuestion].questionType && questionnaire[displayQuestion].questionType === "map" && setQuestionCurrentMap(questionnaire[displayQuestion].mapQuestionInstruction)
-
-                return displayQuestion
-            }
-        )
-
-        busySaving = false;
-
-    }
 
     useEffect(
        () => {
@@ -399,102 +389,69 @@ export default function Index() {
   )
 
 
-  useEffect(
-      () => {
 
 
 
-        !currentVirus.virusText && surveyData.receivedVirus && surveyData.publicId && surveyData.referrerPublicId && handleFetchVirus()
-
-      }, [surveyData.receivedVirus, surveyData.publicId, surveyData.referrerPublicId]
-  )
-
-
-
-
-const icon = <Droplets selected size={40}/>
 
   return (
 
-      <Box maxWidth maxHeight sx={{backgroundColor: config.colorWallpaper, height: "100%", width: "100%", position: "absolute", overflow: "clip"}} >
+      <Box maxWidth maxHeight sx={{backgroundColor: config.wallpaper.color, height: "100%", width: "100%", position: "absolute", overflow: "clip"}}>
+          <Wallpaper/>
 
+          <CanvasMap
+              data={surveyData}
+              handleUpdateSurveyData={handleUpdateSurveyData}
+              currentQuestion={questionCurrent}
+              questionFuture={questionFuture}
+              visible={questionCurrent && questionnaire[questionCurrent] && questionnaire[questionCurrent].questionType === "map"}
 
+              language={language}
+              handleNextQuestion={handleNextQuestion}
+              handlePreviousQuestion={handlePreviousQuestion}
+              handleToggleLanguage={handleToggleLanguage}
+              questionHistory={questionHistory}
+              setCurrentMarker={setCurrentMarker}
+              setMarkers={setMarkers}
+              setQuestionCurrentMap={setQuestionCurrentMap}
+              setQuestionHistoryMap={setQuestionHistoryMap}
+              currentMarker={currentMarker}
+              markers={markers}
+              questionCurrentMap={questionCurrentMap}
+              handleConfirmRemovePin={handleConfirmRemovePin}
+              handleCancelRemovePin={handleCancelRemovePin}
+              setWaiting={setWaiting}
+              setErrorState={setErrorState}
+          />
+          <Canvas
+              data={surveyData}
+              handleUpdateData={handleUpdateSurveyData}
+              questionCurrent={questionCurrent}
+              questionHistory={questionHistory}
+              questionFuture={questionFuture}
+              questionList={questionnaire.ordering}
+              language={language}
+              handleNextQuestion={handleNextQuestion}
+              handlePreviousQuestion={handlePreviousQuestion}
+              handleToggleLanguage={handleToggleLanguage}
+              markers={markers}
+              setMarkers={setMarkers}
+              currentMarker={currentMarker}
+              setCurrentMarker={setCurrentMarker}
+              questionHistoryMap={questionHistoryMap}
+              setQuestionHistoryMap={setQuestionHistoryMap}
+              questionCurrentMap={questionCurrentMap}
+              setQuestionCurrentMap={setQuestionCurrentMap}
+              questionFutureMap={questionFutureMap}
+              setQuestionFutureMap={setQuestionFutureMap}
+              handleConfirm={handleConfirmRemovePin}
+              handleCancel={handleCancelRemovePin}
+              colorBackground={config.colorBackground}
+              colorText={config.colorText}
+          />
 
-          <Grid container direction={"row"} sx={{display: "flex", alignContent: "center", alignItems: "center", justifyContent: "center", justifyItems: "center", justifySelf: "center", alignSelf: "center"}}>
-              {arrayRange(1,500,1).map((item, index) => <Grid key={index} sm={0.1} item maxWidth sx={{display: "flex", margin: 5, alignContent: "center", alignItems: "center", justifyContent: "center", justifyItems: "center", justifySelf: "center", alignSelf: "center"}}>{icon}</Grid>)}
-          </Grid>
+          <WaitSignal waiting={waiting}/>
 
-
-
-          <Box
-              height={"100%"}
-              width={"100%"}
-
-          sx={{opacity: 1, objectFit: "fill", justifyContent: "center", display: "flex"}}>
-              <Image src={Hearts}/>
-          </Box>
-
-
-
-
-
-
-        <CanvasMap
-            data={surveyData}
-            handleUpdateSurveyData={handleUpdateSurveyData}
-            currentQuestion={questionCurrent}
-            questionFuture={questionFuture}
-            visible={questionCurrent && questionnaire[questionCurrent] && questionnaire[questionCurrent].questionType === "map"}
-
-            language={language}
-            handleNextQuestion={handleNextQuestion}
-            handlePreviousQuestion={handlePreviousQuestion}
-            handleToggleLanguage={handleToggleLanguage}
-            questionHistory={questionHistory}
-            setCurrentMarker={setCurrentMarker}
-            setMarkers={setMarkers}
-            setQuestionCurrentMap={setQuestionCurrentMap}
-            setQuestionHistoryMap={setQuestionHistoryMap}
-            currentMarker={currentMarker}
-            markers={markers}
-            questionCurrentMap={questionCurrentMap}
-            handleConfirmRemovePin={handleConfirmRemovePin}
-            handleCancelRemovePin={handleCancelRemovePin}
-        />
-        <Canvas
-            data={surveyData}
-            handleUpdateData={handleUpdateSurveyData}
-            questionCurrent={questionCurrent}
-            questionHistory={questionHistory}
-            questionFuture={questionFuture}
-            questionList={questionnaire.ordering}
-            language={language}
-            handleNextQuestion={handleNextQuestion}
-            handlePreviousQuestion={handlePreviousQuestion}
-            handleToggleLanguage={handleToggleLanguage}
-            markers={markers}
-            setMarkers={setMarkers}
-            currentMarker={currentMarker}
-            setCurrentMarker={setCurrentMarker}
-            questionHistoryMap={questionHistoryMap}
-            setQuestionHistoryMap={setQuestionHistoryMap}
-            questionCurrentMap={questionCurrentMap}
-            setQuestionCurrentMap={setQuestionCurrentMap}
-            questionFutureMap={questionFutureMap}
-            setQuestionFutureMap={setQuestionFutureMap}
-            handleConfirm={handleConfirmRemovePin}
-            handleCancel={handleCancelRemovePin}
-            colorBackground={config.colorBackground}
-            colorText={config.colorText}
-        />
-
-        <CanvasViralGame
-            surveyData={surveyData}
-            handleUpdateSurveyData={handleUpdateSurveyData}
-            language={language}
-            currentVirus={currentVirus}
-            visible={false}
-        />
+          <Error errorState={errorState} setErrorState={setErrorState}/>
 
       </Box>
 

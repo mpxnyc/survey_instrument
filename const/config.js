@@ -8,7 +8,6 @@ export const config = {
     colorText: "#000000",
     colorButtons: "#41BFFF",
     colorBorder: "#FF99C5",
-    colorWallpaper: "#FF99C5",
     cookieDuration : {
         testing: 60*10,
         production: 60*60*24*29*6
@@ -107,6 +106,14 @@ export const config = {
         create: {
             minLength: 14,
             maxLength: 20
+        }
+    },
+    wallpaper: {
+        color: "#FF99C5",
+        icon: {
+            name: "droplets",
+            size: 40,
+            reps: 500
         }
     }
 }

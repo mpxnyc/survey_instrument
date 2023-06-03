@@ -35,7 +35,9 @@ export default function CanvasMap(props) {
         setQuestionHistoryMap,
         markers,
         handleConfirmRemovePin,
-        handleCancelRemovePin
+        handleCancelRemovePin,
+        setWaiting,
+        setErrorState
     }
         = props;
 
@@ -67,44 +69,62 @@ export default function CanvasMap(props) {
 
     }
 
+
+    const handleStopWaiting = (censusTract) => {
+        setWaiting(false)
+    }
+
     const handleMapClick = async (event) => {
 
 
         const placeId = "place" + event.latLng.lat() + event.latLng.lng()
 
-        const censusTract = await services.getCensusTract({lat: event.latLng.lat(), lng: event.latLng.lng()})
+        setWaiting(true)
 
-        setMarkers(
-            (old) => {
-                const newMarker = createDataShell(questionnaire[currentQuestion].mapQuestionOrder)
-                newMarker.variable = currentQuestion;
-                newMarker.id = placeId;
-                newMarker.lat = event.latLng.lat();
-                newMarker.lng = event.latLng.lng();
-                newMarker.censusTract = censusTract
+        try {
+            const censusTract = await services.getCensusTract({lat: event.latLng.lat(), lng: event.latLng.lng()})
+            handleStopWaiting(await censusTract)
 
-                let result;
 
-                if (questionnaire[currentQuestion].uniquePlace) {
-                    const updatedOldMarkers = Object.entries(old).filter((item) => {return (item[1].variable !== currentQuestion)})
-                    result = {...updatedOldMarkers, [placeId]: newMarker}
-                } else {
-                    result = {...old, [placeId]: newMarker}
-                }
 
-                setCurrentMarker(placeId);
+            setMarkers(
+                (old) => {
+                    const newMarker = createDataShell(questionnaire[currentQuestion].mapQuestionOrder)
+                    newMarker.variable = currentQuestion;
+                    newMarker.id = placeId;
+                    newMarker.lat = event.latLng.lat();
+                    newMarker.lng = event.latLng.lng();
+                    newMarker.censusTract = censusTract
 
-                const entriesForQuestion = Object.fromEntries(Object.entries(result).filter((item) => { return (item[1].variable === currentQuestion)}))
+                    let result;
 
-                handleUpdateSurveyData(currentQuestion, entriesForQuestion)
-                return result
-            })
+                    if (questionnaire[currentQuestion].uniquePlace) {
+                        const updatedOldMarkers = Object.entries(old).filter((item) => {return (item[1].variable !== currentQuestion)})
+                        result = {...updatedOldMarkers, [placeId]: newMarker}
+                    } else {
+                        result = {...old, [placeId]: newMarker}
+                    }
 
-        setQuestionCurrentMap(
-            () => {
-                setQuestionHistoryMap([])
-                return questionnaire[currentQuestion].mapQuestionOrder && questionnaire[currentQuestion].mapQuestionOrder[0]
-            })
+                    setCurrentMarker(placeId);
+
+                    const entriesForQuestion = Object.fromEntries(Object.entries(result).filter((item) => { return (item[1].variable === currentQuestion)}))
+
+                    handleUpdateSurveyData(currentQuestion, entriesForQuestion)
+                    return result
+                })
+
+            setQuestionCurrentMap(
+                () => {
+                    setQuestionHistoryMap([])
+                    return questionnaire[currentQuestion].mapQuestionOrder && questionnaire[currentQuestion].mapQuestionOrder[0]
+                })
+
+        } catch(e) {
+            setWaiting(false)
+            console.log(e)
+            setErrorState(e)
+        }
+
 
     }
 
