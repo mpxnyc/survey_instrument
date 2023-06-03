@@ -2,7 +2,7 @@ import {mapStyles} from "./mapStyles";
 
 
 export const config = {
-    testing: true,
+    testing: false,
     saveThrottleDuration: 1000*10,
     colorBackground: "#C5EFFF",
     colorText: "#000000",
@@ -14,11 +14,7 @@ export const config = {
     },
     defaultLanguage: "english",
     mapSettings: {
-        iconURL: {
-            'home': '/MPX_unicorn.svg',
-            'placesGS': '/MPX_droplets.svg',
-            'placesHookup': '/MPX_handshake.svg'
-        },
+        iconURL: {},
         libraries: ["places"],
         mapSearchBar: {
             searchThrottleDuration: 1000,

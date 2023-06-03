@@ -216,7 +216,7 @@ const safetyButtonClick = () => {
                                             position={marker && {lat: marker.lat, lng: marker.lng}}
                                             onClick={handleMarkerClick}
                                             icon={{
-                                                url: config.mapSettings.iconURL[marker.variable] ? config.mapSettings.iconURL[marker.variable] : '/MPX_unicorn.svg',
+                                                url: config.mapSettings.iconURL[marker.variable] ? config.mapSettings.iconURL[marker.variable] : '/MPX_peach.svg',
                                                 origin: new window.google.maps.Point(0, 0),
                                                 anchor: new window.google.maps.Point(15, 15),
                                                 scaledSize: new window.google.maps.Size(50, 50),
