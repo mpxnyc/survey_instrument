@@ -109,9 +109,9 @@ export const config = {
         }
     },
     wallpaper: {
-        color: "#FF99C5",
+        color: "#FFDB77",
         icon: {
-            name: "droplets",
+            name: "peach",
             size: 40,
             reps: 500
         }
