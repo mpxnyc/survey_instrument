@@ -103,7 +103,7 @@ export default function Index() {
                   return newData;
               })
 
-
+          return true
 
       } catch(e) {
           console.log(e)
@@ -185,7 +185,7 @@ export default function Index() {
 
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = async () => {
 
 
       try {
@@ -218,12 +218,13 @@ export default function Index() {
           if (surveyData[questionCurrent] === "" && questionnaire[questionCurrent].forcedResponse) throw new NoResponse()
           if (Object.keys(surveyData[questionCurrent]).length === 0 && questionnaire[questionCurrent].questionType === "map" && questionnaire[questionCurrent].forcedResponse) throw new NoResponse()
 
-
           //if we do have a cookie, subit the cookie when the time is right. Or also if user gives us username
           questionnaire.milestones.retrieveId.includes(questionCurrent) && surveyData[questionCurrent] === "yes" && triggerSubmitCookie(surveyData);
 
           //if we dont have a cookie, assign id when the time is right
-          questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName && triggerAssignId()
+          if (questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName) {
+              const result = triggerAssignId()
+          }
 
 
           if (questionnaire[questionCurrent].questionType === "checkbox") {
@@ -244,6 +245,7 @@ export default function Index() {
           }
 
           const availableQuestions = getAvailableQuestions(surveyData, questionCurrent, questionHistory, questionnaire.ordering);
+
 
           setQuestionCurrent(
               (oldCurrent) => {
