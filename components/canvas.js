@@ -49,6 +49,10 @@ export default function Canvas(props) {
 
         const availableQuestions = getAvailableQuestions(markers[currentMarker], questionCurrentMap, questionHistoryMap, questionnaire[questionCurrent].mapQuestionOrder);
 
+        //Forced Response
+        if (data[questionCurrent][currentMarker][questionCurrentMap] === "" && questionnaire[questionCurrent].forcedResponse) throw new Error("Please Respond")
+
+
         setQuestionCurrentMap(
             (oldCurrent) => {
 
@@ -219,7 +223,10 @@ export default function Canvas(props) {
         case 'map':
             questionHeader = questionCurrentMap && questionnaire[questionCurrentMap] && questionnaire[questionCurrentMap].question && questionnaire[questionCurrentMap].question[language]
             break;
-        case 'radio_with_username_display':
+        case 'user_name_confirm':
+            questionHeader = ""
+            break;
+        case 'user_name_assign':
             questionHeader = ""
             break;
         default:
@@ -243,7 +250,7 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
 
         >
 
-<Card sx={{backgroundColor: "red"}}><Typography color="white" weight="bold" align={"center"}>TESTING ONLY - DATA WILL BE DISCARDED</Typography></Card>
+            {config.testing && <Card sx={{backgroundColor: "red"}}><Typography color="white" weight="bold" align={"center"}>TESTING ONLY - DATA WILL BE DISCARDED</Typography></Card>}
 
             <Box
             sx={{backgroundColor: config.colorBackground}}

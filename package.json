@@ -18,16 +18,20 @@
     "@mui/material": "latest",
     "@mui/x-date-pickers": "^6.4.0",
     "@react-google-maps/api": "^2.18.1",
+    "add": "^2.0.6",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7",
     "lodash": "^4.17.21",
     "next": "latest",
+    "or": "^0.2.0",
     "prop-types": "latest",
     "react": "latest",
     "react-cookie": "^4.1.1",
+    "react-date-picker": "^10.2.0",
     "react-dom": "latest",
     "react-web-share": "^2.0.2",
-    "use-places-autocomplete": "^4.0.0"
+    "use-places-autocomplete": "^4.0.0",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "eslint": "latest",

@@ -157,3 +157,28 @@ export default function RandomIcon(props) {
 
     );
 }
+
+export function MPXIcon(props) {
+    const {selected, size, icon} = props;
+
+    const icons = {
+        eggplant:  <Eggplant  selected={selected} size={size}/>,
+        droplets:  <Droplets  selected={selected} size={size}/>,
+        unicorn:   <Eggplant  selected={selected} size={size}/>,
+        bear:      <Bear      selected={selected} size={size}/>,
+        devil:     <Devil     selected={selected} size={size}/>,
+        taco:      <Taco      selected={selected} size={size}/>,
+        heart:     <Heart     selected={selected} size={size}/>,
+        tulip:     <Tulip     selected={selected} size={size}/>,
+        pignose:   <PigNose   selected={selected} size={size}/>,
+        peach:     <Peach     selected={selected} size={size}/>,
+        handshake: <Handshake selected={selected} size={size}/>
+    }
+
+    return (
+        <Box sx={{alignContent: "center", padding: 1}}>
+            {icons[icon]}
+        </Box>
+
+    )
+}

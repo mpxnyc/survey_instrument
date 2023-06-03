@@ -16,7 +16,11 @@ export default function Questionnaire() {
         }
     )
 
-    return <Box sx={{backgroundColor: "grey"}}>{questions}</Box>
+
+
+    return <Box sx={{backgroundColor: "#7F3F98"}}>
+        {questions}
+    </Box>
 }
 
 
@@ -24,15 +28,15 @@ export default function Questionnaire() {
 function QuestionMap(props) {
     const {questionName} = props;
 
-    const mapQuestionInstruction   = <QuestionPair questionName={questionnaire[questionName].mapQuestionDetail}/>
+    const mapQuestionInstruction   = <QuestionPair questionName={questionnaire[questionName].mapQuestionInstruction}/>
     const mapQuestionSafety        = <QuestionPair questionName={questionnaire[questionName].mapQuestionSafety}/>
     const mapRemovePinQuestion     = <QuestionPair questionName={questionnaire[questionName].mapRemovePinQuestion}/>
     const mapQuestionDetail        = <QuestionPair questionName={questionnaire[questionName].mapQuestionDetail}/>
 
     const personPlaceRelation      =
         <Box>
-            <Typography variant={"h5"}>{questionName}</Typography>
-            <Typography variant={"h1"}>{questionnaire[questionName].personPlaceRelation}</Typography>
+            <Typography variant={"h5"} color={"white"}>{questionName}</Typography>
+            <Typography variant={"h1"} color={"white"}>{questionnaire[questionName].personPlaceRelation}</Typography>
         </Box>
 
 
@@ -47,11 +51,10 @@ function QuestionMap(props) {
         <Card sm={10} sx={{backgroundColor: config.colorText}} >
             {personPlaceRelation}
             {mapQuestionInstruction}
-            {mapQuestionSafety}
-            {mapQuestionOrder}
-            {mapRemovePinQuestion}
             {mapQuestionDetail}
-
+            {mapQuestionSafety}
+            {mapRemovePinQuestion}
+            {mapQuestionOrder}
         </Card>
     )
 
@@ -83,10 +86,21 @@ function QuestionCard(props) {
     const question     = <Typography variant={"body1"} gutterBottom>{questionUnit && questionUnit.question && questionUnit.question[language]}</Typography>
 
     const optionsArray = questionUnit.options && questionUnit.options[language] && (questionUnit.options[language].rows ?
-
         [...Object.entries(questionUnit.options[language].rows), ...Object.entries(questionUnit.options[language].columns)] :
-
         Object.entries(questionUnit.options[language]))
+
+
+    const skipDependency     = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.question;
+    const skipConnective     = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.equals;
+    const skipValue          = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.value;
+    const skipSentence       = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && `Displayed only if '${skipDependency}' is ${skipConnective ? 'equal to' : 'unequal to'} '${skipValue}' or ''`
+
+    const skipLogicDisplay   =
+        <Card elevation={0} sx={{display: "flex", backgroundColor: "red", alignContent: "center", justifyContent: "center"}}>
+            <Typography align="center" variant={"caption"} color={"white"}>
+                {questionnaire[questionName].skipLogic && skipSentence}
+            </Typography>
+        </Card>
 
 
     const options = optionsArray && optionsArray.map((item, index) => {
@@ -121,6 +135,7 @@ function QuestionCard(props) {
             {body}
             {question}
             <Box sx={{padding: 2}}>{options}</Box>
+            {skipLogicDisplay}
         </Card>
     )
 }

@@ -13,8 +13,8 @@ export default function OutputInstructions(props) {
     return (
         <Box>
             {questionnaire[questionName].body[language].map(
-                (line) => {
-                    return <Typography align="center" variant="body1" color={config.colorText} gutterBottom sx={{margin: 2}}>{line}</Typography>
+                (line, index) => {
+                    return <Typography key={index} align="center" variant="body1" color={config.colorText} gutterBottom sx={{margin: 2}}>{line}</Typography>
                 }
             )}
 

@@ -2,7 +2,7 @@ import {mapStyles} from "./mapStyles";
 
 
 export const config = {
-    testing: true,
+    testing: false,
     saveThrottleDuration: 1000*10,
     colorBackground: "#C5EFFF",
     colorText: "#000000",
@@ -14,11 +14,7 @@ export const config = {
     },
     defaultLanguage: "english",
     mapSettings: {
-        iconURL: {
-            'home': '/MPX_unicorn.svg',
-            'placesGS': '/MPX_droplets.svg',
-            'placesHookup': '/MPX_handshake.svg'
-        },
+        iconURL: {},
         libraries: ["places"],
         mapSearchBar: {
             searchThrottleDuration: 1000,
@@ -56,6 +52,20 @@ export const config = {
                 spanish: "2bo9as80"
             }
         },
+        referralChannel: {
+            settingName: "c",
+            values: {
+                partner_toolkit: 'pt',
+                google_search: 'gs',
+                twitter:	'tw',
+                instagram:	'ig',
+                grindr:	'gr',
+                ferry: 	'fr',
+                earned_media: 	'em',
+                cameo_promotion:	'cm',
+                link_nyc:	'lnyc'
+            }
+        },
         virusGameIdName: "t"
     },
     systemGeneratedVariables: {
@@ -69,7 +79,9 @@ export const config = {
         variableNameForSurveyDataCensusTract: "censusTract",
         variableNameForLastQuestion: "lastQuestion",
         variableNameForSurveyDataVirusReceivedId: "receivedVirus",
-        variableNameForSurveyDataVirusCreatedId: "createdVirus"
+        variableNameForSurveyDataVirusCreatedId: "createdVirus",
+        variableNameForSurveyDataSessionId: "sessionId",
+        variableNameForSurveyDataChannel: "channel"
     },
     sensitiveSystemGeneratedVariables: [
         "variableNameForSurveyDataReferralType",
@@ -90,6 +102,14 @@ export const config = {
         create: {
             minLength: 14,
             maxLength: 20
+        }
+    },
+    wallpaper: {
+        color: "#FFDB77",
+        icon: {
+            name: "peach",
+            size: 40,
+            reps: 500
         }
     }
 }
