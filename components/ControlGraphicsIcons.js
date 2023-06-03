@@ -176,7 +176,7 @@ export function MPXIcon(props) {
     }
 
     return (
-        <Box sx={{alignContent: "center", padding: 1}}>
+        <Box sx={{alignContent: "center", padding: 0}}>
             {icons[icon]}
         </Box>
 
