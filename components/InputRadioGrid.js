@@ -43,7 +43,7 @@ export default function InputRadioGrid(props) {
 
 
 const nOptions = questionnaire[questionName].options[language].columns.length
-    const widthLabel = 4
+    const widthLabel = 5
     const widthRadio = 8
 
 
@@ -59,27 +59,61 @@ const nOptions = questionnaire[questionName].options[language].columns.length
 
                         <Box sx={{ display: 'flex' }}
                              key={outerIndex}>
-                            <Grid container direction={"row"}>
-                                <Grid item xs={widthLabel} >
-                                    <Typography variant={"body1"} color={colorText} align={"right"}                                     sx={{display: "flex",  textAlign: "center", alignItems: "center", alignContent: "center", alignSelf: "center", justifySelf: "center", justifyContent: "center", justifyItems: "center"}}
-                                    >{outerItem[1]}</Typography>
+                            <Grid container direction={"row"} sx={{   display: "flex",
+                                alignItems: "center",
+                                alignContent: "center",
+                                alignSelf: "center",
+                                justifySelf: "top",
+                                justifyContent: "center",
+                                justifyItems: "center",}}>
+                                <Grid item xs={widthLabel}   sx={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    alignContent: "center",
+                                    alignSelf: "center",
+                                    justifySelf: "top",
+                                    justifyContent: "right",
+                                    justifyItems: "right",
+                                    padding: 2
+                                }}>
+                                    <Typography
+                                        variant={"body1"}
+                                        color={colorText}
+                                        align={"right"}
+                                        sx={{alignItems: "center"}}
+
+                                    >
+                                        {
+                                            outerItem[1]
+                                        }
+                                    </Typography>
                                 </Grid>
-                                <Grid item xs={widthRadio} sx={{display: "flex", margin: 0, padding: 0}}>
+                                <Grid item
+                                      sx={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                          alignContent: "center",
+                                          alignSelf: "center",
+                                          justifySelf: "center",
+                                          justifyContent: "left",
+                                          justifyItems: "center",
+
+                                }}
+                                >
                                     <RadioGroup
                                         item
                                         id={questionName}
                                         row={true}
                                         aria-labelledby="demo-radio-buttons-group-label"
-                                        //name="radio-buttons-group"
                                         value={value[outerItem[0]]}
                                         onChange={handleGridChange(outerItem)}
-                                        sx={{display: "flex",  textAlign: "center", alignItems: "center", alignContent: "center", alignSelf: "center", justifySelf: "center", justifyContent: "center", justifyItems: "center"}}
+                                        sx={{display: "flex",  margin: 1}}
                                     >
                                         {Object.entries(questionnaire[questionName].options[language].columns).map(
                                             (item, index) => {
                                                 return (
                                                     <FormControlLabel
-                                                        sx={{margin: 0}}
+                                                        sx={{margin: 0.5}}
                                                         key={index}
                                                         value={item[0]}
                                                         control={

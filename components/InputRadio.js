@@ -75,7 +75,7 @@ const SelectionItemRadio = (props) => {
                     height: 50,
                     alignContent: "center",
                     alignItems: "center",
-                    padding: 4,
+                    padding: 5,
                     alignSelf: "center",
                     color: "#000000",
                     border: selected ? 2 : 1
@@ -86,17 +86,14 @@ const SelectionItemRadio = (props) => {
                 justifyContent={"center"}
                 alignItems={"center"}
                 alignSelf={"center"}
-
             >
-
-
 
                 <Box
                     justifyContent={"center"}
                     alignItems={"center"}
                     alignSelf={"center"}
                     height={"100%"}
-                    sx={{display: "flex", position: "absolute",  left: 0, bottom: 0, right: 0, textAlign: "center"}}
+                    sx={{display: "flex", position: "absolute",  left: 0, bottom: 0, right: 0, textAlign: "center", padding: 1}}
                 >
                     <Typography
                         align={"center"}
