@@ -18,7 +18,7 @@ export const InputCalendarEntry = (props) => {
         const date = dayjs(`${event[`$D`]}-${event[`$M`] + 1}-${event[`$y`]}`)
         setValue(
             () => {
-                handleUpdateData(questionName, date)
+                handleUpdateData(questionName, event.toString())
                 return date
             }
         );
@@ -27,7 +27,7 @@ export const InputCalendarEntry = (props) => {
     return (
         <Stack alignItems={"center"} alignContent={"center"} sx={{margin: 0}}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <MobileDatePicker defaultValue={dayjs('2022-04-17')} value={value} onChange={handleOnChange}/>
+                <MobileDatePicker value={Date.parse(value)} onChange={handleOnChange}/>
             </LocalizationProvider>
         </Stack>
     )

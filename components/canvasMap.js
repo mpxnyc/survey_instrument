@@ -98,9 +98,11 @@ export default function CanvasMap(props) {
 
                     let result;
 
+                    console.log("old markers", old)
+
                     if (questionnaire[currentQuestion].uniquePlace) {
-                        const updatedOldMarkers = Object.entries(old).filter((item) => {return (item[1].variable !== currentQuestion)})
-                        result = {...updatedOldMarkers, [placeId]: newMarker}
+                        const updatedOldMarkers = Object.entries(old).filter((item) => {console.log("marker", item[1].variable, "is not supposed to be equal to ", currentQuestion); return (item[1].variable !== currentQuestion)})
+                        result = {...Object.fromEntries(updatedOldMarkers), [placeId]: newMarker}
                     } else {
                         result = {...old, [placeId]: newMarker}
                     }
