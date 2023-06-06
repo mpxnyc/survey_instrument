@@ -52,7 +52,6 @@ export default function Index() {
   const [waiting, setWaiting] = useState(false)
     const [errorState, setErrorState] = useState()
 
-    let busySaving = false;
 
 
     const handleStopWaiting = (cookieResponse) => {
@@ -63,15 +62,9 @@ export default function Index() {
 
         try {
             console.log("Save Triggered")
+            const result = await services.saveSurvey(data);
 
-            if (busySaving) {
-                console.log("still busy saving")
-                return;
-            } else {
-                busySaving = true
-                const result = await services.saveSurvey(data);
-                busySaving = false
-            }
+
         } catch(e) {
             handleStopWaiting()
             setErrorState(e)
@@ -85,10 +78,7 @@ export default function Index() {
 
       try {
 
-
-          busySaving = true;
           const id = await services.assignID();
-          busySaving = false;
 
           setSurveyData(
               (current) => {
@@ -115,7 +105,6 @@ export default function Index() {
   async function triggerSubmitCookie(data) {
 
       try {
-          busySaving = true;
           setWaiting(true)
 
           if (questionCurrent !== "welcome") data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName] = data[questionCurrent]
@@ -126,8 +115,20 @@ export default function Index() {
           const {public_id: publicId, lastQuestion, sessionId} = cookieResponse.data.result
 
 
+          console.log("lastQuestion from servcer", lastQuestion)
 
-          const focusQuestion = lastQuestion === "" ? "consentStudy" : lastQuestion
+          const lastQuestionIndex = questionnaire.ordering.findIndex((innerItem) => {return innerItem === lastQuestion})
+          const surveyCompleteIndex   = questionnaire.ordering.findIndex((innerItem => {return innerItem === questionnaire.milestones.surveyComplete}))
+
+          let focusQuestion
+          if (lastQuestion === "") {
+              focusQuestion = "consentStudy"
+          } else if (lastQuestionIndex >= surveyCompleteIndex) {
+              focusQuestion = "contactEmail"
+          } else {
+              focusQuestion = lastQuestion
+          }
+
 
           handleUpdateSurveyData("userName", data[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName])
           handleUpdateSurveyData("publicId", publicId)
@@ -147,15 +148,12 @@ export default function Index() {
                   setQuestionFuture(availableQuestions)
                   questionnaire[displayQuestion] && questionnaire[displayQuestion].questionType && questionnaire[displayQuestion].questionType === "map" && setQuestionCurrentMap(questionnaire[displayQuestion].mapQuestionInstruction)
 
-
-                  console.log("display question from cookie", displayQuestion)
                   return displayQuestion
               }
           )
 
 
 
-          busySaving = false;
           handleStopWaiting(await cookieResponse);
 
       } catch(e) {
@@ -251,6 +249,7 @@ export default function Index() {
 
           const availableQuestions = getAvailableQuestions(surveyData, questionCurrent, questionHistory, questionnaire.ordering);
 
+          console.log("availableQuestions before shift", availableQuestions)
 
           setQuestionCurrent(
               (oldCurrent) => {
@@ -262,9 +261,12 @@ export default function Index() {
                       past.push(oldCurrent)
                       setQuestionFuture(availableQuestions);
                       questionnaire[newCurrent] && questionnaire[newCurrent].questionType && questionnaire[newCurrent].questionType === "map" && setQuestionCurrentMap(questionnaire[newCurrent].mapQuestionInstruction)
+                      console.log("question history", past)
                       return past
                   })
 
+                  console.log("availableQuestions after shift", availableQuestions)
+                  console.log("question current", newCurrent)
                   return newCurrent
               }
           )
@@ -281,6 +283,8 @@ export default function Index() {
 
       const availableQuestions = getAvailableQuestions(surveyData, questionCurrent, questionHistory, questionnaire.ordering);
 
+      console.log("availableQuestions before shift", availableQuestions)
+
     setQuestionHistory(
         (past) => {
           const newCurrent = past.pop()
@@ -291,6 +295,9 @@ export default function Index() {
                 return newCurrent
               }
           )
+            console.log("availableQuestions after shift", availableQuestions)
+            console.log("question history", past)
+            console.log("question current", newCurrent)
           return past
         }
     )

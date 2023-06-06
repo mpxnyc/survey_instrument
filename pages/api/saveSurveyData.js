@@ -22,7 +22,8 @@ export default async function handler(req,resp) {
         resp.status(200).json({result: returned.data})
 
     } catch (e) {
-        //console.log(e)
+        console.log(e)
+        resp.status(400).end()
     }
 
 }
