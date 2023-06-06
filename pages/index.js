@@ -251,6 +251,7 @@ export default function Index() {
 
           const availableQuestions = getAvailableQuestions(surveyData, questionCurrent, questionHistory, questionnaire.ordering);
 
+          console.log("availableQuestions before shift", availableQuestions)
 
           setQuestionCurrent(
               (oldCurrent) => {
@@ -262,9 +263,12 @@ export default function Index() {
                       past.push(oldCurrent)
                       setQuestionFuture(availableQuestions);
                       questionnaire[newCurrent] && questionnaire[newCurrent].questionType && questionnaire[newCurrent].questionType === "map" && setQuestionCurrentMap(questionnaire[newCurrent].mapQuestionInstruction)
+                      console.log("question history", past)
                       return past
                   })
 
+                  console.log("availableQuestions after shift", availableQuestions)
+                  console.log("question current", newCurrent)
                   return newCurrent
               }
           )
@@ -281,6 +285,8 @@ export default function Index() {
 
       const availableQuestions = getAvailableQuestions(surveyData, questionCurrent, questionHistory, questionnaire.ordering);
 
+      console.log("availableQuestions before shift", availableQuestions)
+
     setQuestionHistory(
         (past) => {
           const newCurrent = past.pop()
@@ -291,6 +297,9 @@ export default function Index() {
                 return newCurrent
               }
           )
+            console.log("availableQuestions after shift", availableQuestions)
+            console.log("question history", past)
+            console.log("question current", newCurrent)
           return past
         }
     )

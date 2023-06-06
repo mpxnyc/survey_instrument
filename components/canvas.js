@@ -48,6 +48,7 @@ export default function Canvas(props) {
     const handleNextQuestionMap = () => {
 
         const availableQuestions = getAvailableQuestions(markers[currentMarker], questionCurrentMap, questionHistoryMap, questionnaire[questionCurrent].mapQuestionOrder);
+console.log("availableQuestions MAp", availableQuestions)
 
         //Forced Response
         if (data[questionCurrent][currentMarker][questionCurrentMap] === "" && questionnaire[questionCurrent].forcedResponse) throw new Error("Please Respond")

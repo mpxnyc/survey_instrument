@@ -119,33 +119,33 @@ export const questionnaire = {
         'placesHookup',
         'sexualOrientation',
         'countFriends',
+        'placesMostTime',
         'inviteToSurvey',
         'mpxVax1',
         "placesVax1",
         'mpxVax2',
         'placesVax2',
+        'mpxTest',
         'mpxSymptoms',
         'covidTestPositive',
-        'mpxTest',
         'mpxDiagnosis',
         'mpxCare',
-        'mpxAnotherQuestion',
-        'placesMostTime',
-        'hivStatus',
-        'hivLastTest',
-        'hivSuppressed',
-        'hivPrep',
-        'placesUsualCare',
-        'placesOptimalCare',
         'mpxRiskReduce',
         'mpxRiskChangeNoVax',
         'mpxRiskChangePreVax1',
         'mpxRiskChangePreVax2',
         'mpxRiskChangePostVax2',
         'mpxRiskChange2023',
-        'mpxRiskStrategiesOtherText',
-        'mpxRiskOtherText',
-        'serviceDelivery',
+        'mpxAnotherQuestion',
+        'placesUsualCare',
+        'hivStatus',
+        'hivLastTest',
+        'hivSuppressed',
+        'hivPrep',
+        'placesOptimalCare',
+        //'mpxRiskStrategiesOtherText',
+        //'mpxRiskOtherText',
+        //'serviceDelivery',
         'contactMe',
         'contactEmail',
         'thankYouShare',
@@ -601,7 +601,8 @@ export const questionnaire = {
         },
         options: yesNoResponse,
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false}
+        skipLogic: {question: "mpxDiagnosis", value: "yes", equals: true},
+        forcedResponse: true
     },
     'mpxDiagnosis': {
         question: {
@@ -610,8 +611,7 @@ export const questionnaire = {
         },
         options: yesNoResponse,
         questionType: "radio",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        forcedResponse: true
     },
     'mpxRiskChangeNoVax': {
         question: {
@@ -620,7 +620,8 @@ export const questionnaire = {
         },
         options: riskReductionList,
         questionType: "radiogrid",
-        forcedResponse: true
+        forcedResponse: true,
+        skipLogic: {question: "mpxVax1", value: "no", equals: true}
     },
     'mpxRiskChange2023': {
         question: {
@@ -974,7 +975,8 @@ export const questionnaire = {
         mapQuestionOrder: ['placeTypeHookup'],
         mapRemovePinQuestion: "placesHookupMapRemovePinQuestion",
         personPlaceRelation: "HOOKUP_IN",
-        forcedResponse: true
+        forcedResponse: true,
+        skipLogic: {question: "countSexGS", value: "none", equals: false},
     },
     'placesHookupDetail': {
         questionType: "instruction",
@@ -1264,7 +1266,7 @@ export const questionnaire = {
         mapQuestionDetail: "placesOptimalCareDetail",
         mapQuestionSafety: "placesGSSafety",
         mapQuestionInstruction: "placesOptimalCareInstructions",
-        mapQuestionOrder: [],
+        mapQuestionOrder: ['serviceDelivery'],
         mapRemovePinQuestion: "placesOptimalCareMapRemovePinQuestion",
         personPlaceRelation: "OPTIMAL_CARE_IN",
         skipLogic: {question: "groupSex", value: "yes", equals: true},
@@ -1474,8 +1476,7 @@ export const questionnaire = {
             spanish: {'comment': 'Comentario'}
         },
         questionType: "plaintext",
-        skipLogic: {question: "", value: "", equals: false},
-        displayLogic: {question: "", value: "", equals: false}
+        forcedResponse: false
     },
     'sex': {
         question: {

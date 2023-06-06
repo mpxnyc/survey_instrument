@@ -93,15 +93,22 @@ function QuestionCard(props) {
     const skipDependency     = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.question;
     const skipConnective     = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.equals;
     const skipValue          = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && questionnaire[questionName].skipLogic.value;
-    const skipSentence       = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && `Displayed only if '${skipDependency}' is ${skipConnective ? 'equal to' : 'unequal to'} '${skipValue}' or ''`
+    const skipSentence       = questionnaire[questionName].skipLogic && questionnaire[questionName].skipLogic.question !== "" && `Displayed only if '${skipDependency}' is ${skipConnective ? 'equal to' : 'unequal to'} '${skipValue}'.`
+    const forcedSentence     = questionnaire[questionName].forcedResponse && 'Forced Response'
 
     const skipLogicDisplay   =
-        <Card elevation={0} sx={{display: "flex", backgroundColor: "red", alignContent: "center", justifyContent: "center"}}>
+        <Card elevation={0} sx={{display: "flex", backgroundColor: "black", alignContent: "center", justifyContent: "center"}}>
             <Typography align="center" variant={"caption"} color={"white"}>
                 {questionnaire[questionName].skipLogic && skipSentence}
             </Typography>
         </Card>
 
+    const forcedResponseDisplay =
+        <Card elevation={0} sx={{display: "flex", backgroundColor: "red", alignContent: "center", justifyContent: "center"}}>
+            <Typography align="center" variant={"caption"} color={"white"}>
+                {questionnaire[questionName].forcedResponse && forcedSentence}
+            </Typography>
+        </Card>
 
     const options = optionsArray && optionsArray.map((item, index) => {
             return (
@@ -136,6 +143,7 @@ function QuestionCard(props) {
             {question}
             <Box sx={{padding: 2}}>{options}</Box>
             {skipLogicDisplay}
+            {forcedResponseDisplay}
         </Card>
     )
 }
