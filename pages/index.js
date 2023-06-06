@@ -148,6 +148,7 @@ export default function Index() {
                   questionnaire[displayQuestion] && questionnaire[displayQuestion].questionType && questionnaire[displayQuestion].questionType === "map" && setQuestionCurrentMap(questionnaire[displayQuestion].mapQuestionInstruction)
 
 
+                  console.log("display question from cookie", displayQuestion)
                   return displayQuestion
               }
           )
