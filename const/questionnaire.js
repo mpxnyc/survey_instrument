@@ -156,7 +156,8 @@ export const questionnaire = {
         assignId: ["consentStudy"],
         retrieveId: ['welcome', 'giveUserName'],
         surveyComplete: 'thankYou',
-        surveyIneligible: 'ineligible'
+        surveyIneligible: 'ineligible',
+        doneWithSurvey: 'contactMe'
     },
     'assignedUserName': {
         question: {
