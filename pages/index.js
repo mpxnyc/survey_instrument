@@ -122,6 +122,7 @@ export default function Index() {
 
           const cookieResponse = await services.submitCookie(data)
 
+
           const {public_id: publicId, lastQuestion, sessionId} = cookieResponse.data.result
 
 
@@ -139,10 +140,13 @@ export default function Index() {
               (oldCurrent) => {
                   setQuestionHistory([]);
                   const availableQuestions = getAvailableQuestions(data, focusQuestion, [], questionnaire.ordering)
+
                   const displayQuestion = availableQuestions.shift()
+
 
                   setQuestionFuture(availableQuestions)
                   questionnaire[displayQuestion] && questionnaire[displayQuestion].questionType && questionnaire[displayQuestion].questionType === "map" && setQuestionCurrentMap(questionnaire[displayQuestion].mapQuestionInstruction)
+
 
                   return displayQuestion
               }
@@ -178,7 +182,7 @@ export default function Index() {
 
       if (currentIndex < newIndex) newData.lastQuestion = name;
 
-      console.log("update data in Index/handleUpdateData", newData)
+
       return newData;
     })
 
@@ -219,7 +223,7 @@ export default function Index() {
           if (Object.keys(surveyData[questionCurrent]).length === 0 && questionnaire[questionCurrent].questionType === "map" && questionnaire[questionCurrent].forcedResponse) throw new NoResponse()
 
           //if we do have a cookie, subit the cookie when the time is right. Or also if user gives us username
-          questionnaire.milestones.retrieveId.includes(questionCurrent) && surveyData[questionCurrent] === "yes" && triggerSubmitCookie(surveyData);
+          questionnaire.milestones.retrieveId.includes(questionCurrent) && surveyData[questionCurrent] !== "no" && triggerSubmitCookie(surveyData);
 
           //if we dont have a cookie, assign id when the time is right
           if (questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName) {
@@ -453,7 +457,11 @@ export default function Index() {
 
           <WaitSignal waiting={waiting}/>
 
-          <Error errorState={errorState} setErrorState={setErrorState}/>
+          <Error
+              errorState={errorState}
+              setErrorState={setErrorState}
+              language={language}
+          />
 
       </Box>
 

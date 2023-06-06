@@ -154,7 +154,7 @@ export const questionnaire = {
     ],
     'milestones': {
         assignId: ["consentStudy"],
-        retrieveId: ['welcome'],
+        retrieveId: ['welcome', 'giveUserName'],
         surveyComplete: 'thankYou',
         surveyIneligible: 'ineligible'
     },
