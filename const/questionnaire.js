@@ -246,16 +246,16 @@ export const questionnaire = {
     },
     'consentStudy': {
         heading: {
-            english: "Informed Consent MPX NYC",
-            spanish: "Consentimiento Informado MPX NYC"
+            english: "Informed Consent MPX NY",
+            spanish: "Consentimiento Informado MPX NY"
         },
         subtitle: {
-            english: "MPX NYC",
-            spanish: "MPX NYC"
+            english: "MPX NY",
+            spanish: "MPX NY"
         },
         body: {
             english: [
-                "You are being asked to take part in a survey called MPX NYC. This survey is part of the Rapid Epidemiologic Study of Prevalence, Networks, and Demographics of MPOX Infection  (RESPND-MI).",
+                "You are being asked to take part in a survey called MPX NY. This survey is part of the Rapid Epidemiologic Study of Prevalence, Networks, and Demographics of MPOX Infection  (RESPND-MI).",
                 "This research is conducted to learn about monkeypox (MPOX) and HIV among gay, bisexual, other men who have sex with men, and transgender people in New York City. Specifically, the RESPND-MI study team is interested in learning about the social and sexual networks that connect individuals in the New York City. You are being asked to participate in this research because you are over the age of 18 and have either been referred to the survey by someone you know or by an advertisement.",
                 "Your participation in this study is voluntary and you may withdraw your participation at any time for any reason. ",
                 "If you take part in this study, you will be asked to answer several questions about your health and sexual behavior and asked to invite friends and past sexual partners to take the survey. The survey will take fewer than five minutes to answer. To facilitate participation, the survey instrument will save a browser cookie containing an anonymous identifier that will be automatically generated. This cookie cannot be used to track your activity on other websites, will contain no personal information, and will expire 6 months after it is saved.",
@@ -266,7 +266,7 @@ export const questionnaire = {
                 "Thank you again for your time and participation."
             ],
             spanish: [
-                "Te estamos preguntado si quieres contestar una encuesta llamada MPX NYC. Esta encuesta es parte del Estudio Epidemiológico Rápido sobre la Prevalencia, Redes y Demografía de la Infección por Viruela Símica (RESPND-MI).",
+                "Te estamos preguntado si quieres contestar una encuesta llamada MPX NY. Esta encuesta es parte del Estudio Epidemiológico Rápido sobre la Prevalencia, Redes y Demografía de la Infección por Viruela Símica (RESPND-MI).",
                 "Esta investigación se está haciendo para aprender sobre la infección de viruela símica (MPOX) y VIH entre hombres gays, bisexuales y otros hombres que tienen sexo con hombres, y personas transgénero en la Ciudad de Nueva York. Específicamente, el equipo del estudio RESPND-MI está interesado en aprender sobre las redes sociales y sexuales que conectan a individuos en la Ciudad de Nueva York. Te estamos pidiendo participar en esta investigación porque tienes 18 años o más, y te ha referido a la encuesta alguien que conoces o un anuncio.",
                 "Tu participación en este estudio es voluntaria y puedes dejar de participar en cualquier momento por cualquier razón.",
                 "Si tomas parte de este estudio, te vamos a hacer varias preguntas sobre tu salud y comportamientos sexuales y vamos a pedir que invites a amigos y parejas sexuales pasadas a que también formen parte de la encuesta. La encuesta te va a tomar menos de cinco minutos. Para facilitar tu participación, la encuesta guardará un cookie del navegador que contiene una identificación anónima que se generará automáticamente. Esta cookie no puede ser usada para rastrear tu actividad en otras páginas web, no contendrá información personal y va a expirar 6 meses después de que haya sido guardada.",
@@ -1430,8 +1430,8 @@ export const questionnaire = {
     },
     'prior': {
         question: {
-            english: "Have you taken the MPX NYC survey this year (2023)?",
-            spanish: "¿Has tomado la encuesta MPX NYC este año (2023)?"
+            english: "Have you taken the MPX NY survey this year (2023)?",
+            spanish: "¿Has tomado la encuesta MPX NY este año (2023)?"
         },
         options: yesNoResponse,
         questionType: "radio",
