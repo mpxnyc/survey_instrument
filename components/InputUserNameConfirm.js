@@ -16,22 +16,22 @@ export default function InputUserNameConfirm(props) {
     return (
         <Box>
             <Typography margin={2} color={colorText} variant={"h3"}>{questionnaire[questionName] && questionnaire[questionName].heading && questionnaire[questionName].heading[language]}</Typography>
-            { cookieFound && <OutputUserNameDisplay
-                language={language}
-                questionName={questionName}
-                data={data}
-                handleUpdateData={handleUpdateData}
-                colorBackground={colorBackground}
-                colorText={colorText}
-            />}
-            {cookieFound && <InputRadio
-                language={language}
-                questionName={questionName}
-                data={data}
-                handleUpdateData={handleUpdateData}
-                colorBackground={colorBackground}
-                colorText={colorText}
-            />}
+            {/*{ cookieFound && <OutputUserNameDisplay*/}
+            {/*    language={language}*/}
+            {/*    questionName={questionName}*/}
+            {/*    data={data}*/}
+            {/*    handleUpdateData={handleUpdateData}*/}
+            {/*    colorBackground={colorBackground}*/}
+            {/*    colorText={colorText}*/}
+            {/*/>}*/}
+            {/*{cookieFound && <InputRadio*/}
+            {/*    language={language}*/}
+            {/*    questionName={questionName}*/}
+            {/*    data={data}*/}
+            {/*    handleUpdateData={handleUpdateData}*/}
+            {/*    colorBackground={colorBackground}*/}
+            {/*    colorText={colorText}*/}
+            {/*/>}*/}
         </Box>
     )
 }
