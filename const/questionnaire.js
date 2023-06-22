@@ -102,12 +102,12 @@ const removePinQuestionBody = {
 export const questionnaire = {
     'ordering': [
         'welcome',
-        'prior',
-        'giveUserName',
-        'cantFindUserName',
+        // 'prior',
+        // 'giveUserName',
+        // 'cantFindUserName',
         'age',
         'consentStudy',
-        'assignedUserName',
+        // 'assignedUserName',
         'home',
         'race',
         'groupSex',
