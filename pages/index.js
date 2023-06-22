@@ -222,7 +222,7 @@ export default function Index() {
           if (Object.keys(surveyData[questionCurrent]).length === 0 && questionnaire[questionCurrent].questionType === "map" && questionnaire[questionCurrent].forcedResponse) throw new NoResponse()
 
           //if we do have a cookie, subit the cookie when the time is right. Or also if user gives us username
-          //questionnaire.milestones.retrieveId.includes(questionCurrent) && surveyData[questionCurrent] !== "no" && triggerSubmitCookie(surveyData);
+          surveyData[config.systemGeneratedVariables.variableNameForSurveyDataCookiesUserName] && questionnaire.milestones.retrieveId.includes(questionCurrent) && surveyData[questionCurrent] !== "no" && triggerSubmitCookie(surveyData);
 
           //if we dont have a cookie, assign id when the time is right
           if (questionnaire.milestones.assignId.includes(questionCurrent) && !surveyData.userName) {
