@@ -14,7 +14,7 @@ export const InputOutReferral = (props) => {
     const {language, handleUpdateData, questionName, data} = props;
 
     const [shareClickCounter, setShareClickCounter] = useState({friends: 0, hookups: 0})
-    const baseURL = process.env.NEXT_PUBLIC_BASE_URL
+    const baseURL = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : "http://www.exampleurl.com"
 
 
     const urlFriends = new URL(baseURL)

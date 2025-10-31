@@ -48,15 +48,12 @@ export default function Canvas(props) {
     const handleNextQuestionMap = () => {
 
         const availableQuestions = getAvailableQuestions(markers[currentMarker], questionCurrentMap, questionHistoryMap, questionnaire[questionCurrent].mapQuestionOrder);
-console.log("availableQuestions MAp", availableQuestions)
 
         //Forced Response
         if (data[questionCurrent][currentMarker][questionCurrentMap] === "" && questionnaire[questionCurrent].forcedResponse) throw new Error("Please Respond")
 
-
         setQuestionCurrentMap(
             (oldCurrent) => {
-
 
                 const newCurrent = availableQuestions.shift();
 
@@ -92,7 +89,6 @@ console.log("availableQuestions MAp", availableQuestions)
 
 
     };
-
 
 
     const handleUpdateMarker = (name, value) => {
@@ -232,7 +228,6 @@ console.log("availableQuestions MAp", availableQuestions)
             break;
         default:
             questionHeader = questionCurrent    && questionnaire[questionCurrent]    && questionnaire[questionCurrent].question    && questionnaire[questionCurrent].question[language]
-
     }
 
     const backButtonDisabled    = questionType === "map" ? questionHistoryMap.length === 0 : questionHistory.length === 0
@@ -248,7 +243,6 @@ const dialogOpen = questionType !== "map" || questionCurrentMap ? true : false
             hideBackdrop   = {true}
             PaperProps={{sx: {backgroundColor: "transparent", border: 1, borderColor: config.colorText, borderRadius: 5} }}
             onClose={handleCloseDialog}
-
         >
 
             {config.testing && <Card sx={{backgroundColor: "red"}}><Typography color="white" weight="bold" align={"center"}>TESTING ONLY - DATA WILL BE DISCARDED</Typography></Card>}

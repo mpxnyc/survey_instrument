@@ -49,12 +49,10 @@ export default function Index() {
 
   const [currentVirus, setCurrentVirus] = useState({});
 
-  const [waiting, setWaiting] = useState(false)
-    const [errorState, setErrorState] = useState()
+  const [waiting, setWaiting] = useState(false);
+  const [errorState, setErrorState] = useState();
 
-
-
-    const handleStopWaiting = (cookieResponse) => {
+  const handleStopWaiting = (cookieResponse) => {
         setWaiting(false);
     }
 
@@ -73,8 +71,6 @@ export default function Index() {
   };
 
   const triggerAssignId = async () => {
-
-
 
       try {
 
