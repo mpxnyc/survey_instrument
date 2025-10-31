@@ -68,8 +68,8 @@ export const questionnaire = {
     },
     'welcome': {
         heading: {
-            english: "Welcome to MPX NY!",
-            spanish: "¡Bienvenido a MPX NY!"
+            english: "Welcome to MPX NYC!",
+            spanish: "¡Bienvenido a MPX NYC!"
         },
         question: {
             english: "It looks like you participated already. Is this your code?",
