@@ -108,7 +108,7 @@ export const config = {
         color: "#FFFFFF",
         icon: {
             name: "peach",
-            size: 40,
+            size: 0,
             reps: 500
         }
     }
