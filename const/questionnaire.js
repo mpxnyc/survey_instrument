@@ -329,8 +329,8 @@ export const questionnaire = {
             spanish: "¡Gracias!"
         },
         body: {
-            english: ["Thank you! We recorded your response."],
-            spanish: ["¡Gracias! Hemos guardado tu respuesta."]
+            english: ["Thank you! We have not recorded your response."],
+            spanish: ["¡Gracias! No hemos registrado su respuesta."]
         }
     },
     'thankYouShare':  {
