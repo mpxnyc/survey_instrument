@@ -117,7 +117,7 @@ export const mapStyles = [
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#F73C95"
+                "color": "#000000"
             },
             {
                 "weight": "5.00"
@@ -171,7 +171,7 @@ export const mapStyles = [
                 "lightness": 21
             },
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },
