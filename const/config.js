@@ -14,7 +14,10 @@ export const config = {
     },
     defaultLanguage: "english",
     mapSettings: {
-        iconURL: {},
+        iconURL: {
+          home: '/MPX_peach.svg',
+          placesHookup: '/MPX_handshake.svg'
+        },
         libraries: ["places"],
         mapSearchBar: {
             searchThrottleDuration: 1000,

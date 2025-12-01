@@ -168,7 +168,7 @@ export const mapStyles = [
                 "color": "#59C618"
             },
             {
-                "lightness": 50
+                "lightness": 80
             },
             {
                 "visibility": "on"
