@@ -165,7 +165,7 @@ export const mapStyles = [
         "elementType": "geometry",
         "stylers": [
             {
-                "color": "#e7d3c2"
+                "color": "#59C618"
             },
             {
                 "lightness": 21
