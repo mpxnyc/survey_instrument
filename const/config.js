@@ -15,8 +15,8 @@ export const config = {
     defaultLanguage: "english",
     mapSettings: {
         iconURL: {
-          home: '/MPX_peach.svg',
-          placesHookup: '/MPX_handshake.svg'
+          home: '/MPX_unicorn.svg',
+          placesHookup: '/MPX_devil.svg'
         },
         libraries: ["places"],
         mapSearchBar: {
